@@ -1,3 +1,3 @@
 Pointerly.Init = function(){
-	console.log('initialised');
+	var env = new Pointerly.Environment();
 };
