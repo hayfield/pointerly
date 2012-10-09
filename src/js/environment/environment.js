@@ -38,11 +38,18 @@ Pointerly.Environment = function(){
         lookVertical: true,
         autoForward: false
 	});
-	this.camera.position.y = 100;
-
+	this.camera.position.y = 200;
+	var cam = this.camera;
 	this.scene = scene;
 
 	this.renderer.render( this.scene, this.camera );
+	var ren = this.renderer;
+	var bob = function(){
+		ren.render( scene, cam );
+		window.requestAnimationFrame( bob );
+	};
+	
+	bob();
 
 	console.log('created env');
 };
