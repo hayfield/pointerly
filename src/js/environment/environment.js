@@ -38,7 +38,7 @@ Pointerly.Environment = function(){
         lookVertical: true,
         autoForward: false
 	});
-	this.camera.position.y = 100;
+	this.camera.position.y = 500;
 
 	this.scene = scene;
 
