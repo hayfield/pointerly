@@ -38,6 +38,4 @@ Pointerly.Environment = function(){
 	};
 	
 	renderLoop();
-
-	console.log('created env');
 };
