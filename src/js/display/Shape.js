@@ -18,7 +18,14 @@ Pointerly.Shape = function( setup ){
 	this.material = new THREE.MeshBasicMaterial( { map: this.texture } );
 
 	this.display = function( drawing ){
-		drawing( shape.canvas );
+		var settings = {
+			canvas: shape.canvas,
+			width: shape.width,
+			height: shape.height,
+			ctx: shape.canvas.getContext('2d')
+		};
+
+		drawing( settings );
 
 		shape.texture.needsUpdate = true;
 	};
