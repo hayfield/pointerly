@@ -22,7 +22,7 @@ Pointerly.Environment = function(){
 	pointLight.intensity = 0.5;
 	scene.addLight( pointLight );
 
-	scene.addObject( new Pointerly.Shape() );
+	scene.addObject( new Pointerly.Triangle() );
 
 	this.camera = new THREE.QuakeCamera({
         fov: 80,
@@ -39,6 +39,8 @@ Pointerly.Environment = function(){
         autoForward: false
 	});
 	this.camera.position.y = 200;
+	this.camera.position.z = 200;
+
 	var cam = this.camera;
 	this.scene = scene;
 

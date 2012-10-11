@@ -19,23 +19,19 @@ Pointerly.Shape = function(){
 		shape.texture.needsUpdate = true;
 	};
 
-	this.display(function( canvas ){
-		var ctx = canvas.getContext('2d');
-		ctx.fillStyle = "orange";
-		ctx.fillRect(0,0,512,512);
-		ctx.fillStyle = "red";
-		ctx.fillRect(25,25,220,220);
-		ctx.fillStyle = "blue";
-		ctx.beginPath();
-		ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
-		ctx.moveTo(110,75);
-		ctx.arc(75,75,35,0,Math.PI,false);   // Mouth (clockwise)
-		ctx.moveTo(65,65);
-		ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
-		ctx.moveTo(95,65);
-		ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
-		ctx.stroke();
-	});
+	this.setColor = function( color ){
+		if( arguments.length === 0 ){
+			color = shape.color;
+		} else {
+			shape.color = color;
+		}
+
+		var ctx = shape.canvas.getContext('2d');
+		ctx.fillStyle = color;
+		ctx.strokeStyle = color;
+	};
+
+	this.setColor( 'red' );
 
 	THREE.Mesh.call( this, this.geometry, this.material );
 };
