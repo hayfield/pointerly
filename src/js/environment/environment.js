@@ -34,16 +34,22 @@ Pointerly.Environment = function( setup ){
 
 	this.shapes = [];
 	var setupShapes = function(){
-		var numShapes = 2;
-		for( var i = 0; i < numShapes; i++ ){
-			environment.shapes.push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
-				width: 200,
-				height: 200,
-				position: new THREE.Vector3( 200*i, 0, 0 ),
-				color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
-			}));
+		if( typeof setup !== 'object' || typeof setup.rowsOfShapes !== 'number' || typeof setup.columnsOfShapes !== 'number' ){
+			return;
+		}
+		
+		for( var i = 0; i < setup.rowsOfShapes; i++ ){
+			environment.shapes[i] = [];
+			for( var j = 0; j < setup.columnsOfShapes; j++ ){
+				environment.shapes[i].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
+					width: 200,
+					height: 200,
+					position: new THREE.Vector3( 200*i, 0, 200*j ),
+					color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
+				}));
 
-			environment.scene.addObject( environment.shapes[i] );
+				environment.scene.addObject( environment.shapes[i][j] );
+			}
 		}
 	};
 	setupShapes();

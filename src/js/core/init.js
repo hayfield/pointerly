@@ -2,7 +2,9 @@ Pointerly.Init = function(){
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 	var setup = {
 		shapes: [ Pointerly.Triangle, Pointerly.Circle ],
-		colors: [ 'red', 'orange', 'blue', 'green', 'black' ]
+		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
+		rowsOfShapes: 3,
+		columnsOfShapes: 2
 	};
 	var env = new Pointerly.Environment( setup );
 };
