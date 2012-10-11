@@ -1,26 +1,15 @@
 Pointerly.Environment = function(){
 	Pointerly.CURRENT_ENVIRONMENT = this;
 
-	var scene = new THREE.Scene();
+	var environment = this;
+	this.scene = new THREE.Scene();
+
+	var scene = this.scene;
+
 	this.renderer = Detector.webgl ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer;
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
 	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
-
-	var ambient = new THREE.AmbientLight( 0xffffff );
-	scene.addLight( ambient );
-	
-	var directionalLight = new THREE.DirectionalLight( 0xff0000 );
-	directionalLight.position.y = 200;
-	directionalLight.position.normalize();
-	scene.addLight( directionalLight );
-
-	var pointLight = new THREE.PointLight( 0xff0000 );
-	pointLight.position.y = 150;
-	pointLight.position.x = -250;
-	pointLight.position.z = -250;
-	pointLight.intensity = 0.5;
-	scene.addLight( pointLight );
 
 	scene.addObject( new Pointerly.Circle() );
 
@@ -42,7 +31,6 @@ Pointerly.Environment = function(){
 	this.camera.position.z = 200;
 
 	var cam = this.camera;
-	this.scene = scene;
 
 	this.renderer.render( this.scene, this.camera );
 	var ren = this.renderer;
