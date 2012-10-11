@@ -3,7 +3,7 @@ Pointerly.Environment = function(){
 
 	var scene = new THREE.Scene();
 	this.renderer = Detector.webgl ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer;
-	this.renderer.setSize( 300, 300 );
+	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
 	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
 
