@@ -30,16 +30,14 @@ Pointerly.Environment = function(){
 	this.camera.position.y = 200;
 	this.camera.position.z = 200;
 
-	var cam = this.camera;
-
 	this.renderer.render( this.scene, this.camera );
-	var ren = this.renderer;
-	var bob = function(){
-		ren.render( scene, cam );
-		window.requestAnimationFrame( bob );
+	
+	var renderLoop = function(){
+		environment.renderer.render( environment.scene, environment.camera );
+		window.requestAnimationFrame( renderLoop );
 	};
 	
-	bob();
+	renderLoop();
 
 	console.log('created env');
 };
