@@ -2,12 +2,29 @@ Pointerly.Shape = function(){
 	var material = Pointerly.Material.red,
 		geometry = new THREE.CubeGeometry( 800, 100, 800 );
 
-	var canvas = document.createElement('canvas');
-	canvas.width = 256;
-	canvas.height = 256;
+	var shape = this;
+
+	this.width = 512;
+	this.height = 512;
+	
+	this.canvas = document.createElement('canvas');
+	this.canvas.width = this.width;
+	this.canvas.height = this.height;
+
+	this.texture = new THREE.Texture( this.canvas );
+	this.material = new THREE.MeshBasicMaterial( { map: this.texture } );
+
+	this.draw = function( drawing ){
+		drawing( shape.canvas );
+
+		shape.texture.needsUpdate = true;
+	};
+
+	this.draw(function(){
+	var canvas = arguments[0];
 	var ctx = canvas.getContext('2d');
 	ctx.fillStyle = "orange";
-	ctx.fillRect(0,0,256,256);
+	ctx.fillRect(0,0,512,512);
 	ctx.fillStyle = "red";
 	ctx.fillRect(25,25,220,220);
 	ctx.fillStyle = "blue";
@@ -20,13 +37,9 @@ Pointerly.Shape = function(){
 	ctx.moveTo(95,65);
 	ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
 	ctx.stroke();
-	
-	var texture = new THREE.Texture( canvas );
-	texture.needsUpdate = true;
+	});
 
-	var texMaterial = new THREE.MeshBasicMaterial( { map: texture } );
-
-	THREE.Mesh.call( this, geometry, texMaterial );
+	THREE.Mesh.call( this, geometry, this.material );
 };
 
 Pointerly.Shape.prototype = new THREE.Mesh();
