@@ -1,8 +1,6 @@
 Pointerly.Triangle = function( setup ){
 	Pointerly.Shape.call( this, setup );
 
-	this.setColor( 'blue' );
-
 	this.draw = function( canvas ){
 		var width = canvas.width,
 			height = canvas.height,

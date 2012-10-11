@@ -1,4 +1,4 @@
-Pointerly.Environment = function(){
+Pointerly.Environment = function( setup ){
 	Pointerly.CURRENT_ENVIRONMENT = this;
 
 	var environment = this;
@@ -36,10 +36,11 @@ Pointerly.Environment = function(){
 	var setupShapes = function(){
 		var numShapes = 2;
 		for( var i = 0; i < numShapes; i++ ){
-			environment.shapes.push(new Pointerly.Circle({
+			environment.shapes.push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
 				width: 200,
 				height: 200,
-				position: new THREE.Vector3( 200*i, 0, 0 )
+				position: new THREE.Vector3( 200*i, 0, 0 ),
+				color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
 			}));
 
 			environment.scene.addObject( environment.shapes[i] );

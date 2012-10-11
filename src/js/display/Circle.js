@@ -1,8 +1,6 @@
 Pointerly.Circle = function( setup ){
 	Pointerly.Shape.call( this, setup );
 
-	this.setColor( 'orange' );
-
 	this.draw = function( canvas ){
 		var width = canvas.width,
 			height = canvas.height,

@@ -37,6 +37,10 @@ Pointerly.Shape = function( setup ){
 
 	this.setColor( 'red' );
 
+	if( typeof setup === 'object' && setup.hasOwnProperty('color') ){
+		this.setColor( setup.color );
+	}
+
 	THREE.Mesh.call( this, this.geometry, this.material );
 
 	if( typeof setup === 'object' && setup.hasOwnProperty('position') ){
