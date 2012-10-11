@@ -1,5 +1,5 @@
-Pointerly.Triangle = function(){
-	Pointerly.Shape.call( this );
+Pointerly.Triangle = function( setup ){
+	Pointerly.Shape.call( this, setup );
 
 	this.setColor( 'blue' );
 

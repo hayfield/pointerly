@@ -11,7 +11,7 @@ Pointerly.Environment = function(){
 	document.body.appendChild( this.renderer.domElement );
 	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
 
-	scene.addObject( new Pointerly.Circle() );
+	//scene.addObject( new Pointerly.Circle() );
 
 	this.camera = new THREE.QuakeCamera({
         fov: 80,
@@ -31,6 +31,21 @@ Pointerly.Environment = function(){
 	this.camera.position.z = 200;
 
 	this.renderer.render( this.scene, this.camera );
+
+	this.shapes = [];
+	var setupShapes = function(){
+		var numShapes = 2;
+		for( var i = 0; i < numShapes; i++ ){
+			environment.shapes.push(new Pointerly.Circle({
+				width: 200,
+				height: 200,
+				position: new THREE.Vector3( 200*i, 0, 0 )
+			}));
+
+			environment.scene.addObject( environment.shapes[i] );
+		}
+	};
+	setupShapes();
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene, environment.camera );

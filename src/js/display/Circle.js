@@ -1,5 +1,5 @@
-Pointerly.Circle = function(){
-	Pointerly.Shape.call( this );
+Pointerly.Circle = function( setup ){
+	Pointerly.Shape.call( this, setup );
 
 	this.setColor( 'orange' );
 

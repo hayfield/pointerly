@@ -1,10 +1,14 @@
-Pointerly.Shape = function(){
+Pointerly.Shape = function( setup ){
 	var shape = this;
 
 	this.width = 512;
 	this.height = 512;
 
-	this.geometry = new THREE.CubeGeometry( this.width, 1, this.height );
+	if( typeof setup === 'object' ){
+		this.geometry = new THREE.CubeGeometry( setup.width, 1, setup.height );
+	} else {
+		this.geometry = new THREE.CubeGeometry( this.width, 1, this.height );
+	}
 	
 	this.canvas = document.createElement('canvas');
 	this.canvas.width = this.width;
@@ -34,6 +38,11 @@ Pointerly.Shape = function(){
 	this.setColor( 'red' );
 
 	THREE.Mesh.call( this, this.geometry, this.material );
+
+	if( typeof setup === 'object' && setup.hasOwnProperty('position') ){
+		//console.log('bobble');
+		this.position = setup.position;
+	}
 };
 
 Pointerly.Shape.prototype = new THREE.Mesh();
