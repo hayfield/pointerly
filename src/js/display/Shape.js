@@ -13,13 +13,13 @@ Pointerly.Shape = function(){
 	this.texture = new THREE.Texture( this.canvas );
 	this.material = new THREE.MeshBasicMaterial( { map: this.texture } );
 
-	this.draw = function( drawing ){
+	this.display = function( drawing ){
 		drawing( shape.canvas );
 
 		shape.texture.needsUpdate = true;
 	};
 
-	this.draw(function( canvas ){
+	this.display(function( canvas ){
 		var ctx = canvas.getContext('2d');
 		ctx.fillStyle = "orange";
 		ctx.fillRect(0,0,512,512);
