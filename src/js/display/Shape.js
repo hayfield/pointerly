@@ -1,11 +1,10 @@
 Pointerly.Shape = function(){
-	var material = Pointerly.Material.red,
-		geometry = new THREE.CubeGeometry( 800, 100, 800 );
-
 	var shape = this;
 
 	this.width = 512;
 	this.height = 512;
+
+	this.geometry = new THREE.CubeGeometry( this.width, 1, this.height );
 	
 	this.canvas = document.createElement('canvas');
 	this.canvas.width = this.width;
@@ -38,7 +37,7 @@ Pointerly.Shape = function(){
 		ctx.stroke();
 	});
 
-	THREE.Mesh.call( this, geometry, this.material );
+	THREE.Mesh.call( this, this.geometry, this.material );
 };
 
 Pointerly.Shape.prototype = new THREE.Mesh();
