@@ -1,4 +1,4 @@
-Pointerly.Triangle = function( shapeSetup ){
+Pointerly.Shapes.Triangle = function( shapeSetup ){
 	Pointerly.Shape.call( this, shapeSetup );
 
 	this.draw = function( settings ){
@@ -16,9 +16,9 @@ Pointerly.Triangle = function( shapeSetup ){
 	this.display( this.draw );
 };
 
-Pointerly.Triangle.prototype = new Pointerly.Shape;
-Pointerly.Triangle.prototype.constructor = Pointerly.Triangle;
+Pointerly.Shapes.Triangle.prototype = new Pointerly.Shape;
+Pointerly.Shapes.Triangle.prototype.constructor = Pointerly.Triangle;
 
-Pointerly.Triangle.prototype.toString = function(){
+Pointerly.Shapes.Triangle.prototype.toString = function(){
 	return 'Triangle';
 };

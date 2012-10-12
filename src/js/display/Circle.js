@@ -1,4 +1,4 @@
-Pointerly.Circle = function( shapeSetup ){
+Pointerly.Shapes.Circle = function( shapeSetup ){
 	Pointerly.Shape.call( this, shapeSetup );
 
 	this.draw = function( settings ){
@@ -14,9 +14,9 @@ Pointerly.Circle = function( shapeSetup ){
 	this.display( this.draw );
 };
 
-Pointerly.Circle.prototype = new Pointerly.Shape;
-Pointerly.Circle.prototype.constructor = Pointerly.Circle;
+Pointerly.Shapes.Circle.prototype = new Pointerly.Shape;
+Pointerly.Shapes.Circle.prototype.constructor = Pointerly.Circle;
 
-Pointerly.Circle.prototype.toString = function(){
+Pointerly.Shapes.Circle.prototype.toString = function(){
 	return 'Circle';
 };
