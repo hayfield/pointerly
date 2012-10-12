@@ -1,5 +1,5 @@
-Pointerly.Circle = function( setup ){
-	Pointerly.Shape.call( this, setup );
+Pointerly.Circle = function( shapeSetup ){
+	Pointerly.Shape.call( this, shapeSetup );
 
 	this.draw = function( settings ){
 		var width = settings.width,

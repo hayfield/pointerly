@@ -1,11 +1,11 @@
-Pointerly.Shape = function( setup ){
+Pointerly.Shape = function( shapeSetup ){
 	var shape = this;
 
 	this.width = 512;
 	this.height = 512;
 
-	if( typeof setup === 'object' ){
-		this.geometry = new THREE.CubeGeometry( setup.width, 1, setup.height );
+	if( typeof shapeSetup === 'object' ){
+		this.geometry = new THREE.CubeGeometry( shapeSetup.width, 1, shapeSetup.height );
 	} else {
 		this.geometry = new THREE.CubeGeometry( this.width, 1, this.height );
 	}
@@ -44,14 +44,14 @@ Pointerly.Shape = function( setup ){
 
 	this.setColor( 'red' );
 
-	if( typeof setup === 'object' && setup.hasOwnProperty('color') ){
-		this.setColor( setup.color );
+	if( typeof shapeSetup === 'object' && shapeSetup.hasOwnProperty('color') ){
+		this.setColor( shapeSetup.color );
 	}
 
 	THREE.Mesh.call( this, this.geometry, this.material );
 
-	if( typeof setup === 'object' && setup.hasOwnProperty('position') ){
-		this.position = setup.position;
+	if( typeof shapeSetup === 'object' && shapeSetup.hasOwnProperty('position') ){
+		this.position = shapeSetup.position;
 	}
 };
 
