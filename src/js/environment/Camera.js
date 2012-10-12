@@ -45,21 +45,24 @@ Pointerly.Camera.BoundToView = function( environment ){
 		rightExtent = Number.MIN_VALUE,
 		bottomExtent = Number.MAX_VALUE,
 		leftExtent = Number.MAX_VALUE;
-	
+	var boundingGeom = new THREE.GeometryUtils.clone( objs[0].geometry );
+
 	for( var i = 1; i < objs.length; i++ ){
-		THREE.GeometryUtils.merge( objs[0].geometry, objs[i].geometry );
+		THREE.GeometryUtils.merge( boundingGeom, objs[i] );
 	}
-	console.log(objs, objs[0].geometry.computeBoundingBox(), objs[0].geometry.boundingBox);
-	console.log(objs, objs[1].geometry.computeBoundingBox(), objs[1].geometry.boundingBox);
+	boundingGeom.computeBoundingBox();
+	console.log(boundingGeom);
+
 	for( var i = 0; i < objs.length; i++ ){
 		var vertices = objs[i].geometry.vertices;
 		
 		for( var v = 0; v < vertices.length; v++ ){
+			boundingGeom.vertices.push( vertices[v].position.clone() );
 			var position = vertices[v].position.clone().addSelf( objs[i].position ),
 				screenPosition = Pointerly.Camera.ToScreenXY( position, environment );
 			console.log(i, screenPosition.x, screenPosition.y, 'vert', vertices[v].position.x, vertices[v].position.y, vertices[v].position.z, 'pos', position.x, position.y, position.z, 'obj', objs[i].position.x, objs[i].position.y, objs[i].position.z);
 		}
 	}
-
-	console.log(objs, environment, environment.canvas );
+	//boundingGeom.computeBoundingBox();
+	console.log(objs, environment, environment.canvas, boundingGeom );
 };
