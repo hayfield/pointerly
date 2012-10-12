@@ -51,7 +51,6 @@ Pointerly.Shape = function( setup ){
 	THREE.Mesh.call( this, this.geometry, this.material );
 
 	if( typeof setup === 'object' && setup.hasOwnProperty('position') ){
-		//console.log('bobble');
 		this.position = setup.position;
 	}
 };
