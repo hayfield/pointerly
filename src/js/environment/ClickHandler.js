@@ -5,15 +5,34 @@ Pointerly.ClickHandler.FromString = function( type, environment, setup ){
 		case 'mouse':
 			Pointerly.ClickHandler.Mouse( environment, setup );
 			break;
+		case 'screencenter':
+		case 'fps':
+			Pointerly.ClickHandler.ScreenCenter( environment, setup );
+			break;
 	}
 };
 
 Pointerly.ClickHandler.Mouse = function( environment, setup ){
 	var clickHandler = function( event ){
  		event.preventDefault();
- 		console.log(Pointerly.CURRENT_ENVIRONMENT, event);
 
-		Pointerly.ClickHandler.GetClickedShape({ x: event.clientX, y: event.clientY }, Pointerly.CURRENT_ENVIRONMENT); 		
+		Pointerly.ClickHandler.GetClickedShape({
+			x: event.clientX,
+			y: event.clientY
+		}, Pointerly.CURRENT_ENVIRONMENT ); 		
+	};
+
+	document.addEventListener( 'mousedown', clickHandler, false );
+};
+
+Pointerly.ClickHandler.ScreenCenter = function( environment, setup ){
+	var clickHandler = function( event ){
+ 		event.preventDefault();
+
+		Pointerly.ClickHandler.GetClickedShape({
+			x: window.innerWidth / 2,
+			y: window.innerHeight / 2
+		}, Pointerly.CURRENT_ENVIRONMENT ); 		
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
@@ -32,5 +51,9 @@ Pointerly.ClickHandler.GetClickedShape = function( clickPosition, environment ){
 	
 	if ( intersects.length > 0 ) {
 		intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+
+		return intersects[0];
 	}
+
+	return null;
 };
