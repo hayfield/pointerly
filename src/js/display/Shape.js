@@ -59,5 +59,5 @@ Pointerly.Shape.prototype = new THREE.Mesh();
 Pointerly.Shape.prototype.constructor = Pointerly.Shape;
 
 Pointerly.Shape.prototype.toString = function(){
-	return "Shape";
+	return 'Shape';
 };
