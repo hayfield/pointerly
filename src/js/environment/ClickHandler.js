@@ -1,14 +1,20 @@
 Pointerly.ClickHandler = Pointerly.ClickHandler || {};
 
+Pointerly.ClickHandler.TYPES = Pointerly.ClickHandler.TYPES || {};
+
+Pointerly.ClickHandler.Register = function( type, funct ){
+	Pointerly.ClickHandler.TYPES[type.toLowerCase()] = funct;
+};
+
+Pointerly.ClickHandler.SetupDefaults = function(){
+	Pointerly.ClickHandler.Register( 'mouse', Pointerly.ClickHandler.Mouse );
+	Pointerly.ClickHandler.Register( 'screencenter', Pointerly.ClickHandler.ScreenCenter );
+	Pointerly.ClickHandler.Register( 'fps', Pointerly.ClickHandler.ScreenCenter );
+};
+
 Pointerly.ClickHandler.FromString = function( type, environment, setup ){
-	switch( type.toLowerCase() ){
-		case 'mouse':
-			Pointerly.ClickHandler.Mouse( environment, setup );
-			break;
-		case 'screencenter':
-		case 'fps':
-			Pointerly.ClickHandler.ScreenCenter( environment, setup );
-			break;
+	if( Pointerly.ClickHandler.TYPES.hasOwnProperty( type.toLowerCase() ) ){
+		Pointerly.ClickHandler.TYPES[type.toLowerCase()]( environment, setup );
 	}
 };
 
