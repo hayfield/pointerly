@@ -11,12 +11,6 @@ Pointerly.Environment = function( setup ){
 	document.body.appendChild( this.renderer.domElement );
 	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
 
-	this.camera = new THREE.Camera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-	this.camera.position.y = 300;
-	//this.camera.rotation = new THREE.Vector3( 0, 0, Math.PI );
-
-	this.renderer.render( this.scene, this.camera );
-
 	this.shapes = [];
 	var setupShapes = function(){
 		if( typeof setup !== 'object' ){
@@ -49,6 +43,5 @@ Pointerly.Environment = function( setup ){
 		environment.renderer.render( environment.scene, environment.camera );
 		window.requestAnimationFrame( renderLoop );
 	};
-	
 	renderLoop();
 };
