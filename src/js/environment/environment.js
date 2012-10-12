@@ -3,7 +3,7 @@ Pointerly.Environment = function( setup ){
 
 	var environment = this;
 	this.setup = setup;
-	
+
 	this.scene = new THREE.Scene();
 
 	this.renderer = Detector.webgl ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer;
@@ -24,6 +24,12 @@ Pointerly.Environment = function( setup ){
 		}
 	};
 	setupShapes();
+
+	this.objects = function(){
+		var arr = [];
+
+		return arr.concat.apply( arr, environment.shapes );
+	};
 
 	var setupCamera = function(){
 		if( typeof setup !== 'object' || typeof setup.camera !== 'object' ){
