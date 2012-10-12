@@ -14,10 +14,13 @@ Pointerly.Camera.Fixed = function( environment, setup ){
 		aspect = window.innerWidth / window.innerHeight,
 		near = setup.camera.near || 1,
 		far = setup.camera.far || 10000,
-		position = Pointerly.Utils.ObjToVector3( setup.camera.position ) || new THREE.Vector3( 0, 0, 0 );
+		position = Pointerly.Utils.ObjToVector3( setup.camera.position ) || new THREE.Vector3( 0, 0, 0 ),
+		rotation = Pointerly.Utils.ObjToVector3( setup.camera.rotation ) || new THREE.Vector3( 0, 0, 0 );
 
 	environment.camera = new THREE.Camera( fov, aspect, near, far );
 	environment.camera.position = position;
+	environment.camera.rotation = rotation;
+	environment.camera.useTarget = setup.camera.useTarget || false;
 };
 
 // Modified https://github.com/mrdoob/three.js/issues/78
