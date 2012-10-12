@@ -45,9 +45,15 @@ Pointerly.Camera.BoundToView = function( environment ){
 		rightExtent = Number.MIN_VALUE,
 		bottomExtent = Number.MAX_VALUE,
 		leftExtent = Number.MAX_VALUE;
-
+	
+	for( var i = 1; i < objs.length; i++ ){
+		THREE.GeometryUtils.merge( objs[0].geometry, objs[i].geometry );
+	}
+	console.log(objs, objs[0].geometry.computeBoundingBox(), objs[0].geometry.boundingBox);
+	console.log(objs, objs[1].geometry.computeBoundingBox(), objs[1].geometry.boundingBox);
 	for( var i = 0; i < objs.length; i++ ){
 		var vertices = objs[i].geometry.vertices;
+		
 		for( var v = 0; v < vertices.length; v++ ){
 			var position = vertices[v].position.clone().addSelf( objs[i].position ),
 				screenPosition = Pointerly.Camera.ToScreenXY( position, environment );
