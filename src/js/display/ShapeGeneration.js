@@ -1,9 +1,9 @@
 Pointerly.ShapeGeneration = Pointerly.ShapeGeneration || {};
 
 Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
-	switch( type ){
-		case '2DGrid':
-		case 'Grid2D':
+	switch( type.toLowerCase() ){
+		case '2dgrid':
+		case 'grid2d':
 			Pointerly.ShapeGeneration.Grid2D( environment, setup );
 			break;
 	}
