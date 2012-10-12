@@ -8,7 +8,9 @@ Pointerly.Init = function(){
 		shapeLayout: '2DGrid',
 		camera: {
 			type: 'fixed',
-			position: new THREE.Vector3( 0, 300, 0 )
+			position: {
+				y: 300
+			}
 		}
 	};
 	var env = new Pointerly.Environment( setup );

@@ -14,7 +14,7 @@ Pointerly.Camera.Fixed = function( environment, setup ){
 		aspect = window.innerWidth / window.innerHeight,
 		near = setup.camera.near || 1,
 		far = setup.camera.far || 10000,
-		position = setup.camera.position || new THREE.Vector3( 0, 0, 0 );
+		position = Pointerly.Utils.ObjToVector3( setup.camera.position ) || new THREE.Vector3( 0, 0, 0 );
 
 	environment.camera = new THREE.Camera( fov, aspect, near, far );
 	environment.camera.position = position;
