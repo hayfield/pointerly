@@ -2,6 +2,8 @@ Pointerly.Environment = function( setup ){
 	Pointerly.CURRENT_ENVIRONMENT = this;
 
 	var environment = this;
+	this.setup = setup;
+	
 	this.scene = new THREE.Scene();
 
 	this.renderer = Detector.webgl ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer;
@@ -36,6 +38,15 @@ Pointerly.Environment = function( setup ){
 		}
 	};
 	setupCamera();
+
+	var setupClickHandler = function(){
+		if( typeof setup !== 'object' || typeof setup.clickType !== 'string' ){
+			return;
+		}
+
+		Pointerly.ClickHandler.FromString( setup.clickType );
+	};
+	setupClickHandler();
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene, environment.camera );
