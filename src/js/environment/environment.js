@@ -13,44 +13,35 @@ Pointerly.Environment = function( setup ){
 
 	//scene.addObject( new Pointerly.Circle() );
 
-	this.camera = new THREE.QuakeCamera({
-        fov: 80,
-        aspect: window.innerWidth / window.innerHeight,
-        near: 1,
-        far: 20000,
-        constrainVertical: true,
-        verticalMin: 1.1,
-        verticalMax: 2.2,
-        movementSpeed: 1000,
-        lookSpeed: 0.125,
-        noFly: false,
-        lookVertical: true,
-        autoForward: false
-	});
-	this.camera.position.y = 200;
-	this.camera.position.z = 200;
+	// this.camera = new THREE.QuakeCamera({
+ //        fov: 80,
+ //        aspect: window.innerWidth / window.innerHeight,
+ //        near: 1,
+ //        far: 20000,
+ //        constrainVertical: true,
+ //        verticalMin: 1.1,
+ //        verticalMax: 2.2,
+ //        movementSpeed: 1000,
+ //        lookSpeed: 0.125,
+ //        noFly: false,
+ //        lookVertical: true,
+ //        autoForward: false
+	// });
+	// this.camera.position.y = 200;
+	// this.camera.position.z = 200;
+	this.camera = new THREE.Camera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+	this.camera.position.y = 300;
+	//this.camera.rotation = new THREE.Vector3( 0, 0, Math.PI );
 
 	this.renderer.render( this.scene, this.camera );
 
 	this.shapes = [];
 	var setupShapes = function(){
-		if( typeof setup !== 'object' || typeof setup.rowsOfShapes !== 'number' || typeof setup.columnsOfShapes !== 'number' ){
+		if( typeof setup !== 'object' || typeof setup.generateShapes !== 'function' ){
 			return;
 		}
 		
-		for( var i = 0; i < setup.rowsOfShapes; i++ ){
-			environment.shapes[i] = [];
-			for( var j = 0; j < setup.columnsOfShapes; j++ ){
-				environment.shapes[i].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
-					width: 200,
-					height: 200,
-					position: new THREE.Vector3( 200*i, 0, 200*j ),
-					color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
-				}));
-
-				environment.scene.addObject( environment.shapes[i][j] );
-			}
-		}
+		setup.generateShapes( environment, setup );
 	};
 	setupShapes();
 	
