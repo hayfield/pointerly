@@ -5,7 +5,7 @@ Pointerly.Init = function(){
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
 		rowsOfShapes: 2,
 		columnsOfShapes: 3,
-		generateShapes: '2DGrid'
+		shapeLayout: '2DGrid'
 	};
 	var env = new Pointerly.Environment( setup );
 };

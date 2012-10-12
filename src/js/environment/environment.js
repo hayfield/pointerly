@@ -41,10 +41,10 @@ Pointerly.Environment = function( setup ){
 			return;
 		}
 		
-		if( typeof setup.generateShapes === 'function' ){
-			setup.generateShapes( environment, setup );
-		} else if ( typeof setup.generateShapes === 'string' ){
-			Pointerly.ShapeGeneration.FromString( setup.generateShapes, environment, setup );
+		if( typeof setup.shapeLayout === 'function' ){
+			setup.shapeLayout( environment, setup );
+		} else if ( typeof setup.shapeLayout === 'string' ){
+			Pointerly.ShapeGeneration.FromString( setup.shapeLayout, environment, setup );
 		}
 	};
 	setupShapes();
