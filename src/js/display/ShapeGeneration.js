@@ -1,11 +1,21 @@
 Pointerly.ShapeGeneration = Pointerly.ShapeGeneration || {};
 
+Pointerly.ShapeGeneration.TYPES = Pointerly.ShapeGeneration.TYPES || {};
+
+Pointerly.ShapeGeneration.Register = function( type, funct ){
+	if( typeof type === 'string' && typeof funct === 'function' ){
+		Pointerly.ShapeGeneration.TYPES[type.toLowerCase()] = funct;
+	}
+};
+
+Pointerly.ShapeGeneration.SetupDefaults = function(){
+	Pointerly.ShapeGeneration.Register( 'grid2d', Pointerly.ShapeGeneration.Grid2D );
+	Pointerly.ShapeGeneration.Register( '2dgrid', Pointerly.ShapeGeneration.Grid2D );
+};
+
 Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
-	switch( type.toLowerCase() ){
-		case '2dgrid':
-		case 'grid2d':
-			Pointerly.ShapeGeneration.Grid2D( environment, setup );
-			break;
+	if( Pointerly.ShapeGeneration.TYPES.hasOwnProperty( type.toLowerCase() ) ){
+		Pointerly.ShapeGeneration.TYPES[type.toLowerCase()]( environment, setup );
 	}
 };
 

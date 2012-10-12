@@ -1,6 +1,8 @@
 Pointerly.Init = function(){
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
 	Pointerly.ClickHandler.SetupDefaults();
+	Pointerly.ShapeGeneration.SetupDefaults();
 
 	var setup = {
 		shapes: [ Pointerly.Triangle, Pointerly.Circle ],

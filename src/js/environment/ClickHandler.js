@@ -3,7 +3,9 @@ Pointerly.ClickHandler = Pointerly.ClickHandler || {};
 Pointerly.ClickHandler.TYPES = Pointerly.ClickHandler.TYPES || {};
 
 Pointerly.ClickHandler.Register = function( type, funct ){
-	Pointerly.ClickHandler.TYPES[type.toLowerCase()] = funct;
+	if( typeof type === 'string' && typeof funct === 'function' ){
+		Pointerly.ClickHandler.TYPES[type.toLowerCase()] = funct;
+	}
 };
 
 Pointerly.ClickHandler.SetupDefaults = function(){
