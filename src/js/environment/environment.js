@@ -37,11 +37,15 @@ Pointerly.Environment = function( setup ){
 
 	this.shapes = [];
 	var setupShapes = function(){
-		if( typeof setup !== 'object' || typeof setup.generateShapes !== 'function' ){
+		if( typeof setup !== 'object' ){
 			return;
 		}
 		
-		setup.generateShapes( environment, setup );
+		if( typeof setup.generateShapes === 'function' ){
+			setup.generateShapes( environment, setup );
+		} else if ( typeof setup.generateShapes === 'string' ){
+			Pointerly.ShapeGeneration.FromString( setup.generateShapes, environment, setup );
+		}
 	};
 	setupShapes();
 	
