@@ -11,24 +11,6 @@ Pointerly.Environment = function( setup ){
 	document.body.appendChild( this.renderer.domElement );
 	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
 
-	//scene.addObject( new Pointerly.Circle() );
-
-	// this.camera = new THREE.QuakeCamera({
- //        fov: 80,
- //        aspect: window.innerWidth / window.innerHeight,
- //        near: 1,
- //        far: 20000,
- //        constrainVertical: true,
- //        verticalMin: 1.1,
- //        verticalMax: 2.2,
- //        movementSpeed: 1000,
- //        lookSpeed: 0.125,
- //        noFly: false,
- //        lookVertical: true,
- //        autoForward: false
-	// });
-	// this.camera.position.y = 200;
-	// this.camera.position.z = 200;
 	this.camera = new THREE.Camera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 	this.camera.position.y = 300;
 	//this.camera.rotation = new THREE.Vector3( 0, 0, Math.PI );
