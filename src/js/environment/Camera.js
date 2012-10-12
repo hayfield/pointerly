@@ -33,7 +33,7 @@ Pointerly.Camera.ToScreenXY = function( position, environment ){
     	canvasPos = projector.projectVector( pos, camera );
     	projector.projectVector( pos, camera )
     return { x: ( pos.x * canvas.width / 2 ) + canvas.width / 2,
-         y: - ( pos.y * canvas.height / 2 ) + canvas.width / 2 };
+         y: - ( pos.y * canvas.height / 2 ) + canvas.height / 2 };
 };
 
 Pointerly.Camera.BoundToView = function( environment ){
@@ -52,13 +52,16 @@ Pointerly.Camera.BoundToView = function( environment ){
 	var boundingCenter = new THREE.Vector3( 0.5 * (boundingGeom.boundingBox.x[1] + boundingGeom.boundingBox.x[0]),
 											0.5 * (boundingGeom.boundingBox.y[1] + boundingGeom.boundingBox.y[0]),
 											0.5 * (boundingGeom.boundingBox.z[1] + boundingGeom.boundingBox.z[0]) );
-	console.log(boundingCenter);
+	console.log(boundingCenter, boundingGeom, Pointerly.Camera.ToScreenXY(boundingCenter, environment));
 	environment.camera.position = boundingCenter;
 	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
 	environment.camera.translate( 300, environment.camera.up );
 	environment.camera.updateMatrix();
 	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
 
+	for( var v = 0; v < boundingGeom.vertices.length; v++ ){
+		//var position
+	}
 	for( var i = 0; i < objs.length; i++ ){
 		var vertices = objs[i].geometry.vertices;
 		
@@ -66,7 +69,7 @@ Pointerly.Camera.BoundToView = function( environment ){
 			boundingGeom.vertices.push( vertices[v].position.clone() );
 			var position = vertices[v].position.clone().addSelf( objs[i].position ),
 				screenPosition = Pointerly.Camera.ToScreenXY( position, environment );
-			console.log(i, screenPosition.x, screenPosition.y, 'vert', vertices[v].position.x, vertices[v].position.y, vertices[v].position.z, 'pos', position.x, position.y, position.z, 'obj', objs[i].position.x, objs[i].position.y, objs[i].position.z);
+			//console.log(i, screenPosition.x, screenPosition.y, 'vert', vertices[v].position.x, vertices[v].position.y, vertices[v].position.z, 'pos', position.x, position.y, position.z, 'obj', objs[i].position.x, objs[i].position.y, objs[i].position.z);
 		}
 	}
 	//boundingGeom.computeBoundingBox();
