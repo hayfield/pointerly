@@ -55,7 +55,7 @@ Pointerly.Camera.BoundToView = function( environment ){
 	console.log(boundingCenter);
 	environment.camera.position = boundingCenter;
 	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
-	environment.camera.translateY( 300 );
+	environment.camera.translate( 300, environment.camera.up );
 	environment.camera.updateMatrix();
 	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
 
