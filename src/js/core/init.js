@@ -3,9 +3,10 @@ Pointerly.Init = function(){
 
 	Pointerly.ClickHandler.SetupDefaults();
 	Pointerly.ShapeGeneration.SetupDefaults();
+	Pointerly.Shapes.SetupDefaults();
 
 	var setup = {
-		shapes: [ Pointerly.Triangle, Pointerly.Circle ],
+		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle ],
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
 		rowsOfShapes: 2,
 		columnsOfShapes: 3,
