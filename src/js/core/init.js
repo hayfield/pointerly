@@ -11,7 +11,8 @@ Pointerly.Init = function(){
 			position: {
 				y: 300
 			}
-		}
+		},
+		clickType: 'mouse'
 	};
 	var env = new Pointerly.Environment( setup );
 };
