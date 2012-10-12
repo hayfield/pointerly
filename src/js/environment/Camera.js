@@ -2,6 +2,7 @@ Pointerly.Camera = Pointerly.Camera || {};
 
 Pointerly.Camera.FromString = function( type, environment, setup ){
 	switch( type.toLowerCase() ){
+		case 'default':
 		case 'fixed':
 			Pointerly.Camera.Fixed( environment, setup );
 			break;
