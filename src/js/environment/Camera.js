@@ -40,11 +40,10 @@ Pointerly.Camera.ToScreenXY = function( position, environment ){
 
 Pointerly.Camera.BoundToView = function( environment ){
 	var objs = environment.objects();
+	if( objs.length < 1 ){
+		return;
+	}
 
-	var topExtent = Number.MIN_VALUE,
-		rightExtent = Number.MIN_VALUE,
-		bottomExtent = Number.MAX_VALUE,
-		leftExtent = Number.MAX_VALUE;
 	var boundingGeom = new THREE.GeometryUtils.clone( objs[0].geometry );
 
 	for( var i = 1; i < objs.length; i++ ){
@@ -52,6 +51,11 @@ Pointerly.Camera.BoundToView = function( environment ){
 	}
 	boundingGeom.computeBoundingBox();
 	console.log(boundingGeom);
+
+	var boundingCenter = new THREE.Vector3( 0.5 * (boundingGeom.boundingBox.x[1] + boundingGeom.boundingBox.x[0]),
+											0.5 * (boundingGeom.boundingBox.y[1] + boundingGeom.boundingBox.y[0]),
+											0.5 * (boundingGeom.boundingBox.z[1] + boundingGeom.boundingBox.z[0]) );
+	console.log(boundingCenter);
 
 	for( var i = 0; i < objs.length; i++ ){
 		var vertices = objs[i].geometry.vertices;
