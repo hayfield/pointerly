@@ -48,6 +48,17 @@ Pointerly.Environment = function( setup ){
 		}
 	};
 	setupShapes();
+
+	var setupCamera = function(){
+		if( typeof setup !== 'object' || typeof setup.camera !== 'object' ){
+			return;
+		}
+
+		if( typeof setup.camera.type === 'string' ){
+			Pointerly.Camera.FromString( setup.camera.type, environment, setup );
+		}
+	};
+	setupCamera();
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene, environment.camera );

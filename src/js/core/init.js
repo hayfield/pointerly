@@ -5,7 +5,11 @@ Pointerly.Init = function(){
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
 		rowsOfShapes: 2,
 		columnsOfShapes: 3,
-		shapeLayout: '2DGrid'
+		shapeLayout: '2DGrid',
+		camera: {
+			type: 'fixed',
+			position: new THREE.Vector3( 0, 300, 0 )
+		}
 	};
 	var env = new Pointerly.Environment( setup );
 };
