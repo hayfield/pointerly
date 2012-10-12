@@ -8,8 +8,8 @@ Pointerly.Init = function(){
 	var setup = {
 		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle ],
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
-		rowsOfShapes: 2,
-		columnsOfShapes: 3,
+		rowsOfShapes: 1,
+		columnsOfShapes: 2,
 		shapeLayout: '2DGrid',
 		camera: {
 			type: 'fixed',
