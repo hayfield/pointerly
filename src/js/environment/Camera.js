@@ -28,9 +28,7 @@ Pointerly.Camera.ToScreenXY = function( position, environment ){
 	var pos = position.clone(),
 		camera = environment.camera,
     	canvas = environment.renderer.domElement;
-    //projScreenMat = new THREE.Matrix4();
-    //projScreenMat.multiply( camera.projectionMatrix, camera.matrixWorldInverse );
-    //projScreenMat.multiplyVector3( pos );
+    
     var projector = new THREE.Projector(),
     	canvasPos = projector.projectVector( pos, camera );
     	projector.projectVector( pos, camera )
@@ -50,12 +48,16 @@ Pointerly.Camera.BoundToView = function( environment ){
 		THREE.GeometryUtils.merge( boundingGeom, objs[i] );
 	}
 	boundingGeom.computeBoundingBox();
-	console.log(boundingGeom);
 
 	var boundingCenter = new THREE.Vector3( 0.5 * (boundingGeom.boundingBox.x[1] + boundingGeom.boundingBox.x[0]),
 											0.5 * (boundingGeom.boundingBox.y[1] + boundingGeom.boundingBox.y[0]),
 											0.5 * (boundingGeom.boundingBox.z[1] + boundingGeom.boundingBox.z[0]) );
 	console.log(boundingCenter);
+	environment.camera.position = boundingCenter;
+	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
+	environment.camera.translateY( 300 );
+	environment.camera.updateMatrix();
+	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
 
 	for( var i = 0; i < objs.length; i++ ){
 		var vertices = objs[i].geometry.vertices;
