@@ -9,7 +9,6 @@ Pointerly.Environment = function( setup ){
 	this.renderer = new Pointerly.Renderer;
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
-	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
 
 	this.shapes = [];
 	var setupShapes = function(){
