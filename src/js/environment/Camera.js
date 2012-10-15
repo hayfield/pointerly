@@ -36,6 +36,20 @@ Pointerly.Camera.ToScreenXY = function( position, environment ){
          y: - ( pos.y * canvas.height / 2 ) + canvas.height / 2 };
 };
 
+Pointerly.Camera.BoundBoxToCoords = function( boundingBox ){
+	var coords = [];
+
+	for( var x = 0; x < boundingBox.x.length; x++ ){
+		for( var y = 0; y < boundingBox.y.length; y++ ){
+			for( var z = 0; z < boundingBox.z.length; z++ ){
+				coords.push( new THREE.Vector3( boundingBox.x[x], boundingBox.y[y], boundingBox.z[z] ) );
+			}
+		}
+	}
+
+	return coords;
+};
+
 Pointerly.Camera.BoundToView = function( environment ){
 	var objs = environment.objects();
 	if( objs.length < 1 ){
@@ -57,7 +71,13 @@ Pointerly.Camera.BoundToView = function( environment ){
 	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
 	environment.camera.translate( 300, environment.camera.up );
 	environment.camera.updateMatrix();
-	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
+	var coords = Pointerly.Camera.BoundBoxToCoords(boundingGeom.boundingBox);
+	//console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
+	console.log('bb', boundingGeom.boundingBox, coords);
+
+	for( var i = 0; i < coords.length; i++ ){
+		console.log(coords[i], Pointerly.Camera.ToScreenXY(coords[i], environment).x, Pointerly.Camera.ToScreenXY(coords[i], environment).y);
+	}
 
 	for( var v = 0; v < boundingGeom.vertices.length; v++ ){
 		//var position

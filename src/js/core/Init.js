@@ -9,7 +9,7 @@ Pointerly.Init = function(){
 		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle ],
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
 		rowsOfShapes: 1,
-		columnsOfShapes: 2,
+		columnsOfShapes: 3,
 		shapeLayout: '2DGrid',
 		camera: {
 			type: 'fixed',
