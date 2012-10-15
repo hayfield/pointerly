@@ -26,7 +26,7 @@ Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 			environment.shapes[i].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
 				width: 200,
 				height: 200,
-				position: new THREE.Vector3( 200*i, 200*j, 0 ),
+				position: new THREE.Vector3( 200*j, 200*i, 0 ),
 				color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
 			}));
 

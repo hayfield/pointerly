@@ -58,7 +58,7 @@ Pointerly.Environment = function( setup ){
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene, environment.camera );
-		window.requestAnimationFrame( renderLoop );
+		//window.requestAnimationFrame( renderLoop );
 	};
 	renderLoop();
 };

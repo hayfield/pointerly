@@ -1,8 +1,8 @@
 Pointerly.Shape = function( shapeSetup ){
 	var shape = this;
 
-	this.width = 512;
-	this.height = 512;
+	this.width = 200;
+	this.height = 200;
 
 	if( typeof shapeSetup === 'object' ){
 		this.geometry = new THREE.CubeGeometry( shapeSetup.width, shapeSetup.height, 1 );
