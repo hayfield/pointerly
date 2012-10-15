@@ -11,6 +11,7 @@ Pointerly.ShapeGeneration.Register = function( type, funct ){
 Pointerly.ShapeGeneration.SetupDefaults = function(){
 	Pointerly.ShapeGeneration.Register( 'grid2d', Pointerly.ShapeGeneration.Grid2D );
 	Pointerly.ShapeGeneration.Register( '2dgrid', Pointerly.ShapeGeneration.Grid2D );
+	Pointerly.ShapeGeneration.Register( 'grid', Pointerly.ShapeGeneration.Grid2D );
 };
 
 Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
