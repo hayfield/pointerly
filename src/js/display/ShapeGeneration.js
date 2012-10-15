@@ -24,8 +24,8 @@ Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 		environment.shapes[row] = [];
 		for( var col = 0; col < setup.columnsOfShapes; col++ ){
 			environment.shapes[row].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
-				width: 200,
-				height: 200,
+				width: 150,
+				height: 150,
 				position: new Pointerly.Vector2( 200*col, 200*row ),
 				color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
 			}));

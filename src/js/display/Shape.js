@@ -1,8 +1,8 @@
 Pointerly.Shape = function( shapeSetup ){
 	var shape = this;
 
-	this.width = 200;
-	this.height = 200;
+	this.width = shapeSetup.width || 200;
+	this.height = shapeSetup.height || 200;
 	
 	this.canvas = document.createElement('canvas');
 	this.canvas.width = this.width;
