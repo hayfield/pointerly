@@ -14,11 +14,10 @@ Pointerly.Init = function(){
 		camera: {
 			type: 'fixed',
 			position: {
-				y: 300
+				z: 300
 			},
 			rotation: {
-				x: -Math.PI / 2,
-				z: -Math.PI / 2
+				z: Math.PI / 2
 			}
 		},
 		clickType: 'mouse'

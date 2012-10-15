@@ -5,9 +5,9 @@ Pointerly.Shape = function( shapeSetup ){
 	this.height = 512;
 
 	if( typeof shapeSetup === 'object' ){
-		this.geometry = new THREE.CubeGeometry( shapeSetup.width, 1, shapeSetup.height );
+		this.geometry = new THREE.CubeGeometry( shapeSetup.width, shapeSetup.height, 1 );
 	} else {
-		this.geometry = new THREE.CubeGeometry( this.width, 1, this.height );
+		this.geometry = new THREE.CubeGeometry( this.width, this.height, 1 );
 	}
 	
 	this.canvas = document.createElement('canvas');

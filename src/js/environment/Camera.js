@@ -76,7 +76,7 @@ Pointerly.Camera.BoundToView = function( environment ){
 	console.log('bb', boundingGeom.boundingBox, coords);
 
 	for( var i = 0; i < coords.length; i++ ){
-		console.log(coords[i], Pointerly.Camera.ToScreenXY(coords[i], environment).x, Pointerly.Camera.ToScreenXY(coords[i], environment).y);
+		console.log(coords[i].x, coords[i].y, coords[i].z, 'scr', Pointerly.Camera.ToScreenXY(coords[i], environment).x, Pointerly.Camera.ToScreenXY(coords[i], environment).y);
 	}
 
 	for( var v = 0; v < boundingGeom.vertices.length; v++ ){
