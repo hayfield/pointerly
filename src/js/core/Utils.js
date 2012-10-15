@@ -11,3 +11,10 @@ Pointerly.Utils.ObjToVector3 = function( obj ){
 
 	return new THREE.Vector3( x, y, z );
 };
+
+Pointerly.Vector3 = function( x, y, z ){
+	THREE.Vector3.call( this, x, y, z );
+};
+
+Pointerly.Vector3.prototype = new THREE.Vector3;
+Pointerly.Vector3.prototype.constructor = Pointerly.Vector3;

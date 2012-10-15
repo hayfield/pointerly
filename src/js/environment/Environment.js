@@ -4,7 +4,7 @@ Pointerly.Environment = function( setup ){
 	var environment = this;
 	this.setup = setup;
 
-	this.scene = new THREE.Scene();
+	this.scene = new Pointerly.Scene();
 
 	this.renderer = Detector.webgl ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer;
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
