@@ -42,7 +42,9 @@ Pointerly.Environment = function( setup ){
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene );
-		//window.requestAnimationFrame( renderLoop );
+		if( !setup.fixedViewBetweenEvents ){
+			window.requestAnimationFrame( renderLoop );
+		}
 	};
 	renderLoop();
 };
