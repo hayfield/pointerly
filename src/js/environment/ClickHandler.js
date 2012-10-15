@@ -47,7 +47,6 @@ Pointerly.ClickHandler.ScreenCenter = function( environment, setup ){
 };
 
 Pointerly.ClickHandler.GetClickedShape = function( clickPosition, environment ){
-	// Modified http://mrdoob.github.com/three.js/examples/canvas_interactive_cubes.html
 	var objs = environment.objects();
 
 	for( var i = 0; i <objs.length; i++ ){
