@@ -9,6 +9,9 @@ Pointerly.Environment = function( setup ){
 	this.renderer = new Pointerly.Renderer;
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
+	this.render = function(){
+		environment.renderer.render( environment.scene );
+	};
 
 	this.shapes = [];
 	var setupShapes = function(){
@@ -40,7 +43,7 @@ Pointerly.Environment = function( setup ){
 	setupClickHandler();
 	
 	var renderLoop = function(){
-		environment.renderer.render( environment.scene );
+		environment.render();
 		if( !setup.fixedViewBetweenEvents ){
 			window.requestAnimationFrame( renderLoop );
 		}
