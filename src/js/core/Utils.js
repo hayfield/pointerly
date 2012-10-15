@@ -18,3 +18,10 @@ Pointerly.Vector3 = function( x, y, z ){
 
 Pointerly.Vector3.prototype = new THREE.Vector3;
 Pointerly.Vector3.prototype.constructor = Pointerly.Vector3;
+
+Pointerly.Vector2 = function( x, y ){
+	THREE.Vector2.call( this, x, y );
+};
+
+Pointerly.Vector2.prototype = new THREE.Vector2;
+Pointerly.Vector2.prototype.constructor = Pointerly.Vector2;
