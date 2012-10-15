@@ -1,6 +1,6 @@
 Pointerly.Renderer = function(){
 	var canvas = document.createElement('canvas'),
-		context = this.canvas.getContext('2d');
+		context = canvas.getContext('2d');
 
 	this.domElement = canvas;
 
@@ -10,6 +10,7 @@ Pointerly.Renderer = function(){
 	};
 
 	this.render = function( scene, camera ){
+		console.log(scene, camera);
 		scene.objects.forEach(function(a, b){
 			console.log(a, b);
 		});

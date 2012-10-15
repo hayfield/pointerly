@@ -6,7 +6,7 @@ Pointerly.Environment = function( setup ){
 
 	this.scene = new Pointerly.Scene();
 
-	this.renderer = Detector.webgl ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer;
+	this.renderer = new Pointerly.Renderer;
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
 	this.rendererContext = this.renderer.domElement.getContext('experimental-webgl');
@@ -30,7 +30,7 @@ Pointerly.Environment = function( setup ){
 
 		return arr.concat.apply( arr, environment.shapes );
 	};
-
+	
 	var setupCamera = function(){
 		if( typeof setup !== 'object' || typeof setup.camera !== 'object' ){
 			Pointerly.Camera.FromString( 'default', environment, setup );
@@ -54,7 +54,7 @@ Pointerly.Environment = function( setup ){
 	};
 	setupClickHandler();
 
-	Pointerly.Camera.BoundToView( environment );
+	//Pointerly.Camera.BoundToView( environment );
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene, environment.camera );
