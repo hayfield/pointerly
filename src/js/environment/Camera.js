@@ -66,15 +66,15 @@ Pointerly.Camera.BoundToView = function( environment ){
 	var boundingCenter = new THREE.Vector3( 0.5 * (boundingGeom.boundingBox.x[1] + boundingGeom.boundingBox.x[0]),
 											0.5 * (boundingGeom.boundingBox.y[1] + boundingGeom.boundingBox.y[0]),
 											0.5 * (boundingGeom.boundingBox.z[1] + boundingGeom.boundingBox.z[0]) );
-	console.log(boundingCenter, boundingGeom, Pointerly.Camera.ToScreenXY(boundingCenter, environment));
+	//console.log(boundingCenter, boundingGeom, Pointerly.Camera.ToScreenXY(boundingCenter, environment));
 	environment.camera.position = boundingCenter;
-	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
-	console.log('cam up', environment.camera.up, environment.camera, environment.camera.rotation.normalize());
+	//console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
+	//console.log('cam up', environment.camera.up, environment.camera, environment.camera.rotation.normalize());
 	environment.camera.translate( 300, environment.camera.rotation.normalize() );
 	environment.camera.updateMatrix();
 	var coords = Pointerly.Camera.BoundBoxToCoords(boundingGeom.boundingBox);
 	//console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
-	console.log('bb', boundingGeom.boundingBox, coords);
+	//console.log('bb', boundingGeom.boundingBox, coords);
 
 	for( var i = 0; i < coords.length; i++ ){
 		console.log(coords[i].x, coords[i].y, coords[i].z, 'scr', Pointerly.Camera.ToScreenXY(coords[i], environment).x, Pointerly.Camera.ToScreenXY(coords[i], environment).y);
