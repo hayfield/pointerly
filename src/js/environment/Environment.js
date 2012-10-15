@@ -39,8 +39,6 @@ Pointerly.Environment = function( setup ){
 		Pointerly.ClickHandler.FromString( setup.clickType );
 	};
 	setupClickHandler();
-
-	//Pointerly.Camera.BoundToView( environment );
 	
 	var renderLoop = function(){
 		environment.renderer.render( environment.scene );
