@@ -11,15 +11,6 @@ Pointerly.Init = function(){
 		rowsOfShapes: 1,
 		columnsOfShapes: 3,
 		shapeLayout: '2DGrid',
-		camera: {
-			type: 'fixed',
-			position: {
-				z: 300
-			},
-			rotation: {
-				z: Math.PI / 2
-			}
-		},
 		clickType: 'mouse'
 	};
 	var env = new Pointerly.Environment( setup );
