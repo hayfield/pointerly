@@ -23,9 +23,9 @@ Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 	var setup = setup || {},
 		shapeWidth = setup.shapeWidth || 200,
 		shapeHeight = setup.shapeHeight || 200,
-		shapePaddingHorizontal = setup.shapePaddingHorizontal || 10,
+		shapePaddingHorizontal = setup.shapePaddingHorizontal || 0,
 		shapePaddingVertical = setup.shapePaddingVertical || 0;
-	
+
 	for( var row = 0; row < setup.rowsOfShapes; row++ ){
 		environment.shapes[row] = [];
 		for( var col = 0; col < setup.columnsOfShapes; col++ ){
