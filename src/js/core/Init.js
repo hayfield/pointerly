@@ -8,9 +8,11 @@ Pointerly.Init = function(){
 	var setup = {
 		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle ],
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
-		rowsOfShapes: 1,
-		columnsOfShapes: 3,
 		shapeLayout: '2DGrid',
+		shapeGenSettings: {
+			rowsOfShapes: 1,
+			columnsOfShapes: 3
+		},
 		clickType: 'mouse',
 		fixedViewBetweenEvents: true
 	};

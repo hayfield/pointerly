@@ -22,14 +22,15 @@ Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
 
 Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 	var setup = setup || {},
-		shapeWidth = setup.shapeWidth || 200,
-		shapeHeight = setup.shapeHeight || 200,
-		shapePaddingHorizontal = setup.shapePaddingHorizontal || 0,
-		shapePaddingVertical = setup.shapePaddingVertical || 0;
+		shapeGenSetup = setup.shapeGenSettings || {},
+		shapeWidth = shapeGenSetup.shapeWidth || 200,
+		shapeHeight = shapeGenSetup.shapeHeight || 200,
+		shapePaddingHorizontal = shapeGenSetup.shapePaddingHorizontal || 0,
+		shapePaddingVertical = shapeGenSetup.shapePaddingVertical || 0;
 
-	for( var row = 0; row < setup.rowsOfShapes; row++ ){
+	for( var row = 0; row < shapeGenSetup.rowsOfShapes; row++ ){
 		environment.shapes[row] = [];
-		for( var col = 0; col < setup.columnsOfShapes; col++ ){
+		for( var col = 0; col < shapeGenSetup.columnsOfShapes; col++ ){
 			environment.shapes[row].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
 				width: shapeWidth,
 				height: shapeHeight,
