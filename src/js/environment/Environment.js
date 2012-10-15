@@ -30,20 +30,6 @@ Pointerly.Environment = function( setup ){
 
 		return arr.concat.apply( arr, environment.shapes );
 	};
-	
-	var setupCamera = function(){
-		if( typeof setup !== 'object' || typeof setup.camera !== 'object' ){
-			Pointerly.Camera.FromString( 'default', environment, setup );
-			return;
-		}
-
-		if( typeof setup.camera.type === 'string' ){
-			Pointerly.Camera.FromString( setup.camera.type, environment, setup );
-		} else {
-			Pointerly.Camera.FromString( 'default', environment, setup );
-		}
-	};
-	setupCamera();
 
 	var setupClickHandler = function(){
 		if( typeof setup !== 'object' || typeof setup.clickType !== 'string' ){
