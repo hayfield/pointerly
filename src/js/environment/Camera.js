@@ -69,7 +69,8 @@ Pointerly.Camera.BoundToView = function( environment ){
 	console.log(boundingCenter, boundingGeom, Pointerly.Camera.ToScreenXY(boundingCenter, environment));
 	environment.camera.position = boundingCenter;
 	console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
-	environment.camera.translate( 300, environment.camera.up );
+	console.log('cam up', environment.camera.up, environment.camera, environment.camera.rotation.normalize());
+	environment.camera.translate( 300, environment.camera.rotation.normalize() );
 	environment.camera.updateMatrix();
 	var coords = Pointerly.Camera.BoundBoxToCoords(boundingGeom.boundingBox);
 	//console.log(environment.camera.position.x, environment.camera.position.y, environment.camera.position.z);
