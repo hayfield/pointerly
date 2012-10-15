@@ -20,17 +20,17 @@ Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
 };
 
 Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
-	for( var i = 0; i < setup.rowsOfShapes; i++ ){
-		environment.shapes[i] = [];
-		for( var j = 0; j < setup.columnsOfShapes; j++ ){
-			environment.shapes[i].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
+	for( var row = 0; row < setup.rowsOfShapes; row++ ){
+		environment.shapes[row] = [];
+		for( var col = 0; col < setup.columnsOfShapes; col++ ){
+			environment.shapes[row].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
 				width: 200,
 				height: 200,
-				position: new Pointerly.Vector2( 200*j, 200*i ),
+				position: new Pointerly.Vector2( 200*col, 200*row ),
 				color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
 			}));
 
-			environment.scene.addObject( environment.shapes[i][j] );
+			environment.scene.addObject( environment.shapes[row][col] );
 		}
 	}
 };
