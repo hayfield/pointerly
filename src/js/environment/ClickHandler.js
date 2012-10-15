@@ -11,7 +11,6 @@ Pointerly.ClickHandler.Register = function( type, funct ){
 Pointerly.ClickHandler.SetupDefaults = function(){
 	Pointerly.ClickHandler.Register( 'mouse', Pointerly.ClickHandler.Mouse );
 	Pointerly.ClickHandler.Register( 'screencenter', Pointerly.ClickHandler.ScreenCenter );
-	Pointerly.ClickHandler.Register( 'fps', Pointerly.ClickHandler.ScreenCenter );
 };
 
 Pointerly.ClickHandler.FromString = function( type, environment, setup ){
