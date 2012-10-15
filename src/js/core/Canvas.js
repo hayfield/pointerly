@@ -1,3 +1,0 @@
-Pointerly.Canvas = function(){
-
-};
