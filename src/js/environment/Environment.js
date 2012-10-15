@@ -57,7 +57,7 @@ Pointerly.Environment = function( setup ){
 	//Pointerly.Camera.BoundToView( environment );
 	
 	var renderLoop = function(){
-		environment.renderer.render( environment.scene, environment.camera );
+		environment.renderer.render( environment.scene );
 		//window.requestAnimationFrame( renderLoop );
 	};
 	renderLoop();
