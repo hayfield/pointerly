@@ -20,6 +20,10 @@ Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
 };
 
 Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
+	var shapeWidth,
+		shapeHeight,
+		paddingHorizontal,
+		paddingVertical;
 	for( var row = 0; row < setup.rowsOfShapes; row++ ){
 		environment.shapes[row] = [];
 		for( var col = 0; col < setup.columnsOfShapes; col++ ){

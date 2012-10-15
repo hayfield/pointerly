@@ -1,5 +1,6 @@
 Pointerly.Shape = function( shapeSetup ){
-	var shape = this;
+	var shape = this,
+		shapeSetup = shapeSetup || {};
 
 	this.width = shapeSetup.width || 200;
 	this.height = shapeSetup.height || 200;
