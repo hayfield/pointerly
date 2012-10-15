@@ -22,4 +22,4 @@ window.onresize = function(){
 		Pointerly.CURRENT_ENVIRONMENT.renderer.setSize( window.innerWidth, window.innerHeight );
 		Pointerly.CURRENT_ENVIRONMENT.render();
 	}
-}
+};
