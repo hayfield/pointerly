@@ -49,8 +49,8 @@ Pointerly.Environment = function( setup ){
 	var renderLoop = function(){
 		environment.render();
 		if( !setup.fixedViewBetweenEvents ){
-			window.requestAnimationFrame( renderLoop );
 			environment.logger.log();
+			window.requestAnimationFrame( renderLoop );
 		}
 	};
 	renderLoop();

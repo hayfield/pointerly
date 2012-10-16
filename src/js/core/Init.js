@@ -14,7 +14,7 @@ Pointerly.Init = function(){
 			columnsOfShapes: 3
 		},
 		clickType: 'mouse',
-		fixedViewBetweenEvents: true
+		fixedViewBetweenEvents: false
 	};
 	var env = new Pointerly.Environment( setup );
 };
