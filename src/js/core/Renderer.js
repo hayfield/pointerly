@@ -15,7 +15,6 @@ Pointerly.Renderer = function(){
 	this.render = function( scene ){
 		ctx.clearRect( 0, 0, canvasWidth, canvasHeight );
 		scene.objects.forEach(function( obj ){
-			console.log( obj, obj.canvas, obj.ctx, obj.position.x, obj.position.y );
 			ctx.drawImage( obj.canvas, obj.position.x, obj.position.y );
 		});
 	};

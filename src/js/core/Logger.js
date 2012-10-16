@@ -20,14 +20,32 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
-	this.logMouseMovement = function( event ){
-		logger.data.lastMousePosition = {
+	this.logMouseMovement = function( timestamp ){
+		logger.data.mousePosition[timestamp] = {
+			x: logger.lastMousePosition.x,
+			y: logger.lastMousePosition.y
+		};
+	};
+
+	this.log = function(){
+		var timestamp = Date.now();
+		if( setup.mousePosition ){
+			logger.logMouseMovement( timestamp );
+		}
+
+		logger.data.lastCheck = timestamp;
+	};
+
+	this.trackMouseMovement = function( event ){
+		logger.lastMousePosition = {
 			x: event.clientX,
 			y: event.clientY
 		};
 	};
 
 	if( setup.mousePosition ){
-		document.addEventListener( 'mousemove', logger.logMouseMovement );
+		document.addEventListener( 'mousemove', logger.trackMouseMovement );
 	}
+
+	logger.resetData( true );
 };
