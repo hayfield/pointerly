@@ -50,6 +50,7 @@ Pointerly.Environment = function( setup ){
 		environment.render();
 		if( !setup.fixedViewBetweenEvents ){
 			environment.logger.log();
+			environment.logger.displayMousePositions( environment.renderer.domElement.getContext('2d') )
 			window.requestAnimationFrame( renderLoop );
 		}
 	};
