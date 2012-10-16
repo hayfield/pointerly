@@ -3,6 +3,10 @@ Pointerly.Logger = function( loggerSetup ){
 		setup = loggerSetup;
 
 	this.data = {};
+	this.lastMousePosition = {
+		x: 0,
+		y: 0
+	};
 
 	this.resetData = function( reallySure ){
 		if( reallySure === true ){
@@ -15,4 +19,15 @@ Pointerly.Logger = function( loggerSetup ){
 			}
 		}
 	};
+
+	this.logMouseMovement = function( event ){
+		logger.data.lastMousePosition = {
+			x: event.screenX,
+			y: event.screenY
+		};
+	};
+
+	if( setup.mousePosition ){
+		document.addEventListener( 'mousemove', logger.logMouseMovement );
+	}
 };
