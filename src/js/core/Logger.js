@@ -21,9 +21,11 @@ Pointerly.Logger = function( loggerSetup ){
 	};
 
 	this.displayMousePositions = function( ctx ){
+		var dataArr = logger.data.mousePosition,
+			numberOfPositions = 100;
 		ctx.fillStyle = 'blue';
 		ctx.strokeStyle = 'orange';
-		logger.data.mousePosition.slice(Math.max(0, logger.data.mousePosition.length-100), logger.data.mousePosition.length).forEach(function(el){
+		dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length).forEach(function(el){
 			ctx.beginPath();
 			ctx.arc( el.x, el.y, 4, 0, Math.PI*2, true );
 			ctx.fill();
