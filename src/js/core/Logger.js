@@ -24,7 +24,9 @@ Pointerly.Logger = function( loggerSetup ){
 		var dataArr = logger.data.mousePosition,
 			numberOfPositions = 100;
 		ctx.fillStyle = 'blue';
-		dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length).forEach(function(el){
+
+		dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length).forEach(function(el, idx){
+			ctx.fillStyle = 'rgba( 0, 0, 255, ' + idx / numberOfPositions + ' )';
 			ctx.beginPath();
 			ctx.arc( el.x, el.y, 4, 0, Math.PI*2, true );
 			ctx.fill();
