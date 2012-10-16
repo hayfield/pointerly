@@ -19,9 +19,10 @@ Pointerly.Init = function(){
 	var env = new Pointerly.Environment( setup );
 };
 
-window.onresize = function(){
+Pointerly.onresize = function(){
 	if( Pointerly.CURRENT_ENVIRONMENT instanceof Pointerly.Environment ){
 		Pointerly.CURRENT_ENVIRONMENT.renderer.setSize( window.innerWidth, window.innerHeight );
 		Pointerly.CURRENT_ENVIRONMENT.render();
 	}
 };
+window.addEventListener( 'resize', Pointerly.onresize );
