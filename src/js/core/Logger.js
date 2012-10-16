@@ -20,17 +20,32 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
-	this.displayMousePositions = function( ctx ){
+	this.displayMousePositions = function( ctx, displayMethod ){
 		var dataArr = logger.data.mousePosition,
-			numberOfPositions = 100;
-		ctx.fillStyle = 'blue';
+			numberOfPositions = 100,
+			displayMethod = displayMethod || 'line';
+		if( dataArr.length === 0 ){
+			return;
+		}
 
-		dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length).forEach(function(el, idx){
-			ctx.fillStyle = 'rgba( 0, 0, 255, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+		var displayedData = dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length);
+		if( displayMethod === 'dot' ){
+			displayedData.forEach(function( el, idx ){
+				ctx.fillStyle = 'rgba( 0, 0, 255, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.beginPath();
+				ctx.arc( el.x, el.y, 4, 0, Math.PI*2, true );
+				ctx.fill();
+			});
+		} else if( displayMethod === 'line' ){
 			ctx.beginPath();
-			ctx.arc( el.x, el.y, 4, 0, Math.PI*2, true );
-			ctx.fill();
-		});
+			ctx.moveTo( displayedData[0].x, displayedData[0].y );
+			for( var idx = 1; idx < displayedData.length; idx++ ){
+				var el = displayedData[idx];
+				ctx.strokeStyle = 'rgba( 0, 0, 255, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.lineTo( el.x, el.y );
+				ctx.stroke();
+			};
+		}
 	};
 
 	this.logMouseMovement = function( timestamp ){
