@@ -9,6 +9,10 @@ Pointerly.Logger = function( loggerSetup ){
 			logger.data = {};
 			logger.data.startTime = Date.now();
 			logger.data.lastCheck = logger.data.startTime;
+
+			if( setup.mousePosition ){
+				logger.data.mousePosition = {};
+			}
 		}
 	};
 };

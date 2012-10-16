@@ -13,6 +13,10 @@ Pointerly.Environment = function( setup ){
 		environment.renderer.render( environment.scene );
 	};
 
+	this.logger = new Pointerly.Logger({
+		mousePosition: true
+	});
+
 	this.shapes = [];
 	var setupShapes = function(){
 		if( typeof setup !== 'object' ){
