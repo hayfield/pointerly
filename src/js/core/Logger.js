@@ -22,8 +22,8 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.logMouseMovement = function( event ){
 		logger.data.lastMousePosition = {
-			x: event.screenX,
-			y: event.screenY
+			x: event.clientX,
+			y: event.clientY
 		};
 	};
 
