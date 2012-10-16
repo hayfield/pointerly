@@ -37,11 +37,13 @@ Pointerly.Logger = function( loggerSetup ){
 				ctx.fill();
 			});
 		} else if( displayMethod === 'line' ){
-			ctx.beginPath();
-			ctx.moveTo( displayedData[0].x, displayedData[0].y );
+			ctx.lineWidth = 3;
+			ctx.lineJoin = 'round';
 			for( var idx = 1; idx < displayedData.length; idx++ ){
 				var el = displayedData[idx];
 				ctx.strokeStyle = 'rgba( 0, 0, 255, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.beginPath();
+				ctx.moveTo( displayedData[idx-1].x, displayedData[idx-1].y );
 				ctx.lineTo( el.x, el.y );
 				ctx.stroke();
 			};
