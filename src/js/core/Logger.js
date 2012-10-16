@@ -15,16 +15,17 @@ Pointerly.Logger = function( loggerSetup ){
 			logger.data.lastCheck = logger.data.startTime;
 
 			if( setup.mousePosition ){
-				logger.data.mousePosition = {};
+				logger.data.mousePosition = [];
 			}
 		}
 	};
 
 	this.logMouseMovement = function( timestamp ){
-		logger.data.mousePosition[timestamp] = {
-			x: logger.lastMousePosition.x,
-			y: logger.lastMousePosition.y
-		};
+		logger.data.mousePosition.push(new Pointerly.LoggedMousePosition(
+			timestamp,
+			logger.lastMousePosition.x,
+			logger.lastMousePosition.y
+		));
 	};
 
 	this.log = function(){
@@ -48,4 +49,10 @@ Pointerly.Logger = function( loggerSetup ){
 	}
 
 	logger.resetData( true );
+};
+
+Pointerly.LoggedMousePosition = function( timestamp, x, y ){
+	this.timestamp = timestamp;
+	this.x = x;
+	this.y = y;
 };
