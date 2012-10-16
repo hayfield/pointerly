@@ -22,7 +22,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.displayMousePositions = function( ctx, displayMethod ){
 		var dataArr = logger.data.mousePosition,
-			numberOfPositions = 100,
+			numberOfPositions = 500,
 			displayMethod = displayMethod || 'line';
 		if( dataArr.length === 0 ){
 			return;
@@ -31,7 +31,7 @@ Pointerly.Logger = function( loggerSetup ){
 		var displayedData = dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length);
 		if( displayMethod === 'dot' ){
 			displayedData.forEach(function( el, idx ){
-				ctx.fillStyle = 'rgba( 0, 0, 255, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.fillStyle = 'rgba( 255, 100, 0, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
 				ctx.beginPath();
 				ctx.arc( el.x, el.y, 4, 0, Math.PI*2, true );
 				ctx.fill();
@@ -41,7 +41,7 @@ Pointerly.Logger = function( loggerSetup ){
 			ctx.lineJoin = 'round';
 			for( var idx = 1; idx < displayedData.length; idx++ ){
 				var el = displayedData[idx];
-				ctx.strokeStyle = 'rgba( 0, 0, 255, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.strokeStyle = 'rgba( 255, 100, 0, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
 				ctx.beginPath();
 				ctx.moveTo( displayedData[idx-1].x, displayedData[idx-1].y );
 				ctx.lineTo( el.x, el.y );
