@@ -1,0 +1,3 @@
+Pointerly.Logger = function(){
+	
+};
