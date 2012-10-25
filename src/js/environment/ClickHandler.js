@@ -48,7 +48,7 @@ Pointerly.ClickHandler.ScreenCenter = function( environment, setup ){
 Pointerly.ClickHandler.GetClickedShape = function( clickPosition, environment ){
 	var objs = environment.objects();
 
-	for( var i = 0; i <objs.length; i++ ){
+	for( var i = 0; i < objs.length; i++ ){
 		if( clickPosition.x > objs[i].position.x && clickPosition.y > objs[i].position.y 
 				&& clickPosition.x < (objs[i].position.x + objs[i].width)
 				&& clickPosition.y < (objs[i].position.y + objs[i].height) ){
