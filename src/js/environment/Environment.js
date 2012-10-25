@@ -30,6 +30,22 @@ Pointerly.Environment = function( setup ){
 		environment.shapes[row][col] = shape;
 		environment.scene.addObject( environment.shapes[row][col] );
 	};
+	this.removeShape = function( shape ){
+		environment.scene.removeObject( shape );
+
+		var idx = environment.shapes.indexOf( shape );
+		if( idx !== -1 ){
+			environment.shapes.splice( idx, 1 );
+		} else {
+			for( var i = 0; i < environment.shapes.length; i++ ){
+				idx = environment.shapes[i].indexOf( shape );
+				if( idx !== -1 ){
+					environment.shapes[i].splice( idx, 1 );
+					return;
+				}
+			}
+		}
+	};
 	this.generateShapes = function(){
 		resetShapes();
 
