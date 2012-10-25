@@ -15,6 +15,7 @@ Pointerly.Logger = function( loggerSetup ){
 		y: 0
 	};
 	this.shapes = [];
+	this.numberOfPositions = 150;
 
 	var updateReplayTime = function(){
 		logger.replayPreviousStepTime = logger.replayCurrentTime;
@@ -35,7 +36,17 @@ Pointerly.Logger = function( loggerSetup ){
 		updateReplayTime();
 		updateReplayShapes();
 		logger.replayEnv.render();
-		//replayEnv.logger.displayMousePositions( replayEnv.renderer.domElement.getContext('2d') );
+		var mousePositions = logger.replayData.mousePosition.filter(function( el ){
+			return el.timestamp <= logger.replayCurrentTime;
+		});
+		mousePositions = mousePositions.slice(Math.max(0, mousePositions.length-logger.numberOfPositions), mousePositions.length);
+		var mouseClicks = logger.replayData.mouseClicks.filter(function( el ){
+			if( mousePositions.length === 0 ){
+				return false;
+			}
+			return (el.timestamp >= mousePositions[0].timestamp) && (el.timestamp <= logger.replayCurrentTime);
+		});
+		logger.renderMousePositions( logger.replayEnv.renderer.domElement.getContext('2d'), 'line', mousePositions, mouseClicks, logger.numberOfPositions );
 		window.requestAnimationFrame( replayLoop );
 	};
 	this.replay = function( data ){
@@ -97,16 +108,15 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.displayMousePositions = function( ctx, displayMethod ){
 		var dataArr = logger.data.mousePosition,
-			numberOfPositions = 150,
 			displayMethod = displayMethod || 'line';
 		if( dataArr.length === 0 ){
 			return;
 		}
-		var mousePositions = dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length);
+		var mousePositions = dataArr.slice(Math.max(0, dataArr.length-logger.numberOfPositions), dataArr.length);
 		var mouseClicks = logger.data.mouseClicks.filter(function( el ){
 			return el.timestamp > mousePositions[0].timestamp;
 		});
-		logger.renderMousePositions( ctx, displayMethod, mousePositions, mouseClicks, numberOfPositions );
+		logger.renderMousePositions( ctx, displayMethod, mousePositions, mouseClicks, logger.numberOfPositions );
 	};
 
 	this.logMouseMovement = function( timestamp ){
