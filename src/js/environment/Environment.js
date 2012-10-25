@@ -101,7 +101,9 @@ Pointerly.Environment = function( setup ){
 		environment.render();
 		if( !setup.fixedViewBetweenEvents && !environment.logger.replaying ){
 			environment.logger.log();
-			environment.logger.displayMousePositions( environment.renderer.domElement.getContext('2d') )
+			if( setup.displayMouseTrail ){
+				environment.logger.displayMousePositions( environment.renderer.domElement.getContext('2d') )
+			}
 			window.requestAnimationFrame( renderLoop );
 		}
 	};
