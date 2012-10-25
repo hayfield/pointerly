@@ -31,6 +31,8 @@ Pointerly.ClickHandler.Mouse = function( environment, setup ){
  		if( shape instanceof Pointerly.Shape ){
  			Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes++;
 			Pointerly.CURRENT_ENVIRONMENT.onShapeClick( Pointerly.CURRENT_ENVIRONMENT, shape );
+		} else {
+			Pointerly.CURRENT_ENVIRONMENT.onNonShapeClick( Pointerly.CURRENT_ENVIRONMENT );
 		}
 	};
 

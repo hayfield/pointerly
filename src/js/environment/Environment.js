@@ -44,6 +44,7 @@ Pointerly.Environment = function( setup ){
 
 		Pointerly.ClickHandler.FromString( setup.clickType );
 		environment.onShapeClick = setup.onShapeClick || function(){};
+		environment.onNonShapeClick = setup.onNonShapeClick || function(){};
 		environment.numberOfClickedShapes = 0;
 	};
 	setupClickHandler();
