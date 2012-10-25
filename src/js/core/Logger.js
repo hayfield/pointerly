@@ -26,7 +26,7 @@ Pointerly.Logger = function( loggerSetup ){
 	var updateReplayShapes = function(){
 		logger.replayData.createdShapes.forEach(function( el ){
 			if( el.createTime > logger.replayPreviousStepTime && el.createTime <= logger.replayCurrentTime ){
-				var createdShape = Pointerly.Shape.prototype.createShape(el);
+				var createdShape = Pointerly.Shapes.CreateFromLogger(el);
 				el.replayShape = createdShape;
 				logger.replayEnv.addShape( createdShape );
 			} else if( el.removeTime > logger.replayPreviousStepTime && el.removeTime <= logger.replayCurrentTime ){

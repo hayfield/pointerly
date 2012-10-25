@@ -24,3 +24,14 @@ Pointerly.Shapes.NewFromString = function( type, shapeSetup ){
 		return new Pointerly.Shapes.TYPES[type.toLowerCase()]( shapeSetup );
 	}
 };
+
+Pointerly.Shapes.CreateFromLogger = function( construct ){
+	var shapeConstruct = {
+			width: construct.width,
+			height: construct.height,
+			position: new Pointerly.Vector2( construct.position.x, construct.position.y ),
+			color: construct.color
+		};
+	
+	return Pointerly.Shapes.NewFromString( construct.type, shapeConstruct );
+};

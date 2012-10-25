@@ -46,14 +46,3 @@ Pointerly.Shape = function( shapeSetup ){
 Pointerly.Shape.prototype.toString = function(){
 	return 'Shape';
 };
-
-Pointerly.Shape.prototype.createShape = function( construct ){
-	var shapeConstruct = {
-			width: construct.width,
-			height: construct.height,
-			position: new Pointerly.Vector2( construct.position.x, construct.position.y ),
-			color: construct.color
-		};
-	
-	return Pointerly.Shapes.NewFromString( construct.type, shapeConstruct );
-};
