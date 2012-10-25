@@ -17,6 +17,9 @@ Pointerly.Logger = function( loggerSetup ){
 			if( setup.mousePosition ){
 				logger.data.mousePosition = [];
 			}
+			if( setup.mouseClicks ){
+				logger.data.mouseClicks = [];
+			}
 		}
 	};
 
@@ -74,8 +77,19 @@ Pointerly.Logger = function( loggerSetup ){
 		};
 	};
 
+	this.logMouseClick = function( event ){
+		logger.data.mouseClicks.push(new Pointerly.LoggedMousePosition(
+			Date.now(),
+			event.clientX,
+			event.clientY
+		));
+	};
+
 	if( setup.mousePosition ){
 		document.addEventListener( 'mousemove', logger.trackMouseMovement );
+	}
+	if( setup.mouseClicks ){
+		document.addEventListener( 'mousedown', logger.logMouseClick );
 	}
 
 	logger.resetData( true );
