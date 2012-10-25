@@ -50,6 +50,15 @@ Pointerly.Logger = function( loggerSetup ){
 				ctx.lineTo( el.x, el.y );
 				ctx.stroke();
 			};
+
+			var mouseClicks = logger.data.mouseClicks.filter(function( el ){
+				return el.timestamp > displayedData[0].timestamp;
+			}).forEach(function( el ){
+				ctx.fillStyle = 'rgb( 255, 100, 0 )';
+				ctx.beginPath();
+				ctx.arc( el.x, el.y, 8, 0, Math.PI*2, true );
+				ctx.fill();
+			});
 		}
 	};
 
