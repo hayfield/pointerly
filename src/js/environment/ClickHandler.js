@@ -19,7 +19,8 @@ Pointerly.ClickHandler.FromString = function( type, environment, setup ){
 	}
 };
 
-Pointerly.ClickHandler.GenericShapeClickHandler = function( shape ){
+Pointerly.ClickHandler.GenericShapeClickHandler = function( event, shape ){
+	Pointerly.CURRENT_ENVIRONMENT.logger.logMouseClick( event, shape );
 	if( shape instanceof Pointerly.Shape ){
 		Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes++;
 		Pointerly.CURRENT_ENVIRONMENT.onShapeClick( Pointerly.CURRENT_ENVIRONMENT, shape );
@@ -37,7 +38,7 @@ Pointerly.ClickHandler.Mouse = function( environment, setup ){
 			y: event.clientY
 		}, Pointerly.CURRENT_ENVIRONMENT );
 
- 		Pointerly.ClickHandler.GenericShapeClickHandler( shape );
+ 		Pointerly.ClickHandler.GenericShapeClickHandler( event, shape );
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
@@ -52,7 +53,7 @@ Pointerly.ClickHandler.ScreenCenter = function( environment, setup ){
 			y: window.innerHeight / 2
 		}, Pointerly.CURRENT_ENVIRONMENT );
 
-		Pointerly.ClickHandler.GenericShapeClickHandler( shape );	
+		Pointerly.ClickHandler.GenericShapeClickHandler( event, shape );	
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );

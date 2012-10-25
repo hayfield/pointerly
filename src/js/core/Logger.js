@@ -86,19 +86,17 @@ Pointerly.Logger = function( loggerSetup ){
 		};
 	};
 
-	this.logMouseClick = function( event ){
-		logger.data.mouseClicks.push(new Pointerly.LoggedMousePosition(
+	this.logMouseClick = function( event, object ){
+		logger.data.mouseClicks.push(new Pointerly.LoggedMouseClick(
 			Date.now(),
 			event.clientX,
-			event.clientY
+			event.clientY,
+			object
 		));
 	};
 
 	if( setup.mousePosition ){
 		document.addEventListener( 'mousemove', logger.trackMouseMovement );
-	}
-	if( setup.mouseClicks ){
-		document.addEventListener( 'mousedown', logger.logMouseClick );
 	}
 
 	logger.resetData( true );
@@ -108,4 +106,19 @@ Pointerly.LoggedMousePosition = function( timestamp, x, y ){
 	this.timestamp = timestamp;
 	this.x = x;
 	this.y = y;
+};
+
+Pointerly.LoggedMouseClick = function( timestamp, x, y, clickedObject ){
+	this.timestamp = timestamp;
+	this.x = x;
+	this.y = y;
+	this.clickedObject = clickedObject instanceof Pointerly.Shape ? new Pointerly.LoggableShape(clickedObject) : clickedObject;
+};
+
+Pointerly.LoggableShape = function( shape ){
+	this.color = shape.color;
+	this.height = shape.height;
+	this.width = shape.width;
+	this.position = shape.position;
+	this.type = shape.toString();
 };
