@@ -35,6 +35,7 @@ Pointerly.Logger = function( loggerSetup ){
 		window.requestAnimationFrame( replayLoop );
 	};
 	this.replay = function( data ){
+		document.body.removeChild( Pointerly.CURRENT_ENVIRONMENT.renderer.domElement );
 		logger.replayEnv = new Pointerly.Environment({
 			replaying: true
 		});
