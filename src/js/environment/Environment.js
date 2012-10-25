@@ -18,16 +18,21 @@ Pointerly.Environment = function( setup ){
 	});
 
 	this.shapes = [];
-	var setupShapes = function(){
+	this.generateShapes = function(){
+		environment.shapes = [];
+
 		if( typeof setup !== 'object' ){
 			return;
 		}
 		
-		if( typeof setup.shapeLayout === 'function' ){
-			setup.shapeLayout( environment, setup );
+		if( typeof environment.setup.shapeLayout === 'function' ){
+			environment.setup.shapeLayout( environment, environment.setup );
 		} else if ( typeof setup.shapeLayout === 'string' ){
-			Pointerly.ShapeGeneration.FromString( setup.shapeLayout, environment, setup );
+			Pointerly.ShapeGeneration.FromString( environment.setup.shapeLayout, environment, environment.setup );
 		}
+	};
+	var setupShapes = function(){
+		environment.generateShapes();
 	};
 	setupShapes();
 
