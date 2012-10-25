@@ -10,7 +10,7 @@ Pointerly.Init = function(){
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
 		shapeLayout: '2DGrid',
 		shapeGenSettings: {
-			rowsOfShapes: 1,
+			rowsOfShapes: 2,
 			columnsOfShapes: 3
 		},
 		clickType: 'mouse',

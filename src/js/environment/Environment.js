@@ -23,6 +23,13 @@ Pointerly.Environment = function( setup ){
 		environment.shapes = [];
 		environment.scene.removeAllObjects();
 	};
+	this.addShape = function( shape, row, col ){
+		if( !(environment.shapes[row] instanceof Array) ){
+			environment.shapes[row] = [];
+		}
+		environment.shapes[row][col] = shape;
+		environment.scene.addObject( environment.shapes[row][col] );
+	};
 	this.generateShapes = function(){
 		resetShapes();
 

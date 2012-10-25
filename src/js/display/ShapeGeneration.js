@@ -29,16 +29,13 @@ Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 		shapePaddingVertical = shapeGenSetup.shapePaddingVertical || 0;
 
 	for( var row = 0; row < shapeGenSetup.rowsOfShapes; row++ ){
-		environment.shapes[row] = [];
 		for( var col = 0; col < shapeGenSetup.columnsOfShapes; col++ ){
-			environment.shapes[row].push(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
+			environment.addShape(new setup.shapes[Math.floor(Math.random()*setup.shapes.length)]({
 				width: shapeWidth,
 				height: shapeHeight,
 				position: new Pointerly.Vector2( (shapeWidth+shapePaddingHorizontal)*col, (shapeHeight+shapePaddingVertical)*row ),
 				color: setup.colors[Math.floor(Math.random()*setup.colors.length)]
-			}));
-
-			environment.scene.addObject( environment.shapes[row][col] );
+			}), row, col);
 		}
 	}
 };
