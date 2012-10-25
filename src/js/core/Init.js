@@ -14,7 +14,12 @@ Pointerly.Init = function(){
 			columnsOfShapes: 3
 		},
 		clickType: 'mouse',
-		fixedViewBetweenEvents: false
+		fixedViewBetweenEvents: false,
+		onShapeClick: function( environment, shape ){
+			console.log(Pointerly.CURRENT_ENVIRONMENT, Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes, shape);
+			
+			environment.numberOfClickedShapes++;
+		}
 	};
 	var env = new Pointerly.Environment( setup );
 };

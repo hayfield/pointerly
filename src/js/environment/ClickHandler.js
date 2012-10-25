@@ -23,10 +23,14 @@ Pointerly.ClickHandler.Mouse = function( environment, setup ){
 	var clickHandler = function( event ){
  		event.preventDefault();
 
-		Pointerly.ClickHandler.GetClickedShape({
+ 		var shape = Pointerly.ClickHandler.GetClickedShape({
 			x: event.clientX,
 			y: event.clientY
-		}, Pointerly.CURRENT_ENVIRONMENT ); 	
+		}, Pointerly.CURRENT_ENVIRONMENT );
+
+ 		if( shape instanceof Pointerly.Shape ){
+			Pointerly.CURRENT_ENVIRONMENT.onShapeClick( Pointerly.CURRENT_ENVIRONMENT, shape );
+		}
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
