@@ -26,9 +26,11 @@ Pointerly.Environment = function( setup ){
 		}
 		environment.shapes[row][col] = shape;
 		environment.scene.addObject( environment.shapes[row][col] );
+		environment.logger.logCreatedShape( shape );
 	};
 	this.removeShape = function( shape ){
 		environment.scene.removeObject( shape );
+		environment.logger.logRemovedShape( shape );
 
 		var idx = environment.shapes.indexOf( shape );
 		if( idx !== -1 ){
