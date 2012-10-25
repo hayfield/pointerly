@@ -19,10 +19,7 @@ Pointerly.Environment = function( setup ){
 	});
 
 	this.shapes = [];
-	var resetShapes = function(){
-		environment.shapes = [];
-		environment.scene.removeAllObjects();
-	};
+	
 	this.addShape = function( shape, row, col ){
 		if( !(environment.shapes[row] instanceof Array) ){
 			environment.shapes[row] = [];
@@ -45,6 +42,11 @@ Pointerly.Environment = function( setup ){
 				}
 			}
 		}
+	};
+
+	var resetShapes = function(){
+		environment.shapes = [];
+		environment.scene.removeAllObjects();
 	};
 	this.generateShapes = function(){
 		resetShapes();
