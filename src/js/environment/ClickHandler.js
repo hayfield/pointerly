@@ -19,6 +19,15 @@ Pointerly.ClickHandler.FromString = function( type, environment, setup ){
 	}
 };
 
+Pointerly.ClickHandler.GenericHandler = function( shape ){
+	if( shape instanceof Pointerly.Shape ){
+		Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes++;
+		Pointerly.CURRENT_ENVIRONMENT.onShapeClick( Pointerly.CURRENT_ENVIRONMENT, shape );
+	} else {
+		Pointerly.CURRENT_ENVIRONMENT.onNonShapeClick( Pointerly.CURRENT_ENVIRONMENT );
+	}
+};
+
 Pointerly.ClickHandler.Mouse = function( environment, setup ){
 	var clickHandler = function( event ){
  		event.preventDefault();
@@ -28,12 +37,7 @@ Pointerly.ClickHandler.Mouse = function( environment, setup ){
 			y: event.clientY
 		}, Pointerly.CURRENT_ENVIRONMENT );
 
- 		if( shape instanceof Pointerly.Shape ){
- 			Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes++;
-			Pointerly.CURRENT_ENVIRONMENT.onShapeClick( Pointerly.CURRENT_ENVIRONMENT, shape );
-		} else {
-			Pointerly.CURRENT_ENVIRONMENT.onNonShapeClick( Pointerly.CURRENT_ENVIRONMENT );
-		}
+ 		Pointerly.ClickHandler.GenericHandler( shape );
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
@@ -43,10 +47,12 @@ Pointerly.ClickHandler.ScreenCenter = function( environment, setup ){
 	var clickHandler = function( event ){
  		event.preventDefault();
 
-		Pointerly.ClickHandler.GetClickedShape({
+		var shape = Pointerly.ClickHandler.GetClickedShape({
 			x: window.innerWidth / 2,
 			y: window.innerHeight / 2
-		}, Pointerly.CURRENT_ENVIRONMENT ); 		
+		}, Pointerly.CURRENT_ENVIRONMENT );
+
+		Pointerly.ClickHandler.GenericHandler( shape );	
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
