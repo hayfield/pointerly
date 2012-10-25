@@ -22,7 +22,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.displayMousePositions = function( ctx, displayMethod ){
 		var dataArr = logger.data.mousePosition,
-			numberOfPositions = 500,
+			numberOfPositions = 150,
 			displayMethod = displayMethod || 'line';
 		if( dataArr.length === 0 ){
 			return;
