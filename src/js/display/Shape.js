@@ -48,18 +48,12 @@ Pointerly.Shape.prototype.toString = function(){
 };
 
 Pointerly.Shape.prototype.createShape = function( construct ){
-	var shape,
-		shapeConstruct = {
+	var shapeConstruct = {
 			width: construct.width,
 			height: construct.height,
 			position: new Pointerly.Vector2( construct.position.x, construct.position.y ),
 			color: construct.color
 		};
-	if( construct.type === 'Circle' ){
-		shape = new Pointerly.Shapes.Circle( shapeConstruct );
-	} else if( construct.type === 'Triangle' ){
-		shape = new Pointerly.Shapes.Triangle( shapeConstruct );
-	}
-
-	return shape;
+	
+	return Pointerly.Shapes.NewFromString( construct.type, shapeConstruct );
 };
