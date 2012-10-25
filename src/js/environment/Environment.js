@@ -18,8 +18,12 @@ Pointerly.Environment = function( setup ){
 	});
 
 	this.shapes = [];
-	this.generateShapes = function(){
+	var resetShapes = function(){
 		environment.shapes = [];
+		environment.scene.removeAllObjects();
+	};
+	this.generateShapes = function(){
+		resetShapes();
 
 		if( typeof setup !== 'object' ){
 			return;

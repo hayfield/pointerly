@@ -7,3 +7,7 @@ Pointerly.Scene.prototype.addObject = function( obj ) {
 		this.objects.push(obj);
 	}
 };
+
+Pointerly.Scene.prototype.removeAllObjects = function(){
+	this.objects = [];
+};
