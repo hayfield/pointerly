@@ -17,6 +17,8 @@ Pointerly.Logger = function( loggerSetup ){
 	this.shapes = [];
 	this.numberOfPositions = 150;
 
+	// can replay by clicking around and then calling:
+	// Pointerly.CURRENT_ENVIRONMENT.logger.replay( Pointerly.CURRENT_ENVIRONMENT.logger.data )
 	var updateReplayTime = function(){
 		logger.replayPreviousStepTime = logger.replayCurrentTime;
 		logger.replayCurrentTime = Date.now() - logger.replayStartTime + logger.replayData.startTime;
