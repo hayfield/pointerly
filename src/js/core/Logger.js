@@ -47,6 +47,7 @@ Pointerly.Logger = function( loggerSetup ){
 			return (el.timestamp >= mousePositions[0].timestamp) && (el.timestamp <= logger.replayCurrentTime);
 		});
 		logger.renderMousePositions( logger.replayEnv.renderer.domElement.getContext('2d'), 'line', mousePositions, mouseClicks, logger.numberOfPositions );
+		
 		window.requestAnimationFrame( replayLoop );
 	};
 	this.replay = function( data ){
