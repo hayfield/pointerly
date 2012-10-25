@@ -18,7 +18,6 @@ Pointerly.Init = function(){
 		onShapeClick: function( environment, shape ){
 			console.log(Pointerly.CURRENT_ENVIRONMENT, Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes, shape);
 			
-			environment.numberOfClickedShapes++;
 		}
 	};
 	var env = new Pointerly.Environment( setup );
