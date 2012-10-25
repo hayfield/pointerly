@@ -1,5 +1,7 @@
 Pointerly.Environment = function( setup ){
-	Pointerly.CURRENT_ENVIRONMENT = this;
+	if( !setup.replaying ){
+		Pointerly.CURRENT_ENVIRONMENT = this;
+	}
 
 	var environment = this;
 	this.setup = setup;
@@ -26,11 +28,15 @@ Pointerly.Environment = function( setup ){
 		}
 		environment.shapes[row][col] = shape;
 		environment.scene.addObject( environment.shapes[row][col] );
-		environment.logger.logCreatedShape( shape );
+		if( !environment.setup.replaying ){
+			environment.logger.logCreatedShape( shape );
+		}
 	};
 	this.removeShape = function( shape ){
 		environment.scene.removeObject( shape );
-		environment.logger.logRemovedShape( shape );
+		if( !environment.setup.replaying ){
+			environment.logger.logRemovedShape( shape );
+		}
 
 		var idx = environment.shapes.indexOf( shape );
 		if( idx !== -1 ){
@@ -88,11 +94,13 @@ Pointerly.Environment = function( setup ){
 	
 	var renderLoop = function(){
 		environment.render();
-		if( !setup.fixedViewBetweenEvents ){
+		if( !setup.fixedViewBetweenEvents && !environment.logger.replaying ){
 			environment.logger.log();
 			environment.logger.displayMousePositions( environment.renderer.domElement.getContext('2d') )
 			window.requestAnimationFrame( renderLoop );
 		}
 	};
-	renderLoop();
+	if( !setup.replaying ){
+		renderLoop();
+	}
 };

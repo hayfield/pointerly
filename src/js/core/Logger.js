@@ -2,12 +2,32 @@ Pointerly.Logger = function( loggerSetup ){
 	var logger = this,
 		setup = loggerSetup;
 
+	this.replaying = false;
+	this.replayEnv = null;
+	this.replayStartTime = Number.MAX_VALUE;
+	this.replayData = null;
+
 	this.data = {};
 	this.lastMousePosition = {
 		x: 0,
 		y: 0
 	};
 	this.shapes = [];
+
+	var replayLoop = function(){
+		replayEnv.render();
+		replayEnv.logger.displayMousePositions( replayEnv.renderer.domElement.getContext('2d') );
+		window.requestAnimationFrame( replayLoop );
+	};
+	this.replay = function( data ){
+		logger.replayEnv = new Pointerly.Environment({
+			replaying: true
+		});
+		logger.replaying = true;
+		logger.replayStartTime = Date.now();
+		logger.replayData = data;
+		replayLoop();
+	};
 
 	this.resetData = function( reallySure ){
 		if( reallySure === true ){
@@ -25,18 +45,11 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
-	this.displayMousePositions = function( ctx, displayMethod ){
-		var dataArr = logger.data.mousePosition,
-			numberOfPositions = 150,
-			displayMethod = displayMethod || 'line';
-		if( dataArr.length === 0 ){
-			return;
-		}
-
-		var displayedData = dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length);
+	this.renderMousePositions = function( ctx, displayMethod, mousePositions, clickPositions, numberOfPositions ){
+		var displayedData = mousePositions;
 		if( displayMethod === 'dot' ){
 			displayedData.forEach(function( el, idx ){
-				ctx.fillStyle = 'rgba( 255, 100, 0, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.fillStyle = 'rgba( 255, 100, 0, ' + idx / Math.min(numberOfPositions, displayedData.length) + ' )';
 				ctx.beginPath();
 				ctx.arc( el.x, el.y, 4, 0, Math.PI*2, true );
 				ctx.fill();
@@ -46,22 +59,34 @@ Pointerly.Logger = function( loggerSetup ){
 			ctx.lineJoin = 'round';
 			for( var idx = 1; idx < displayedData.length; idx++ ){
 				var el = displayedData[idx];
-				ctx.strokeStyle = 'rgba( 255, 100, 0, ' + idx / Math.min(numberOfPositions, dataArr.length) + ' )';
+				ctx.strokeStyle = 'rgba( 255, 100, 0, ' + idx / Math.min(numberOfPositions, displayedData.length) + ' )';
 				ctx.beginPath();
 				ctx.moveTo( displayedData[idx-1].x, displayedData[idx-1].y );
 				ctx.lineTo( el.x, el.y );
 				ctx.stroke();
 			};
 
-			var mouseClicks = logger.data.mouseClicks.filter(function( el ){
-				return el.timestamp > displayedData[0].timestamp;
-			}).forEach(function( el ){
+			clickPositions.forEach(function( el ){
 				ctx.fillStyle = 'rgb( 255, 100, 0 )';
 				ctx.beginPath();
 				ctx.arc( el.x, el.y, 8, 0, Math.PI*2, true );
 				ctx.fill();
 			});
 		}
+	};
+
+	this.displayMousePositions = function( ctx, displayMethod ){
+		var dataArr = logger.data.mousePosition,
+			numberOfPositions = 150,
+			displayMethod = displayMethod || 'line';
+		if( dataArr.length === 0 ){
+			return;
+		}
+		var mousePositions = dataArr.slice(Math.max(0, dataArr.length-numberOfPositions), dataArr.length);
+		var mouseClicks = logger.data.mouseClicks.filter(function( el ){
+			return el.timestamp > mousePositions[0].timestamp;
+		});
+		logger.renderMousePositions( ctx, displayMethod, mousePositions, mouseClicks, numberOfPositions );
 	};
 
 	this.logMouseMovement = function( timestamp ){
