@@ -23,11 +23,16 @@ Pointerly.Environment = function( setup ){
 	this.shapes = [];
 	
 	this.addShape = function( shape, row, col ){
-		if( !(environment.shapes[row] instanceof Array) ){
+		if( !(environment.shapes[row] instanceof Array) && typeof row === 'number' && typeof col === 'number' ){
 			environment.shapes[row] = [];
 		}
-		environment.shapes[row][col] = shape;
-		environment.scene.addObject( environment.shapes[row][col] );
+		if( typeof row === 'number' && typeof col === 'number' ){
+			environment.shapes[row][col] = shape;
+			environment.scene.addObject( environment.shapes[row][col] );
+		} else {
+			environment.shapes.push( shape );
+			environment.scene.addObject( environment.shapes[environment.shapes.length-1] );
+		}
 		if( !environment.setup.replaying ){
 			environment.logger.logCreatedShape( shape );
 		}

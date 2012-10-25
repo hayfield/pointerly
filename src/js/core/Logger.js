@@ -5,6 +5,8 @@ Pointerly.Logger = function( loggerSetup ){
 	this.replaying = false;
 	this.replayEnv = null;
 	this.replayStartTime = Number.MAX_VALUE;
+	this.replayPreviousStepTime = Number.MIN_VALUE;
+	this.replayCurrentTime = Number.MIN_VALUE;
 	this.replayData = null;
 
 	this.data = {};
@@ -14,9 +16,22 @@ Pointerly.Logger = function( loggerSetup ){
 	};
 	this.shapes = [];
 
+	var updateReplayTime = function(){
+		logger.replayPreviousStepTime = logger.replayCurrentTime;
+		logger.replayCurrentTime = Date.now() - logger.replayStartTime + logger.replayData.startTime;
+	};
+	var updateReplayShapes = function(){
+		logger.replayData.createdShapes.forEach(function( el ){
+			if( el.createTime > logger.replayPreviousStepTime && el.createTime <= logger.replayCurrentTime ){
+				logger.replayEnv.addShape(Pointerly.Shape.prototype.createShape(el));
+			}
+		});
+	};
 	var replayLoop = function(){
-		replayEnv.render();
-		replayEnv.logger.displayMousePositions( replayEnv.renderer.domElement.getContext('2d') );
+		updateReplayTime();
+		updateReplayShapes();
+		logger.replayEnv.render();
+		//replayEnv.logger.displayMousePositions( replayEnv.renderer.domElement.getContext('2d') );
 		window.requestAnimationFrame( replayLoop );
 	};
 	this.replay = function( data ){
