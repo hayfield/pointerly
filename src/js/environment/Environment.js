@@ -102,7 +102,7 @@ Pointerly.Environment = function( setup ){
 		if( !setup.fixedViewBetweenEvents && !environment.logger.replaying ){
 			environment.logger.log();
 			if( setup.displayMouseTrail ){
-				environment.logger.displayMousePositions( environment.renderer.domElement.getContext('2d') )
+				environment.logger.displayMousePositions( environment.renderer.domElement.getContext('2d') );
 			}
 			window.requestAnimationFrame( renderLoop );
 		}
