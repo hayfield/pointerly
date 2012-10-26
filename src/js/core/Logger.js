@@ -76,6 +76,9 @@ Pointerly.Logger = function( loggerSetup ){
 			if( setup.mouseClicks ){
 				logger.data.mouseClicks = [];
 			}
+			if( setup.canvasSize ){
+				logger.data.canvasSize = [];
+			}
 		}
 	};
 
@@ -156,6 +159,14 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
+	this.logCanvasResize = function( width, height ){
+		logger.data.canvasSize.push(new Pointerly.LoggedCanvasSize(
+			Date.now(),
+			width,
+			height
+		));
+	};
+
 	this.logMouseClick = function( event, object ){
 		logger.data.mouseClicks.push(new Pointerly.LoggedMouseClick(
 			Date.now(),
@@ -183,6 +194,12 @@ Pointerly.LoggedMouseClick = function( timestamp, x, y, shapeID ){
 	this.x = x;
 	this.y = y;
 	this.clickedShapeID = shapeID;
+};
+
+Pointerly.LoggedCanvasSize = function( timestamp, width, height ){
+	this.timestamp = timestamp;
+	this.width = width;
+	this.height = height;
 };
 
 Pointerly.LoggableShape = function( shape, id ){

@@ -17,7 +17,8 @@ Pointerly.Environment = function( setup ){
 
 	this.logger = new Pointerly.Logger({
 		mousePosition: true,
-		mouseClicks: true
+		mouseClicks: true,
+		canvasSize: true
 	});
 
 	this.shapes = [];
