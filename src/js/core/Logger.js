@@ -34,8 +34,16 @@ Pointerly.Logger = function( loggerSetup ){
 			}
 		});
 	};
+	var updateReplayCanvasSize = function(){
+		logger.replayData.canvasSize.forEach(function( el ){
+			if( el.timestamp > logger.replayPreviousStepTime && el.timestamp <= logger.replayCurrentTime ){
+				logger.replayEnv.renderer.setSize( el.width, el.height );
+			}
+		});
+	};
 	var replayLoop = function(){
 		updateReplayTime();
+		updateReplayCanvasSize();
 		updateReplayShapes();
 		logger.replayEnv.render();
 		var mousePositions = logger.replayData.mousePosition.filter(function( el ){
