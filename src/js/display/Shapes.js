@@ -5,12 +5,14 @@ Pointerly.Shapes.TYPES = Pointerly.Shapes.TYPES || {};
 Pointerly.Shapes.Register = function( type, funct ){
 	if( typeof type === 'string' && typeof funct === 'function' ){
 		Pointerly.Shapes.TYPES[type.toLowerCase()] = funct;
+	} else if( typeof type === 'function' && typeof funct === 'undefined' ){
+		Pointerly.Shapes.TYPES[new type().toString().toLowerCase()] = type;
 	}
 };
 
 Pointerly.Shapes.SetupDefaults = function(){
-	Pointerly.Shapes.Register( 'circle', Pointerly.Shapes.Circle );
-	Pointerly.Shapes.Register( 'triangle', Pointerly.Shapes.Triangle );
+	Pointerly.Shapes.Register( Pointerly.Shapes.Circle );
+	Pointerly.Shapes.Register( Pointerly.Shapes.Triangle );
 };
 
 Pointerly.Shapes.FromString = function( type, shapeSetup ){
