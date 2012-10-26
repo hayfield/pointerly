@@ -10,6 +10,7 @@ Pointerly.Renderer = function(){
 		canvasHeight=  height;
 		canvas.width = canvasWidth;
 		canvas.height = canvasHeight;
+		Pointerly.CURRENT_ENVIRONMENT.logger.logCanvasResize( width, height );
 	};
 
 	this.render = function( scene ){

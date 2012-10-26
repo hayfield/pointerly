@@ -6,6 +6,12 @@ Pointerly.Environment = function( setup ){
 	var environment = this;
 	this.setup = setup;
 
+	this.logger = new Pointerly.Logger({
+		mousePosition: true,
+		mouseClicks: true,
+		canvasSize: true
+	});
+
 	this.scene = new Pointerly.Scene();
 
 	this.renderer = new Pointerly.Renderer;
@@ -14,12 +20,6 @@ Pointerly.Environment = function( setup ){
 	this.render = function(){
 		environment.renderer.render( environment.scene );
 	};
-
-	this.logger = new Pointerly.Logger({
-		mousePosition: true,
-		mouseClicks: true,
-		canvasSize: true
-	});
 
 	this.shapes = [];
 	
