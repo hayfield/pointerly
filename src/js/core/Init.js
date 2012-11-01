@@ -8,7 +8,7 @@ Pointerly.Init = function(){
 	var setup = {
 		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle, Pointerly.Shapes.Rectangle ],
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
-		shapeLayout: '2DGrid',
+		shapeLayout: 'experiment',
 		shapeGenSettings: {
 			rowsOfShapes: 2,
 			columnsOfShapes: 3
