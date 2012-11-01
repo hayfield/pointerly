@@ -12,8 +12,8 @@ Pointerly.Shapes.Rectangle = function( shapeSetup ){
 	this.display( this.draw );
 };
 
-Pointerly.Shapes.Rectangle.prototype = new Pointerly.Rectangle;
-Pointerly.Shapes.Rectangle.prototype.constructor = Pointerly.Rectangle;
+Pointerly.Shapes.Rectangle.prototype = new Pointerly.Shape;
+Pointerly.Shapes.Rectangle.prototype.constructor = Pointerly.Shapes.Rectangle;
 
 Pointerly.Shapes.Rectangle.prototype.toString = function(){
 	return 'Rectangle';

@@ -17,7 +17,7 @@ Pointerly.Shapes.Triangle = function( shapeSetup ){
 };
 
 Pointerly.Shapes.Triangle.prototype = new Pointerly.Shape;
-Pointerly.Shapes.Triangle.prototype.constructor = Pointerly.Triangle;
+Pointerly.Shapes.Triangle.prototype.constructor = Pointerly.Shapes.Triangle;
 
 Pointerly.Shapes.Triangle.prototype.toString = function(){
 	return 'Triangle';

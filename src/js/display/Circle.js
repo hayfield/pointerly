@@ -15,7 +15,7 @@ Pointerly.Shapes.Circle = function( shapeSetup ){
 };
 
 Pointerly.Shapes.Circle.prototype = new Pointerly.Shape;
-Pointerly.Shapes.Circle.prototype.constructor = Pointerly.Circle;
+Pointerly.Shapes.Circle.prototype.constructor = Pointerly.Shapes.Circle;
 
 Pointerly.Shapes.Circle.prototype.toString = function(){
 	return 'Circle';
