@@ -39,3 +39,7 @@ Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 		}
 	}
 };
+
+Pointerly.ShapeGeneration.Experiment = function( environment, setup ){
+	//environment.addShape(new Pointerly.Shape.)
+};

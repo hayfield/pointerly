@@ -13,6 +13,7 @@ Pointerly.Shapes.Register = function( type, funct ){
 Pointerly.Shapes.SetupDefaults = function(){
 	Pointerly.Shapes.Register( Pointerly.Shapes.Circle );
 	Pointerly.Shapes.Register( Pointerly.Shapes.Triangle );
+	Pointerly.Shapes.Register( Pointerly.Shapes.Rectangle );
 };
 
 Pointerly.Shapes.FromString = function( type, shapeSetup ){

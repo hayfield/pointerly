@@ -6,7 +6,7 @@ Pointerly.Init = function(){
 	Pointerly.Shapes.SetupDefaults();
 
 	var setup = {
-		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle ],
+		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle, Pointerly.Shapes.Rectangle ],
 		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
 		shapeLayout: '2DGrid',
 		shapeGenSettings: {
