@@ -1,0 +1,3 @@
+Pointerly.Home = function(){
+
+};
