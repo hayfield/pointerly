@@ -3,5 +3,11 @@ body {
 }
 
 canvas {
-	position: relative;
+	position: fixed;
+	z-index: 1;
+}
+
+.homePosition {
+	position: fixed;
+	z-index: 2;
 }
