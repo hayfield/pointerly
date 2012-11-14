@@ -23,7 +23,10 @@ Pointerly.Init = function(){
 				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
 			}
 		},
-		homePosition: true
+		homePosition: {
+			width: 20,
+			height: 20
+		}
 	};
 	var env = new Pointerly.Environment( setup );
 };

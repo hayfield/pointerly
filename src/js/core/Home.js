@@ -1,10 +1,14 @@
-Pointerly.Home = function(){
-	var home = this;
+Pointerly.Home = function( homeSetup ){
+	var home = this,
+		width, height;
+
+	width = typeof homeSetup.width === 'number' ? homeSetup.width : 40;
+	height = typeof homeSetup.height === 'number' ? homeSetup.height : 40;
 
 	this.domElement = document.createElement('div');
 
-	this.domElement.style.width = '30px';
-	this.domElement.style.height = '30px';
+	this.domElement.style.width = width + 'px';
+	this.domElement.style.height = height + 'px';
 	this.domElement.style.backgroundColor = 'blue';
 	this.domElement.className += 'homePosition';
 
