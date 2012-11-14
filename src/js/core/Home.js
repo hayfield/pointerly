@@ -28,4 +28,10 @@ Pointerly.Home = function( homeSetup ){
 	this.domElement.className += 'homePosition';
 
 	document.body.appendChild( this.domElement );
+
+	var bob = function(){
+		console.log('hide ho');
+	};
+
+	this.domElement.addEventListener( 'mouseout', bob );
 };
