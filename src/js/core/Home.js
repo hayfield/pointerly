@@ -3,8 +3,8 @@ Pointerly.Home = function(){
 
 	this.domElement = document.createElement('div');
 
-	this.domElement.style.width = '100px';
-	this.domElement.style.height = '100px';
+	this.domElement.style.width = '30px';
+	this.domElement.style.height = '30px';
 	this.domElement.style.backgroundColor = 'blue';
 	this.domElement.className += 'homePosition';
 
