@@ -16,8 +16,6 @@ Pointerly.Init = function(){
 		clickType: 'mouse',
 		fixedViewBetweenEvents: false,
 		onShapeClick: function( environment, shape ){
-			console.log(Pointerly.CURRENT_ENVIRONMENT, Pointerly.CURRENT_ENVIRONMENT.numberOfClickedShapes, shape);
-			
 			Pointerly.CURRENT_ENVIRONMENT.removeShape( shape );
 			if( Pointerly.CURRENT_ENVIRONMENT.objects().length === 0 ){
 				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
