@@ -15,7 +15,6 @@ Pointerly.Environment = function( setup ){
 	this.scene = new Pointerly.Scene();
 
 	this.renderer = new Pointerly.Renderer;
-	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
 	this.render = function(){
 		environment.renderer.render( environment.scene );
