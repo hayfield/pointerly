@@ -21,9 +21,6 @@ Pointerly.Environment = function( setup ){
 	};
 
 	this.homePosition = new Pointerly.Home( setup.homePosition );
-	if( !setup.homePosition ){
-		document.body.removeChild( this.homePosition.domElement );
-	}
 	Pointerly.onresize();
 
 	this.shapes = [];

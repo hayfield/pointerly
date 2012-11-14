@@ -34,7 +34,9 @@ Pointerly.Init = function(){
 Pointerly.onresize = function(){
 	if( Pointerly.CURRENT_ENVIRONMENT instanceof Pointerly.Environment ){
 		var home = Pointerly.CURRENT_ENVIRONMENT.homePosition;
-		home.setPosition( (window.innerWidth - parseInt(home.domElement.style.width, 10)) / 2, (window.innerHeight - parseInt(home.domElement.style.height, 10)) / 2 );
+		if( home.domElement ){
+			home.setPosition( (window.innerWidth - parseInt(home.domElement.style.width, 10)) / 2, (window.innerHeight - parseInt(home.domElement.style.height, 10)) / 2 );
+		}
 		Pointerly.CURRENT_ENVIRONMENT.renderer.setSize( window.innerWidth, window.innerHeight );
 		Pointerly.CURRENT_ENVIRONMENT.render();
 	}

@@ -2,6 +2,10 @@ Pointerly.Home = function( homeSetup ){
 	var home = this,
 		width, height;
 
+	if( typeof homeSetup === 'undefined' ){
+		return;
+	}
+
 	this.setPosition = function( x, y ){
 		home.domElement.style.left = x + 'px';
 		home.domElement.style.top = y + 'px';
