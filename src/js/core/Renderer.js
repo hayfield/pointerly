@@ -7,7 +7,7 @@ Pointerly.Renderer = function(){
 
 	this.setSize = function( width, height ){
 		canvasWidth = width;
-		canvasHeight=  height;
+		canvasHeight = height;
 		canvas.width = canvasWidth;
 		canvas.height = canvasHeight;
 		Pointerly.CURRENT_ENVIRONMENT.logger.logCanvasResize( width, height );
