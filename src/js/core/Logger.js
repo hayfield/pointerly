@@ -21,7 +21,7 @@ Pointerly.Logger = function( loggerSetup ){
 	// Pointerly.CURRENT_ENVIRONMENT.logger.replay( Pointerly.CURRENT_ENVIRONMENT.logger.data )
 	var updateReplayTime = function(){
 		logger.replayPreviousStepTime = logger.replayCurrentTime;
-		logger.replayCurrentTime = Date.now() - logger.replayStartTime + logger.replayData.startTime;
+		logger.replayCurrentTime = Pointerly.now() - logger.replayStartTime + logger.replayData.startTime;
 	};
 	var updateReplayShapes = function(){
 		logger.replayData.createdShapes.forEach(function( el ){
@@ -66,7 +66,7 @@ Pointerly.Logger = function( loggerSetup ){
 			replaying: true
 		});
 		logger.replaying = true;
-		logger.replayStartTime = Date.now();
+		logger.replayStartTime = Pointerly.now();
 		logger.replayData = data;
 		replayLoop();
 	};
@@ -74,7 +74,7 @@ Pointerly.Logger = function( loggerSetup ){
 	this.resetData = function( reallySure ){
 		if( reallySure === true ){
 			logger.data = {};
-			logger.data.startTime = Date.now();
+			logger.data.startTime = Pointerly.now();
 			logger.data.lastCheck = logger.data.startTime;
 
 			logger.data.createdShapes = [];
@@ -135,7 +135,7 @@ Pointerly.Logger = function( loggerSetup ){
 	};
 
 	this.log = function(){
-		var timestamp = Date.now();
+		var timestamp = Pointerly.now();
 		if( setup.mousePosition ){
 			logger.logMouseMovement( timestamp );
 		}
@@ -158,7 +158,7 @@ Pointerly.Logger = function( loggerSetup ){
 	this.logRemovedShape = function( shape ){
 		var idx = logger.shapes.indexOf( shape );
 		if( idx !== -1 ){
-			logger.data.createdShapes[idx].removeTime = Date.now();
+			logger.data.createdShapes[idx].removeTime = Pointerly.now();
 		}
 	};
 
@@ -172,7 +172,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.logCanvasResize = function( width, height ){
 		logger.data.canvasSize.push(new Pointerly.LoggedSize(
-			Date.now(),
+			Pointerly.now(),
 			width,
 			height
 		));
@@ -180,7 +180,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.logMouseClick = function( event, object ){
 		logger.data.mouseClicks.push(new Pointerly.LoggedMouseClick(
-			Date.now(),
+			Pointerly.now(),
 			event.clientX,
 			event.clientY,
 			logger.getShapeID(object)
@@ -189,7 +189,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	var logHomeInteraction = function( interaction ){
 		logger.data.homeAreaInteractions.push(new Pointerly.HomeAreaInteraction(
-			Date.now(),
+			Pointerly.now(),
 			interaction
 		));
 	};
@@ -204,7 +204,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.logHomeAreaPosition = function( x, y ){
 		logger.data.homeAreaPosition.push(new Pointerly.LoggedPosition(
-			Date.now(),
+			Pointerly.now(),
 			logger.lastMousePosition.x,
 			logger.lastMousePosition.y
 		));
@@ -212,7 +212,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.logHomeAreaSize = function( width, height ){
 		logger.data.homeAreaSize.push(new Pointerly.LoggedSize(
-			Date.now(),
+			Pointerly.now(),
 			width,
 			height
 		));
@@ -223,6 +223,10 @@ Pointerly.Logger = function( loggerSetup ){
 	}
 
 	logger.resetData( true );
+};
+
+Pointerly.now = function(){
+	return Date.now();
 };
 
 Pointerly.LoggedPosition = function( timestamp, x, y ){
@@ -251,7 +255,7 @@ Pointerly.LoggableShape = function( shape, id ){
 	this.width = shape.width;
 	this.position = shape.position;
 	this.type = shape.toString();
-	this.createTime = Date.now();
+	this.createTime = Pointerly.now();
 	this.removeTime = Number.MAX_VALUE;
 };
 
