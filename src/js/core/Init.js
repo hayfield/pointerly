@@ -26,7 +26,10 @@ Pointerly.Init = function(){
 		homePosition: {
 			width: 30,
 			height: 30,
-			color: 'red'
+			color: 'red',
+			onEnter: function(){
+				// make a shape appear and stuff
+			}
 		}
 	};
 	var env = new Pointerly.Environment( setup );
