@@ -30,13 +30,17 @@ Pointerly.Home = function( homeSetup ){
 	document.body.appendChild( this.domElement );
 
 	var onHomeEnter = function(){
-		console.log('hide khjfds');
+		if( typeof homeSetup.onEnter === 'function' ){
+			homeSetup.onEnter();
+		}
 	};
 
-	var onHomeLeave = function(){
-		console.log('hide ho');
+	var onHomeExit = function(){
+		if( typeof homeSetup.onExit === 'function' ){
+			homeSetup.onExit();
+		}
 	};
 
 	this.domElement.addEventListener( 'mouseover', onHomeEnter );
-	this.domElement.addEventListener( 'mouseout', onHomeLeave );
+	this.domElement.addEventListener( 'mouseout', onHomeExit );
 };
