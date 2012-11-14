@@ -24,15 +24,12 @@ Pointerly.Utils.ObjToVector2 = function( obj ){
 };
 
 Pointerly.Vector3 = function( x, y, z ){
-	THREE.Vector3.call( this, x, y, z );
+	this.x = x || 0;
+	this.y = y || 0;
+	this.z = z || 0;
 };
-
-Pointerly.Vector3.prototype = new THREE.Vector3;
-Pointerly.Vector3.prototype.constructor = Pointerly.Vector3;
 
 Pointerly.Vector2 = function( x, y ){
-	THREE.Vector2.call( this, x, y );
+	this.x = x || 0;
+	this.y = y || 0;
 };
-
-Pointerly.Vector2.prototype = new THREE.Vector2;
-Pointerly.Vector2.prototype.constructor = Pointerly.Vector2;
