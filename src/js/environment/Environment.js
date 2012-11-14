@@ -22,6 +22,9 @@ Pointerly.Environment = function( setup ){
 	};
 
 	this.homePosition = new Pointerly.Home();
+	if( !setup.homePosition ){
+		document.body.removeChild( this.homePosition.domElement );
+	}
 
 	this.shapes = [];
 	

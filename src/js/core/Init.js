@@ -22,7 +22,8 @@ Pointerly.Init = function(){
 			if( Pointerly.CURRENT_ENVIRONMENT.objects().length === 0 ){
 				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
 			}
-		}
+		},
+		homePosition: true
 	};
 	var env = new Pointerly.Environment( setup );
 };
