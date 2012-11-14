@@ -25,7 +25,8 @@ Pointerly.Init = function(){
 		},
 		homePosition: {
 			width: 30,
-			height: 30
+			height: 30,
+			color: 'red'
 		}
 	};
 	var env = new Pointerly.Environment( setup );

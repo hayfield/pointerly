@@ -1,6 +1,8 @@
 Pointerly.Home = function( homeSetup ){
 	var home = this,
-		width, height;
+		width,
+		height,
+		color;
 
 	if( typeof homeSetup === 'undefined' ){
 		return;
@@ -20,11 +22,12 @@ Pointerly.Home = function( homeSetup ){
 
 	width = typeof homeSetup.width === 'number' ? homeSetup.width : 40;
 	height = typeof homeSetup.height === 'number' ? homeSetup.height : 40;
+	color = typeof homeSetup.color !== 'undefined' ? homeSetup.color : 'orange';
 
 	this.domElement = document.createElement('div');
 
 	this.setSize( width, height );
-	this.domElement.style.backgroundColor = 'blue';
+	this.domElement.style.backgroundColor = color;
 	this.domElement.className += 'homePosition';
 
 	document.body.appendChild( this.domElement );
