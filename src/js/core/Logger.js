@@ -79,6 +79,8 @@ Pointerly.Logger = function( loggerSetup ){
 
 			logger.data.createdShapes = [];
 			logger.data.homeAreaInteractions = [];
+			logger.data.homeAreaSize = [];
+			logger.data.homeAreaPosition = [];
 			if( setup.mousePosition ){
 				logger.data.mousePosition = [];
 			}
@@ -125,7 +127,7 @@ Pointerly.Logger = function( loggerSetup ){
 	};
 
 	this.logMouseMovement = function( timestamp ){
-		logger.data.mousePosition.push(new Pointerly.LoggedMousePosition(
+		logger.data.mousePosition.push(new Pointerly.LoggedPosition(
 			timestamp,
 			logger.lastMousePosition.x,
 			logger.lastMousePosition.y
@@ -169,7 +171,7 @@ Pointerly.Logger = function( loggerSetup ){
 	};
 
 	this.logCanvasResize = function( width, height ){
-		logger.data.canvasSize.push(new Pointerly.LoggedCanvasSize(
+		logger.data.canvasSize.push(new Pointerly.LoggedSize(
 			Date.now(),
 			width,
 			height
@@ -200,6 +202,24 @@ Pointerly.Logger = function( loggerSetup ){
 		logHomeInteraction( Pointerly.HOME_EXIT );
 	};
 
+	this.logHomeAreaPosition = function( x, y ){
+		logger.data.homeAreaPosition.push(new Pointerly.LoggedPosition(
+			Date.now(),
+			logger.lastMousePosition.x,
+			logger.lastMousePosition.y
+		));
+		
+		console.log(logger.data);
+	};
+
+	this.logHomeAreaSize = function( width, height ){
+		logger.data.homeAreaSize.push(new Pointerly.LoggedSize(
+			Date.now(),
+			width,
+			height
+		));
+	};
+
 	if( setup.mousePosition ){
 		document.addEventListener( 'mousemove', logger.trackMouseMovement );
 	}
@@ -207,7 +227,7 @@ Pointerly.Logger = function( loggerSetup ){
 	logger.resetData( true );
 };
 
-Pointerly.LoggedMousePosition = function( timestamp, x, y ){
+Pointerly.LoggedPosition = function( timestamp, x, y ){
 	this.timestamp = timestamp;
 	this.x = x;
 	this.y = y;
@@ -220,7 +240,7 @@ Pointerly.LoggedMouseClick = function( timestamp, x, y, shapeID ){
 	this.clickedShapeID = shapeID;
 };
 
-Pointerly.LoggedCanvasSize = function( timestamp, width, height ){
+Pointerly.LoggedSize = function( timestamp, width, height ){
 	this.timestamp = timestamp;
 	this.width = width;
 	this.height = height;

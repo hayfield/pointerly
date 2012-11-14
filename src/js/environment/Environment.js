@@ -19,7 +19,7 @@ Pointerly.Environment = function( setup ){
 	this.render = function(){
 		environment.renderer.render( environment.scene );
 	};
-
+	
 	this.homePosition = new Pointerly.Home( setup.homePosition );
 	Pointerly.onresize();
 

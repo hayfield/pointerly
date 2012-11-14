@@ -11,6 +11,8 @@ Pointerly.Home = function( homeSetup ){
 	this.setPosition = function( x, y ){
 		home.domElement.style.left = x + 'px';
 		home.domElement.style.top = y + 'px';
+		
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaPosition( x, y );
 	};
 
 	this.setSize = function( newWidth, newHeight ){
@@ -18,6 +20,8 @@ Pointerly.Home = function( homeSetup ){
 		height = newHeight;
 		home.domElement.style.width = width + 'px';
 		home.domElement.style.height = height + 'px';
+
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaSize( width, height );
 	};
 
 	width = typeof homeSetup.width === 'number' ? homeSetup.width : 40;
