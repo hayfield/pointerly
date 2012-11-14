@@ -33,17 +33,17 @@ Pointerly.Home = function( homeSetup ){
 	document.body.appendChild( this.domElement );
 
 	var onHomeEnter = function(){
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaEnter();
 		if( typeof homeSetup.onEnter === 'function' ){
 			homeSetup.onEnter();
 		}
-		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaEnter();
 	};
 
 	var onHomeExit = function(){
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaExit();
 		if( typeof homeSetup.onExit === 'function' ){
 			homeSetup.onExit();
 		}
-		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaExit();
 	};
 
 	this.domElement.addEventListener( 'mouseover', onHomeEnter );
