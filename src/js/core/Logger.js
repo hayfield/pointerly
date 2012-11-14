@@ -226,7 +226,7 @@ Pointerly.Logger = function( loggerSetup ){
 };
 
 Pointerly.now = function(){
-	return Date.now();
+	return (typeof performance === 'object' && typeof performance.webkitNow === 'function') ? performance.webkitNow() : Date.now();
 };
 
 Pointerly.LoggedPosition = function( timestamp, x, y ){
