@@ -33,12 +33,14 @@ Pointerly.Home = function( homeSetup ){
 		if( typeof homeSetup.onEnter === 'function' ){
 			homeSetup.onEnter();
 		}
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaEnter();
 	};
 
 	var onHomeExit = function(){
 		if( typeof homeSetup.onExit === 'function' ){
 			homeSetup.onExit();
 		}
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaExit();
 	};
 
 	this.domElement.addEventListener( 'mouseover', onHomeEnter );

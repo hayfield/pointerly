@@ -78,6 +78,7 @@ Pointerly.Logger = function( loggerSetup ){
 			logger.data.lastCheck = logger.data.startTime;
 
 			logger.data.createdShapes = [];
+			logger.data.homeAreaInteractions = [];
 			if( setup.mousePosition ){
 				logger.data.mousePosition = [];
 			}
@@ -184,6 +185,21 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
+	var logHomeInteraction = function( interaction ){
+		logger.data.homeAreaInteractions.push(new Pointerly.HomeAreaInteraction(
+			Date.now(),
+			interaction
+		));
+	};
+
+	this.logHomeAreaEnter = function(){
+		logHomeInteraction( Pointerly.HOME_ENTER );
+	};
+
+	this.logHomeAreaExit = function(){
+		logHomeInteraction( Pointerly.HOME_EXIT );
+	};
+
 	if( setup.mousePosition ){
 		document.addEventListener( 'mousemove', logger.trackMouseMovement );
 	}
@@ -219,4 +235,13 @@ Pointerly.LoggableShape = function( shape, id ){
 	this.type = shape.toString();
 	this.createTime = Date.now();
 	this.removeTime = Number.MAX_VALUE;
+};
+
+Pointerly.HOME_ENTER = 1;
+Pointerly.HOME_EXIT = 2;
+
+Pointerly.HomeAreaInteraction = function( timestamp, interaction ){
+	this.timestamp = timestamp;
+	this.enter = interaction === Pointerly.HOME_ENTER;
+	this.exit = interaction === Pointerly.HOME_EXIT;
 };
