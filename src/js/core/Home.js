@@ -29,9 +29,14 @@ Pointerly.Home = function( homeSetup ){
 
 	document.body.appendChild( this.domElement );
 
-	var bob = function(){
+	var onHomeEnter = function(){
+		console.log('hide khjfds');
+	};
+
+	var onHomeLeave = function(){
 		console.log('hide ho');
 	};
 
-	this.domElement.addEventListener( 'mouseout', bob );
+	this.domElement.addEventListener( 'mouseover', onHomeEnter );
+	this.domElement.addEventListener( 'mouseout', onHomeLeave );
 };
