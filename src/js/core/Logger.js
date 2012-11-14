@@ -208,8 +208,6 @@ Pointerly.Logger = function( loggerSetup ){
 			logger.lastMousePosition.x,
 			logger.lastMousePosition.y
 		));
-		
-		console.log(logger.data);
 	};
 
 	this.logHomeAreaSize = function( width, height ){
