@@ -99,7 +99,7 @@ Pointerly.Storage = function(){
 
 	this.removeAllData = function( reallySure, superDuperSure ){
 		if( reallySure && superDuperSure === 'Yes, I really want to delete EVERYTHING!!' && storage.dir ){
-			storage.dir.removeRecursively(function() {
+			storage.dir.removeRecursively(function(){
 				console.log('All Pointerly data removed.');
 			}, storage.errorHandler);
 		}
