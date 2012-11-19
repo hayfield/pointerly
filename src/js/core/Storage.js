@@ -3,6 +3,8 @@ Pointerly.Storage = function(){
 
 	this.requestedSpace = 1024*1024*1024;
 
+	this._writeBuffer = [];
+
 	window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
 	this.errorHandler = function( e ){
@@ -37,8 +39,6 @@ Pointerly.Storage = function(){
 			storage.fs = fs;
 			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
 				storage.dir = directory;
-				
-				
 			}, storage.errorHandler);
 		};
 
@@ -47,6 +47,27 @@ Pointerly.Storage = function(){
 		}, function(e) {
 			console.log('Error requesting quota', e);
 		});
+	};
+
+	this.writeBufferToFile = function( fileEntry ){
+		console.log(fileEntry, fileEntry.name);
+
+		fileEntry.createWriter(function(fileWriter){
+			fileWriter.onwriteend = function(e){
+				console.log('write complete');
+			};
+
+			fileWriter.onerror = function(e){
+				console.log('Write failed' + e.toString());
+			};
+
+			if( storage._writeBuffer.length === 0 ){
+				storage._writeBuffer.push('');
+			}
+			
+			var blob = new Blob([storage._writeBuffer.shift()], {type: 'text/plain'});
+			fileWriter.write(blob);
+		}, storage.errorHandler);
 	};
 
 	this.getNextNumberedFile = function( name, type, callback ){
@@ -63,18 +84,18 @@ Pointerly.Storage = function(){
 				return;
 			}
 			var fileName = constructName();
-			console.log(fileName, storage);
 			storage.dir.getFile( fileName, {create: true, exclusive: true}, callback, getFile );
 		};
 
 		getFile();
 	};
 
-	storage.requestSpace();
-
-	var back = function(a){
-		console.log('back', a, a.name);
+	this.save = function( name, data ){
+		storage._writeBuffer.push(data);
+		storage.getNextNumberedFile( name, 'txt', storage.writeBufferToFile );
 	};
 
-	storage.getNextNumberedFile('jimmu', 'txt', back);
+	storage.requestSpace();
+
+	storage.save('henry', 'To be or not to be');
 };
