@@ -1,0 +1,3 @@
+Pointerly.Storage = function(){
+
+};
