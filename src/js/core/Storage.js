@@ -31,7 +31,7 @@ Pointerly.Storage = function(){
 				break;
 		};
 
-		console.log('Error: ' + msg);
+		console.log('Storage Error: ' + msg);
 	};
 
 	this.requestSpace = function(){
@@ -98,6 +98,4 @@ Pointerly.Storage = function(){
 	};
 
 	storage.requestSpace();
-
-	storage.save('henry', 'To be or not to be');
 };
