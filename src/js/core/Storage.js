@@ -38,7 +38,7 @@ Pointerly.Storage = function(){
 			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
 				storage.dir = directory;
 				
-				storage.getNextNumberedFile('jimmu', 'txt', back);
+				
 			}, storage.errorHandler);
 		};
 
@@ -58,6 +58,10 @@ Pointerly.Storage = function(){
 		};
 
 		var getFile = function(){
+			if( typeof storage.dir === 'undefined' ){
+				window.setTimeout( getFile, 5 );
+				return;
+			}
 			var fileName = constructName();
 			console.log(fileName, storage);
 			storage.dir.getFile( fileName, {create: true, exclusive: true}, callback, getFile );
@@ -71,4 +75,6 @@ Pointerly.Storage = function(){
 	var back = function(a){
 		console.log('back', a, a.name);
 	};
+
+	storage.getNextNumberedFile('jimmu', 'txt', back);
 };
