@@ -1,35 +1,10 @@
-Pointerly.Init = function(){
+Pointerly.Init = function( setup ){
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 	Pointerly.ClickHandler.SetupDefaults();
 	Pointerly.ShapeGeneration.SetupDefaults();
 	Pointerly.Shapes.SetupDefaults();
 
-	var setup = {
-		shapes: [ Pointerly.Shapes.Triangle, Pointerly.Shapes.Circle, Pointerly.Shapes.Rectangle ],
-		colors: [ 'red', 'orange', 'blue', 'green', 'black' ],
-		shapeLayout: 'experiment',
-		shapeGenSettings: {
-			rowsOfShapes: 2,
-			columnsOfShapes: 3
-		},
-		clickType: 'mouse',
-		fixedViewBetweenEvents: false,
-		onShapeClick: function( environment, shape ){
-			Pointerly.CURRENT_ENVIRONMENT.removeShape( shape );
-			if( Pointerly.CURRENT_ENVIRONMENT.objects().length === 0 ){
-				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
-			}
-		},
-		homePosition: {
-			width: 30,
-			height: 30,
-			color: 'red',
-			onEnter: function(){
-				// make a shape appear and stuff
-			}
-		}
-	};
 	var env = new Pointerly.Environment( setup );
 };
 
