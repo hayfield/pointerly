@@ -72,6 +72,7 @@ Pointerly.Logger = function( loggerSetup ){
 	};
 
 	this.save = function(){
+		console.log('logger saving');
 		Pointerly.CURRENT_ENVIRONMENT.storage.save( 'logger-data', JSON.stringify(logger.data) );
 	};
 

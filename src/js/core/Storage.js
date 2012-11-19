@@ -6,6 +6,7 @@ Pointerly.Storage = function(){
 	this._writeBuffer = [];
 
 	window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+	window.storageInfo = window.storageInfo || window.webkitStorageInfo;
 
 	this.errorHandler = function( e ){
 		var msg = '';
@@ -37,6 +38,11 @@ Pointerly.Storage = function(){
 	this.initStorage = function(){
 		var onInitFs = function( fs ){
 			storage.fs = fs;
+
+			window.storageInfo.queryUsageAndQuota(window.PERSISTENT, function(used, total){
+				console.log('used storage:', used, 'total storage:', total, 'remaining:', total-used);
+			});
+
 			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
 				storage.dir = directory;
 			}, storage.errorHandler);
@@ -64,7 +70,7 @@ Pointerly.Storage = function(){
 			};
 
 			fileWriter.onerror = function(e){
-				console.log('Write failed' + e.toString(), '\n' + data);
+				console.log('Write failed' + e.toString(), e);
 			};
 
 			fileWriter.write(blob);
@@ -78,13 +84,16 @@ Pointerly.Storage = function(){
 			id++;
 			return name + '-' + id + '.' + type;
 		};
-
+		var err = function(e){
+			console.log(e);
+		};
 		var getFile = function(){
 			if( typeof storage.dir === 'undefined' ){
-				window.setTimeout( getFile, 5 );
+				window.setTimeout( getFile, 50 );
 				return;
 			}
 			var fileName = constructName();
+			console.log('name:', fileName);
 			storage.dir.getFile( fileName, {create: true, exclusive: true}, callback, getFile );
 		};
 
@@ -92,7 +101,9 @@ Pointerly.Storage = function(){
 	};
 
 	this.save = function( name, data ){
+		console.log('saving');
 		storage._writeBuffer.push(data);
+		console.log('pushed to buffer', storage._writeBuffer.length);
 		storage.getNextNumberedFile( name, 'txt', storage.writeBufferToFile );
 	};
 
