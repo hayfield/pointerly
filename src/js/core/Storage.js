@@ -37,6 +37,8 @@ Pointerly.Storage = function(){
 			storage.fs = fs;
 			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
 				storage.dir = directory;
+				
+				storage.getNextNumberedFile('jimmu', 'txt', back);
 			}, storage.errorHandler);
 		};
 
@@ -47,9 +49,26 @@ Pointerly.Storage = function(){
 		});
 	};
 
-	this.getNextFileName = function( name, type ){
+	this.getNextNumberedFile = function( name, type, callback ){
+		var id = 0;
 
+		var constructName = function(){
+			id++;
+			return name + '-' + id + '.' + type;
+		};
+
+		var getFile = function(){
+			var fileName = constructName();
+			console.log(fileName, storage);
+			storage.dir.getFile( fileName, {create: true, exclusive: true}, callback, getFile );
+		};
+
+		getFile();
 	};
 
 	storage.requestSpace();
+
+	var back = function(a){
+		console.log('back', a, a.name);
+	};
 };
