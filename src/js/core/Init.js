@@ -31,6 +31,7 @@ Pointerly.Init = function(){
 		}
 	};
 	var env = new Pointerly.Environment( setup );
+	var st = new Pointerly.Storage();
 };
 
 Pointerly.onresize = function(){
