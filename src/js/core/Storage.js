@@ -42,9 +42,9 @@ Pointerly.Storage = function(){
 			}, storage.errorHandler);
 		};
 
-		window.webkitStorageInfo.requestQuota(window.PERSISTENT, storage.requestSpace, function(grantedBytes) {
+		window.webkitStorageInfo.requestQuota(window.PERSISTENT, storage.requestSpace, function(grantedBytes){
 			window.requestFileSystem(window.PERSISTENT, grantedBytes, onInitFs, storage.errorHandler);
-		}, function(e) {
+		}, function(e){
 			console.log('Error requesting quota', e);
 		});
 	};
@@ -53,19 +53,21 @@ Pointerly.Storage = function(){
 		console.log(fileEntry, fileEntry.name);
 
 		fileEntry.createWriter(function(fileWriter){
+			var data = storage._writeBuffer.shift(),
+				blob = new Blob([data], {type: 'text/plain'});
+
 			fileWriter.onwriteend = function(e){
-				console.log('write complete');
+				console.log('write complete\n', data);
 			};
 
 			fileWriter.onerror = function(e){
-				console.log('Write failed' + e.toString());
+				console.log('Write failed' + e.toString(), '\n' + data);
 			};
 
 			if( storage._writeBuffer.length === 0 ){
 				storage._writeBuffer.push('');
 			}
 			
-			var blob = new Blob([storage._writeBuffer.shift()], {type: 'text/plain'});
 			fileWriter.write(blob);
 		}, storage.errorHandler);
 	};
