@@ -53,6 +53,9 @@ Pointerly.Storage = function(){
 		console.log(fileEntry, fileEntry.name);
 
 		fileEntry.createWriter(function(fileWriter){
+			if( storage._writeBuffer.length === 0 ){
+				storage._writeBuffer.push('');
+			}
 			var data = storage._writeBuffer.shift(),
 				blob = new Blob([data], {type: 'text/plain'});
 
@@ -64,10 +67,6 @@ Pointerly.Storage = function(){
 				console.log('Write failed' + e.toString(), '\n' + data);
 			};
 
-			if( storage._writeBuffer.length === 0 ){
-				storage._writeBuffer.push('');
-			}
-			
 			fileWriter.write(blob);
 		}, storage.errorHandler);
 	};
@@ -94,6 +93,7 @@ Pointerly.Storage = function(){
 
 	this.save = function( name, data ){
 		storage._writeBuffer.push(data);
+		console.log(data.length, storage._writeBuffer.length);
 		storage.getNextNumberedFile( name, 'txt', storage.writeBufferToFile );
 	};
 

@@ -71,6 +71,10 @@ Pointerly.Logger = function( loggerSetup ){
 		replayLoop();
 	};
 
+	this.save = function(){
+		Pointerly.CURRENT_ENVIRONMENT.storage.save( 'logger-data', JSON.stringify(logger.data) );
+	};
+
 	this.resetData = function( reallySure ){
 		if( reallySure === true ){
 			logger.data = {};

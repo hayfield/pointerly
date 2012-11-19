@@ -6,6 +6,8 @@ Pointerly.Environment = function( setup ){
 	var environment = this;
 	this.setup = setup;
 
+	this.storage = new Pointerly.Storage();
+
 	this.logger = new Pointerly.Logger({
 		mousePosition: true,
 		mouseClicks: true,
