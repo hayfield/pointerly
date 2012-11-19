@@ -35,13 +35,20 @@ Pointerly.Storage = function(){
 	this.requestSpace = function(){
 		var onInitFs = function( fs ){
 			storage.fs = fs;
+			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
+				storage.dir = directory;
+			}, storage.errorHandler);
 		};
 
 		window.webkitStorageInfo.requestQuota(window.PERSISTENT, storage.requestSpace, function(grantedBytes) {
 			window.requestFileSystem(window.PERSISTENT, grantedBytes, onInitFs, storage.errorHandler);
 		}, function(e) {
-			console.log('Error', e);
+			console.log('Error requesting quota', e);
 		});
+	};
+
+	this.getNextFileName = function( name, type ){
+
 	};
 
 	storage.requestSpace();
