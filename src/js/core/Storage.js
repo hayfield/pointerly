@@ -35,7 +35,6 @@ Pointerly.Storage = function(){
 	this.requestSpace = function(){
 		var onInitFs = function( fs ){
 			storage.fs = fs;
-			console.log(storage);
 		};
 
 		window.webkitStorageInfo.requestQuota(window.PERSISTENT, storage.requestSpace, function(grantedBytes) {
