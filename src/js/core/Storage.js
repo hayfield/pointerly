@@ -3,6 +3,8 @@ Pointerly.Storage = function(){
 
 	this.requestedSpace = 1024*1024*1024;
 
+	this.TYPE = window.TEMPORARY;
+
 	this._writeBuffer = [];
 
 	window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -35,24 +37,34 @@ Pointerly.Storage = function(){
 		console.log('Storage Error: ' + msg);
 	};
 
+	this.displayQuotas = function(){
+		window.storageInfo.queryUsageAndQuota(window.PERSISTENT, function(used, total){
+			console.log('persistent storage:', used, 'total storage:', total, 'remaining:', total-used);
+		});
+
+		window.storageInfo.queryUsageAndQuota(window.TEMPORARY, function(used, total){
+			console.log('temp storage:', used, 'total storage:', total, 'remaining:', total-used);
+		});
+	};
+
 	this.initStorage = function(){
 		var onInitFs = function( fs ){
 			storage.fs = fs;
-
-			window.storageInfo.queryUsageAndQuota(window.PERSISTENT, function(used, total){
-				console.log('used storage:', used, 'total storage:', total, 'remaining:', total-used);
-			});
 
 			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
 				storage.dir = directory;
 			}, storage.errorHandler);
 		};
 
-		window.webkitStorageInfo.requestQuota(window.PERSISTENT, storage.requestSpace, function(grantedBytes){
-			window.requestFileSystem(window.PERSISTENT, grantedBytes, onInitFs, storage.errorHandler);
-		}, function(e){
-			console.log('Error requesting quota', e);
-		});
+		if( storage.TYPE === window.PERSISTENT ){
+			window.webkitStorageInfo.requestQuota(window.PERSISTENT, storage.requestSpace, function(grantedBytes){
+				window.requestFileSystem(storage.TYPE, grantedBytes, onInitFs, storage.errorHandler);
+			}, function(e){
+				console.log('Error requesting quota', e);
+			});
+		} else if( storage.TYPE === window.TEMPORARY ){
+			window.requestFileSystem(storage.TYPE, storage.requestedSpace, onInitFs, storage.errorHandler);
+		}
 	};
 
 	this.writeBufferToFile = function( fileEntry ){
@@ -84,9 +96,7 @@ Pointerly.Storage = function(){
 			id++;
 			return name + '-' + id + '.' + type;
 		};
-		var err = function(e){
-			console.log(e);
-		};
+		
 		var getFile = function(){
 			if( typeof storage.dir === 'undefined' ){
 				window.setTimeout( getFile, 50 );
@@ -114,6 +124,13 @@ Pointerly.Storage = function(){
 			}, storage.errorHandler);
 		}
 	};
+
+	window.storageInfo.queryUsageAndQuota(window.TEMPORARY, function(used, total){
+		if( total < storage.requestedSpace || (total-used) < (storage.requestedSpace/2) ){
+			console.warn('Not a lot of temorary space available!\n',
+				'used:', used, 'total:', total, 'remaining:', total-used);
+		}
+	});
 
 	storage.initStorage();
 };
