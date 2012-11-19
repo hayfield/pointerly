@@ -97,5 +97,13 @@ Pointerly.Storage = function(){
 		storage.getNextNumberedFile( name, 'txt', storage.writeBufferToFile );
 	};
 
+	this.removeAllData = function( reallySure, superDuperSure ){
+		if( reallySure && superDuperSure === 'Yes, I really want to delete EVERYTHING!!' && storage.dir ){
+			storage.dir.removeRecursively(function() {
+				console.log('All Pointerly data removed.');
+			}, storage.errorHandler);
+		}
+	};
+
 	storage.requestSpace();
 };
