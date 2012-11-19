@@ -34,7 +34,7 @@ Pointerly.Storage = function(){
 		console.log('Storage Error: ' + msg);
 	};
 
-	this.requestSpace = function(){
+	this.initStorage = function(){
 		var onInitFs = function( fs ){
 			storage.fs = fs;
 			fs.root.getDirectory('Pointerly', {create: true}, function(directory){
@@ -104,5 +104,5 @@ Pointerly.Storage = function(){
 		}
 	};
 
-	storage.requestSpace();
+	storage.initStorage();
 };
