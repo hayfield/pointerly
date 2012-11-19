@@ -93,7 +93,6 @@ Pointerly.Storage = function(){
 
 	this.save = function( name, data ){
 		storage._writeBuffer.push(data);
-		console.log(data.length, storage._writeBuffer.length);
 		storage.getNextNumberedFile( name, 'txt', storage.writeBufferToFile );
 	};
 
