@@ -18,7 +18,7 @@ Pointerly.Logger = function(){
 
 	/**
 		The logged data
-		@type object
+		@type Pointerly.Setup.LoggerData|object
 	*/
 	this.data = {};
 	/**

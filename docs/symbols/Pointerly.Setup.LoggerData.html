@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Pointerly.Environment</title>
+		<title>JsDoc Reference - Pointerly.Setup.LoggerData</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -254,7 +254,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Pointerly.Environment
+				Class Pointerly.Setup.LoggerData
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -265,13 +265,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_environment_Environment.js.html">Environment.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Setup.js.html">Setup.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Environment.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Setup.LoggerData.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -284,9 +284,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#constructor">Pointerly.Environment</a></b>(setup)
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#constructor">Pointerly.Setup.LoggerData</a></b>()
 							</div>
-							<div class="description">An environment within which a Pointerly experiment can be run</div>
+							<div class="description">A description of the object properties which are available on a <code>Pointerly.Logger</code> data object.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -297,7 +297,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Environment.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Setup.LoggerData.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -311,9 +311,9 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#homePosition">homePosition</a></b>
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#canvasSize">canvasSize</a></b>
 								</div>
-								<div class="description">The Home Position</div>
+								<div class="description">An array of the sizes the canvas has been.</div>
 							</td>
 						</tr>
 					
@@ -321,9 +321,9 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#logger">logger</a></b>
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#createdShapes">createdShapes</a></b>
 								</div>
-								<div class="description">The way in which data will be logged</div>
+								<div class="description">An array of the shapes that have been created, in a loggable format.</div>
 							</td>
 						</tr>
 					
@@ -331,9 +331,9 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#renderer">renderer</a></b>
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#homeAreaInteractions">homeAreaInteractions</a></b>
 								</div>
-								<div class="description">A renderer to display what's in the environment</div>
+								<div class="description">An array of the interactions that have been had with the Home Position.</div>
 							</td>
 						</tr>
 					
@@ -341,9 +341,9 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#scene">scene</a></b>
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#homeAreaPosition">homeAreaPosition</a></b>
 								</div>
-								<div class="description">A scene which contains objects within the environment</div>
+								<div class="description">An array of the positions the Home Position has situated.</div>
 							</td>
 						</tr>
 					
@@ -351,9 +351,9 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#shapes">shapes</a></b>
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#homeAreaSize">homeAreaSize</a></b>
 								</div>
-								<div class="description">The shapes which are found within the environment</div>
+								<div class="description">An array of the sizes the Home Position has been.</div>
 							</td>
 						</tr>
 					
@@ -361,9 +361,39 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Environment.html#storage">storage</a></b>
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#lastCheck">lastCheck</a></b>
 								</div>
-								<div class="description">The way in which data will be stored</div>
+								<div class="description">The time at which the mouse position was last recorded.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#mouseClicks">mouseClicks</a></b>
+								</div>
+								<div class="description">An array of the clicks that the mouse has made.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#mousePosition">mousePosition</a></b>
+								</div>
+								<div class="description">An array of the positions that the mouse has been in.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.LoggerData.html#startTime">startTime</a></b>
+								</div>
+								<div class="description">The time at which logging was started.</div>
 							</td>
 						</tr>
 					
@@ -376,105 +406,6 @@ ul.inheritsList
 
 <!-- ============================== methods summary ======================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Environment.">
-					<caption>Method Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Method Attributes</th>
-							<th scope="col">Method Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#addShape">addShape</a></b>(shape, row, col)
-								</div>
-								<div class="description">Adds a shape to the environemnt</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#generateShapes">generateShapes</a></b>()
-								</div>
-								<div class="description">Generates shapes layed out in the specified manner</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#objects">objects</a></b>()
-								</div>
-								<div class="description">Flattens the array containing the shapes within the environment to 1D</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#removeShape">removeShape</a></b>(shape)
-								</div>
-								<div class="description">Removes a shape from the environment</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#render">render</a></b>()
-								</div>
-								<div class="description">Renders the environment</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;inner&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#-renderLoop">renderLoop</a></b>()
-								</div>
-								<div class="description">A render loop that will update what is displayed</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;inner&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#-resetShapes">resetShapes</a></b>()
-								</div>
-								<div class="description">Resets the shapes that are found within the environment</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;inner&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#-setupClickHandler">setupClickHandler</a></b>()
-								</div>
-								<div class="description">Sets up the click handler</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;inner&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Environment.html#-setupShapes">setupShapes</a></b>()
-								</div>
-								<div class="description">Sets up shapes</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 <!-- ============================== events summary ======================== -->
 			
 
@@ -486,28 +417,18 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Pointerly.Environment</b>(setup)
+						<b>Pointerly.Setup.LoggerData</b>()
 				</div>
 				
 				<div class="description">
-					An environment within which a Pointerly experiment can be run
+					A description of the object properties which are available on a <code>Pointerly.Logger</code> data object.<br />
+	The properties can be on a regular object, this merely describes what they are.
 					
 				</div>
 				
 				
 				
 				
-					
-						<dl class="detailList">
-						<dt class="heading">Parameters:</dt>
-						
-							<dt>
-								<span class="light fixedFont">{object}</span>  <b>setup</b>
-								
-							</dt>
-								<dd>The settings which define how the environment works</dd>
-						
-						</dl>
 					
 					
 					
@@ -525,15 +446,15 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name="homePosition"> </a>
+					<a name="canvasSize"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Home.html">Pointerly.Home</a>}</span>
-					<b>homePosition</b>
+					<span class="light">{<a href="../symbols/Pointerly.LoggedSize.html">Pointerly.LoggedSize</a>[]}</span>
+					<b>canvasSize</b>
 					
 					</div>
 					<div class="description">
-						The Home Position
+						An array of the sizes the canvas has been.
 						
 						
 					</div>
@@ -547,15 +468,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="logger"> </a>
+					<a name="createdShapes"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Logger.html">Pointerly.Logger</a>}</span>
-					<b>logger</b>
+					<span class="light">{<a href="../symbols/Pointerly.LoggableShape.html">Pointerly.LoggableShape</a>[]}</span>
+					<b>createdShapes</b>
 					
 					</div>
 					<div class="description">
-						The way in which data will be logged
+						An array of the shapes that have been created, in a loggable format.
 						
 						
 					</div>
@@ -569,15 +490,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="renderer"> </a>
+					<a name="homeAreaInteractions"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Renderer.html">Pointerly.Renderer</a>}</span>
-					<b>renderer</b>
+					<span class="light">{<a href="../symbols/Pointerly.HomeAreaInteraction.html">Pointerly.HomeAreaInteraction</a>[]}</span>
+					<b>homeAreaInteractions</b>
 					
 					</div>
 					<div class="description">
-						A renderer to display what's in the environment
+						An array of the interactions that have been had with the Home Position.
 						
 						
 					</div>
@@ -591,15 +512,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="scene"> </a>
+					<a name="homeAreaPosition"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Scene.html">Pointerly.Scene</a>}</span>
-					<b>scene</b>
+					<span class="light">{<a href="../symbols/Pointerly.LoggedPosition.html">Pointerly.LoggedPosition</a>[]}</span>
+					<b>homeAreaPosition</b>
 					
 					</div>
 					<div class="description">
-						A scene which contains objects within the environment
+						An array of the positions the Home Position has situated.
 						
 						
 					</div>
@@ -613,15 +534,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="shapes"> </a>
+					<a name="homeAreaSize"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>[]}</span>
-					<b>shapes</b>
+					<span class="light">{<a href="../symbols/Pointerly.LoggedSize.html">Pointerly.LoggedSize</a>[]}</span>
+					<b>homeAreaSize</b>
 					
 					</div>
 					<div class="description">
-						The shapes which are found within the environment
+						An array of the sizes the Home Position has been.
 						
 						
 					</div>
@@ -635,15 +556,81 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="storage"> </a>
+					<a name="lastCheck"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Storage.html">Pointerly.Storage</a>}</span>
-					<b>storage</b>
+					<span class="light">{number}</span>
+					<b>lastCheck</b>
 					
 					</div>
 					<div class="description">
-						The way in which data will be stored
+						The time at which the mouse position was last recorded.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mouseClicks"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Pointerly.LoggedMouseClick.html">Pointerly.LoggedMouseClick</a>[]}</span>
+					<b>mouseClicks</b>
+					
+					</div>
+					<div class="description">
+						An array of the clicks that the mouse has made.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mousePosition"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Pointerly.LoggedPosition.html">Pointerly.LoggedPosition</a>[]}</span>
+					<b>mousePosition</b>
+					
+					</div>
+					<div class="description">
+						An array of the positions that the mouse has been in.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="startTime"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>startTime</b>
+					
+					</div>
+					<div class="description">
+						The time at which logging was started.
 						
 						
 					</div>
@@ -661,277 +648,6 @@ ul.inheritsList
 
 <!-- ============================== method details ========================= -->		
 			
-				<div class="sectionTitle">
-					Method Detail
-				</div>
-				
-					<a name="addShape"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>addShape</b>(shape, row, col)
-					
-					</div>
-					<div class="description">
-						Adds a shape to the environemnt
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> <b>shape</b>
-									
-								</dt>
-								<dd>The shape to add</dd>
-							
-								<dt>
-									<span class="light fixedFont">{number}</span> <b>row</b>
-									<i>Optional</i>
-								</dt>
-								<dd>The row in which the shape is located</dd>
-							
-								<dt>
-									<span class="light fixedFont">{number}</span> <b>col</b>
-									<i>Optional</i>
-								</dt>
-								<dd>The column in which the shape is located</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="generateShapes"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>generateShapes</b>()
-					
-					</div>
-					<div class="description">
-						Generates shapes layed out in the specified manner
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="objects"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>[]}</span>
-					<b>objects</b>()
-					
-					</div>
-					<div class="description">
-						Flattens the array containing the shapes within the environment to 1D
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>[]}</span> The shapes within the environment</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="removeShape"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>removeShape</b>(shape)
-					
-					</div>
-					<div class="description">
-						Removes a shape from the environment
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> <b>shape</b>
-									
-								</dt>
-								<dd>The shape to remove from the environment</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="render"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>render</b>()
-					
-					</div>
-					<div class="description">
-						Renders the environment
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="-renderLoop"> </a>
-					<div class="fixedFont">&lt;inner&gt; 
-					
-					
-					<b>renderLoop</b>()
-					
-					</div>
-					<div class="description">
-						A render loop that will update what is displayed
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="-resetShapes"> </a>
-					<div class="fixedFont">&lt;inner&gt; 
-					
-					
-					<b>resetShapes</b>()
-					
-					</div>
-					<div class="description">
-						Resets the shapes that are found within the environment
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="-setupClickHandler"> </a>
-					<div class="fixedFont">&lt;inner&gt; 
-					
-					
-					<b>setupClickHandler</b>()
-					
-					</div>
-					<div class="description">
-						Sets up the click handler
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="-setupShapes"> </a>
-					<div class="fixedFont">&lt;inner&gt; 
-					
-					
-					<b>setupShapes</b>()
-					
-					</div>
-					<div class="description">
-						Sets up shapes
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					
-				
-			
 			
 <!-- ============================== event details ========================= -->		
 			
@@ -943,7 +659,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Nov 20 2012 22:55:48 GMT-0000 (GMT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Nov 20 2012 22:55:49 GMT-0000 (GMT)
 		</div>
 	</body>
 </html>
