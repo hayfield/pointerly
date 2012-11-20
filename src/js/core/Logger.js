@@ -7,6 +7,10 @@ Pointerly.Logger = function( loggerSetup ){
 	var logger = this,
 		setup = loggerSetup;
 
+	/**
+		Whether the logger is currently replaying
+		@type boolean
+	*/
 	this.replaying = false;
 	this.replayEnv = null;
 	this.replayStartTime = Number.MAX_VALUE;
@@ -14,7 +18,15 @@ Pointerly.Logger = function( loggerSetup ){
 	this.replayCurrentTime = Number.MIN_VALUE;
 	this.replayData = null;
 
+	/**
+		The logged data
+		@type object
+	*/
 	this.data = {};
+	/**
+		The last position that a mouse was moved to
+		@type object
+	*/
 	this.lastMousePosition = {
 		x: 0,
 		y: 0
@@ -24,10 +36,17 @@ Pointerly.Logger = function( loggerSetup ){
 
 	// can replay by clicking around and then calling:
 	// Pointerly.CURRENT_ENVIRONMENT.logger.replay( Pointerly.CURRENT_ENVIRONMENT.logger.data )
+	/**
+		Updates the current time in a replay
+	*/
 	var updateReplayTime = function(){
 		logger.replayPreviousStepTime = logger.replayCurrentTime;
 		logger.replayCurrentTime = Pointerly.now() - logger.replayStartTime + logger.replayData.startTime;
 	};
+
+	/**
+		Updates the visible shapes in a replay
+	*/
 	var updateReplayShapes = function(){
 		logger.replayData.createdShapes.forEach(function( el ){
 			if( el.createTime > logger.replayPreviousStepTime && el.createTime <= logger.replayCurrentTime ){
@@ -39,6 +58,10 @@ Pointerly.Logger = function( loggerSetup ){
 			}
 		});
 	};
+
+	/**
+		Updates the canvas size in a replay
+	*/
 	var updateReplayCanvasSize = function(){
 		logger.replayData.canvasSize.forEach(function( el ){
 			if( el.timestamp > logger.replayPreviousStepTime && el.timestamp <= logger.replayCurrentTime ){
@@ -46,6 +69,10 @@ Pointerly.Logger = function( loggerSetup ){
 			}
 		});
 	};
+
+	/**
+		A loop to cause replaying to occur
+	*/
 	var replayLoop = function(){
 		updateReplayTime();
 		updateReplayCanvasSize();
@@ -65,6 +92,11 @@ Pointerly.Logger = function( loggerSetup ){
 		
 		window.requestAnimationFrame( replayLoop );
 	};
+
+	/**
+		Replays a series mouse, shape and canvas events
+		@param {object} data The logged data to replay
+	*/
 	this.replay = function( data ){
 		document.body.removeChild( Pointerly.CURRENT_ENVIRONMENT.renderer.domElement );
 		logger.replayEnv = new Pointerly.Environment({
@@ -138,7 +170,11 @@ Pointerly.Logger = function( loggerSetup ){
 		});
 	};
 
-	this.displayMousePositions = function( ctx, displayMethod ){
+	/**
+		Displays mouse positions so they can be seen
+		@param {CanvasRenderingContext2D} ctx The context on which to draw the mouse positions
+	*/
+	this.displayMousePositions = function( ctx ){
 		var dataArr = logger.data.mousePosition;
 		if( dataArr.length === 0 ){
 			return;
