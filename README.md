@@ -17,9 +17,12 @@ Data stored in the FileSystem in Chrome can be found in the `File System` folder
 To initialise Pointerly, the `Pointerly.Init` function is passed a setup object which can have the following properties.
 
 * `shapeLayout` - the type of method that should be used to layout shapes. Can be of different types
-	* `string` - indicates a defined layout to use
+	* `string` - indicates a defined layout to use. Values available by default are
+		* `grid` - lay shapes out in a grid. Requires additional setup parameters
 	* `function(environment, setup)` - function to do the shape setup
-* `clickType` - string indicating the type of click method to use
+* `clickType` - string indicating the type of click method to use. Values available by default are
+	* `mouse` - click where the mouse is
+	* `screencenter` - click in the middle of the screen
 * `fixedViewBetweenEvents` - boolean to indicate whether the view should remain fixed after it is initially drawn. Set to `true` to fix the view, `false` for it to update as things happen
 * `onShapeClick` - function to call when a shape is clicked. Passed 2 parameters - the `environment` and `shape` that was clicked.
 * `homePosition` - object which specifies the settings of the home position. If unspecified, no home area will exist
@@ -49,6 +52,20 @@ Custom shapes must define a `this.draw(settings)` function which will display th
 Shapes must also define a custom 'toString()' value which indicates what the shape is.
 
 Shapes can be registered into a pool using `Pointerly.Shapes.Register(customShape)`, allowing shapes to be created from their name.
+
+Shapes available by default are: `rectangle`, `triangle`, `circle`
+
+## Click Handlers
+
+Custom click handlers can be defined and registered in a similar way to shapes.
+
+See `Pointerly.ClickHandler` for how this works.
+
+## Shape Generation
+
+Custom methods of shape generation can be defined and registered in a similar way to click handlers and shapes.
+
+See `Pointerly.ShapeGenration` for how this works.
 
 ## Explaining the Data Blob
 
