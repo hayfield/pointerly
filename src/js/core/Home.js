@@ -12,6 +12,23 @@
 */
 Pointerly.Home = function( homeSetup ){
 	var home = this;
+	/**
+		The width of the home area
+		@type number
+		@default If <code>homeSetup.width</code> is a number, uses that, otherwise <code>40</code>
+	*/
+	var width;
+	/**
+		The height of the home area
+		@type number
+		@default If <code>homeSetup.height</code> is a number, uses that, otherwise <code>40</code>
+	*/
+	var height;
+	/**
+		The color of the home area
+		@default If <code>homeSetup.color</code> is defined, uses that, otherwise <code>orange</code>
+	*/
+	var color;
 
 	if( typeof homeSetup === 'undefined' ){
 		return;
@@ -35,39 +52,22 @@ Pointerly.Home = function( homeSetup ){
 		@param {number} newHeight The new height in px
 	*/
 	this.setSize = function( newWidth, newHeight ){
-		home._width = newWidth;
-		home._height = newHeight;
-		home.domElement.style.width = home._width + 'px';
-		home.domElement.style.height = home._height + 'px';
+		width = newWidth;
+		height = newHeight;
+		home.domElement.style.width = width + 'px';
+		home.domElement.style.height = height + 'px';
 
-		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaSize( home._width, home._height );
+		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaSize( width, height );
 	};
 
-	/**
-		The width of the home area
-		@private
-		@type {number}
-		@default If <code>homeSetup.width</code> is a number, uses that, otherwise <code>40</code>
-	*/
-	this._width = typeof homeSetup.width === 'number' ? homeSetup.width : 40;
-	/**
-		The height of the home area
-		@private
-		@type {number}
-		@default If <code>homeSetup.height</code> is a number, uses that, otherwise <code>40</code>
-	*/
-	this._height = typeof homeSetup.height === 'number' ? homeSetup.height : 40;
-	/**
-		The color of the home area
-		@private
-		@default If <code>homeSetup.color</code> is defined, uses that, otherwise <code>orange</code>
-	*/
-	this._color = typeof homeSetup.color !== 'undefined' ? homeSetup.color : 'orange';
+	width = typeof homeSetup.width === 'number' ? homeSetup.width : 40;
+	height = typeof homeSetup.height === 'number' ? homeSetup.height : 40;
+	color = typeof homeSetup.color !== 'undefined' ? homeSetup.color : 'orange';
 
 	this.domElement = document.createElement('div');
 
-	this.setSize( home._width, home._height );
-	this.domElement.style.backgroundColor = home._color;
+	this.setSize( width, height );
+	this.domElement.style.backgroundColor = color;
 	this.domElement.className += 'homePosition';
 
 	document.body.appendChild( this.domElement );
