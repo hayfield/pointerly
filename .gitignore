@@ -19,5 +19,5 @@ npm-debug.log
 jsdoc-toolkit/
 *.swp
 
-docs/
+docs/symbols/src/
 
