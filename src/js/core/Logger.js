@@ -333,6 +333,7 @@ Pointerly.Logger = function(){
 
 /**
 	Returns the current point in time. Uses high resolution timing if available
+	@returns The current point in time
 */
 Pointerly.now = function(){
 	return (typeof performance === 'object' && typeof performance.webkitNow === 'function') ? performance.webkitNow() : Date.now();
@@ -349,8 +350,20 @@ Pointerly.NO_SHAPE_CLICKED = -2;
 	@param {number} y The y position
 */
 Pointerly.LoggedPosition = function( timestamp, x, y ){
+	/**
+		The time the position was recorded
+		@type number
+	*/
 	this.timestamp = timestamp;
+	/**
+		The x position
+		@type number
+	*/
 	this.x = x;
+	/**
+		The y position
+		@type number
+	*/
 	this.y = y;
 };
 
@@ -363,9 +376,25 @@ Pointerly.LoggedPosition = function( timestamp, x, y ){
 	@param {number} shapeID The ID of the shape which was clicked on
 */
 Pointerly.LoggedMouseClick = function( timestamp, x, y, shapeID ){
+	/**
+		The time the position was recorded
+		@type number
+	*/
 	this.timestamp = timestamp;
+	/**
+		The x position
+		@type number
+	*/
 	this.x = x;
+	/**
+		The y position
+		@type number
+	*/
 	this.y = y;
+	/**
+		The ID of the shape which was clicked on
+		@type number
+	*/
 	this.clickedShapeID = shapeID;
 };
 
@@ -377,8 +406,20 @@ Pointerly.LoggedMouseClick = function( timestamp, x, y, shapeID ){
 	@param {number} height The height of the object
 */
 Pointerly.LoggedSize = function( timestamp, width, height ){
+	/**
+		The time the position was recorded
+		@type number
+	*/
 	this.timestamp = timestamp;
+	/**
+		The width of the object
+		@type number
+	*/
 	this.width = width;
+	/**
+		The height of the object
+		@type number
+	*/
 	this.height = height;
 };
 
@@ -389,13 +430,45 @@ Pointerly.LoggedSize = function( timestamp, width, height ){
 	@param {number} id The ID of the shape
 */
 Pointerly.LoggableShape = function( shape, id ){
+	/**
+		The ID of the shape
+		@type number
+	*/
 	this.id = id;
+	/**
+		The color of the shape
+		@type any valid way of defining a color, such as a <code>string</code>
+	*/
 	this.color = shape.color;
-	this.height = shape.height;
-	this.width = shape.width;
+	/**
+		The height of the shape
+		@type number
+	*/
+	this.height = height;
+	/**
+		The width of the shape
+		@type number
+	*/
+	this.width = width;
+	/**
+		The position of the shape
+		@type Pointerly.Vector2
+	*/
 	this.position = shape.position;
+	/**
+		The type of the shape
+		@type string
+	*/
 	this.type = shape.toString();
+	/**
+		The time the shape was created
+		@type number
+	*/
 	this.createTime = Pointerly.now();
+	/**
+		The time the shape was removed
+		@type number
+	*/
 	this.removeTime = Number.MAX_VALUE;
 };
 
@@ -411,7 +484,19 @@ Pointerly.HOME_EXIT = 2;
 	@param {number} interaction The type of interaction
 */
 Pointerly.HomeAreaInteraction = function( timestamp, interaction ){
+	/**
+		The time the interaction was recorded
+		@type number
+	*/
 	this.timestamp = timestamp;
+	/**
+		Indicates whether the interaction was the mouse entering the Home Position
+		@type boolean
+	*/
 	this.enter = interaction === Pointerly.HOME_ENTER;
+	/**
+		Indicates whether the interaction was the mouse exiting the Home Position
+		@type boolean
+	*/
 	this.exit = interaction === Pointerly.HOME_EXIT;
 };
