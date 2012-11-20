@@ -1,3 +1,8 @@
+/**
+	A Logger that logs the status of a Pointerly environment
+	@constructor
+	@param {object} loggerSetup The setup for the logger
+*/
 Pointerly.Logger = function( loggerSetup ){
 	var logger = this,
 		setup = loggerSetup;
@@ -71,11 +76,18 @@ Pointerly.Logger = function( loggerSetup ){
 		replayLoop();
 	};
 
+	/**
+		Saves the currently logged data to the available storage
+	*/
 	this.save = function(){
 		console.log('logger saving');
 		Pointerly.CURRENT_ENVIRONMENT.storage.save( 'logger-data', JSON.stringify(logger.data) );
 	};
 
+	/**
+		Resets the data object that stores the log of what's happened
+		@param {boolean} reallySure Set to <code>true</code> to actually reset the data
+	*/
 	this.resetData = function( reallySure ){
 		if( reallySure === true ){
 			logger.data = {};
@@ -98,6 +110,13 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
+	/**
+		Renders the positions that the mouse has been in to the screen
+		@param {CanvasRenderingContext2D} ctx The canvas context to draw on
+		@param {Pointerly.LoggedPosition[]} mousePositions The positions that the mouse has been in
+		@param {Pointerly.LoggedMouseClick[]} clickPositions The positions that the mouse clicked
+		@param {number} numberOfPositions The number of positions to render
+	*/
 	this.renderMousePositions = function( ctx, mousePositions, clickPositions, numberOfPositions ){
 		var displayedData = mousePositions;
 		ctx.lineWidth = 3;
@@ -131,6 +150,10 @@ Pointerly.Logger = function( loggerSetup ){
 		logger.renderMousePositions( ctx, mousePositions, mouseClicks, logger.numberOfPositions );
 	};
 
+	/**
+		Logs the last recorded mouse position with the provided timestamp
+		@param (number) timestamp The time to log the position as occurring
+	*/
 	this.logMouseMovement = function( timestamp ){
 		logger.data.mousePosition.push(new Pointerly.LoggedPosition(
 			timestamp,
@@ -139,6 +162,9 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
+	/**
+		Logs mouse movement as occurring at the current point in time
+	*/
 	this.log = function(){
 		var timestamp = Pointerly.now();
 		if( setup.mousePosition ){
@@ -148,6 +174,10 @@ Pointerly.Logger = function( loggerSetup ){
 		logger.data.lastCheck = timestamp;
 	};
 
+	/**
+		Caches mouse movement in an object so that it can be logged at 60fps rather than when the mousemove events fire
+		@param {MouseEvent} event The mouse movement event
+	*/
 	this.trackMouseMovement = function( event ){
 		logger.lastMousePosition = {
 			x: event.clientX,
@@ -155,11 +185,19 @@ Pointerly.Logger = function( loggerSetup ){
 		};
 	};
 
+	/**
+		Convert the given shape into a loggable format and log it
+		@param {Pointerly.Shape} shape The shape to log the creation of
+	*/
 	this.logCreatedShape = function( shape ){
 		logger.shapes.push( shape );
 		logger.data.createdShapes.push(new Pointerly.LoggableShape(shape, logger.data.createdShapes.length));
 	};
 
+	/**
+		Update the <code>removeTime</code> of the given shape to the current point in time
+		@param {Pointerly.Shape} shape The shape to log the removal of
+	*/
 	this.logRemovedShape = function( shape ){
 		var idx = logger.shapes.indexOf( shape );
 		if( idx !== -1 ){
@@ -167,6 +205,11 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
+	/**
+		Finds the LoggerID of a shape
+		@param {Pointerly.Shape} shape The shape to find the ID of
+		@returns The ID of the shape or <code>Pointerly.NO_SHAPE_CLICKED</code> if not found
+	*/
 	this.getShapeID = function( shape ){
 		if( !(shape instanceof Pointerly.Shape) ){
 			return Pointerly.NO_SHAPE_CLICKED;
@@ -175,6 +218,11 @@ Pointerly.Logger = function( loggerSetup ){
 		}
 	};
 
+	/**
+		Log the resizing of the canvas at the current point in time
+		@param {number} width The width of the canvas
+		@param {number} height The height of the canvas
+	*/
 	this.logCanvasResize = function( width, height ){
 		logger.data.canvasSize.push(new Pointerly.LoggedSize(
 			Pointerly.now(),
@@ -183,6 +231,11 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
+	/**
+		Log the position of a mouse click and what has been clicked
+		@param {MouseEvent} event The mouse click event
+		@param {Pointerly.Shape|null} object The shape that has been clicked if a shape was clicked, otherwise <code>null</code>
+	*/
 	this.logMouseClick = function( event, object ){
 		logger.data.mouseClicks.push(new Pointerly.LoggedMouseClick(
 			Pointerly.now(),
@@ -192,6 +245,10 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
+	/**
+		Log the interaction with the Home Position
+		@param {number} interaction Either <code>Pointerly.HOME_ENTER</code> or <code>Pointerly.HOME_EXIT</code>
+	*/
 	var logHomeInteraction = function( interaction ){
 		logger.data.homeAreaInteractions.push(new Pointerly.HomeAreaInteraction(
 			Pointerly.now(),
@@ -199,14 +256,25 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
+	/**
+		Log an ENTER interaction with the Home Position
+	*/
 	this.logHomeAreaEnter = function(){
 		logHomeInteraction( Pointerly.HOME_ENTER );
 	};
 
+	/**
+		Log an EXIT interaction with the Home Position
+	*/
 	this.logHomeAreaExit = function(){
 		logHomeInteraction( Pointerly.HOME_EXIT );
 	};
 
+	/**
+		Log the positioning of the Home Position at the current point in time
+		@param {number} x The x position of the Home Position
+		@param {number} y The y position of the Home Position
+	*/
 	this.logHomeAreaPosition = function( x, y ){
 		logger.data.homeAreaPosition.push(new Pointerly.LoggedPosition(
 			Pointerly.now(),
@@ -215,6 +283,11 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
+	/**
+		Log the resizing of the Home Position at the current point in time
+		@param {number} width The width of the Home Position
+		@param {number} height The height of the Home Position
+	*/
 	this.logHomeAreaSize = function( width, height ){
 		logger.data.homeAreaSize.push(new Pointerly.LoggedSize(
 			Pointerly.now(),
