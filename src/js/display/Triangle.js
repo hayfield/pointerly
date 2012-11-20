@@ -30,7 +30,7 @@ Pointerly.Shapes.Triangle.prototype = new Pointerly.Shape;
 Pointerly.Shapes.Triangle.prototype.constructor = Pointerly.Shapes.Triangle;
 
 /**
-	Returns the name of the shape in upper case
+	@returns The name of the shape
 */
 Pointerly.Shapes.Triangle.prototype.toString = function(){
 	return 'Triangle';

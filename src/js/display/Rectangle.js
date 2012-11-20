@@ -26,7 +26,7 @@ Pointerly.Shapes.Rectangle.prototype = new Pointerly.Shape;
 Pointerly.Shapes.Rectangle.prototype.constructor = Pointerly.Shapes.Rectangle;
 
 /**
-	Returns the name of the shape in upper case
+	@returns The name of the shape
 */
 Pointerly.Shapes.Rectangle.prototype.toString = function(){
 	return 'Rectangle';

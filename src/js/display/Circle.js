@@ -28,7 +28,7 @@ Pointerly.Shapes.Circle.prototype = new Pointerly.Shape;
 Pointerly.Shapes.Circle.prototype.constructor = Pointerly.Shapes.Circle;
 
 /**
-	Returns the name of the shape in upper case
+	@returns The name of the shape
 */
 Pointerly.Shapes.Circle.prototype.toString = function(){
 	return 'Circle';
