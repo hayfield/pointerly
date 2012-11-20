@@ -12,6 +12,23 @@ If running Pointerly in Chrome using the local file system (the URL starts with 
 
 Data stored in the FileSystem in Chrome can be found in the `File System` folder within the [User Data Directory](http://www.chromium.org/user-experience/user-data-directory).
 
+## Explaining the Settings Object
+
+To initialise Pointerly, the `Pointerly.Init` function is passed a setup object which can have the following properties.
+
+* `shapeLayout` - the type of method that should be used to layout shapes. Can be of different types
+	* `string` - indicates a defined layout to use
+	* `function(environment, setup)` - function to do the shape setup
+* `clickType` - string indicating the type of click method to use
+* `fixedViewBetweenEvents` - boolean to indicate whether the view should remain fixed after it is initially drawn. Set to `true` to fix the view, `false` for it to update as things happen
+* `onShapeClick` - function to call when a shape is clicked. Passed 2 parameters - the `environment` and `shape` that was clicked.
+* `homePosition` - object which specifies the settings of the home position. If unspecified, no home area will exist
+	* `width` - the width of the home area in px
+	* `height` - the height of the home area in px
+	* `color` - the color of the home area
+	* `onEnter` - a function to call when the mouse enters the home area
+	* `onExit` - a function to call when the mouse exits the home area
+
 ## Explaining the Data Blob
 
 The data that is logged is stored in the `Pointerly.CURRENT_ENVIRONMENT.logger.data` object, with the following properties.
@@ -59,20 +76,3 @@ The data that is logged is stored in the `Pointerly.CURRENT_ENVIRONMENT.logger.d
 * `x` - the x position of the click
 * `y` - the y position of the click
 * `timestamp` - the time the click was logged
-
-## Explaining the Settings Object
-
-To initialise Pointerly, the `Pointerly.Init` function is passed a setup object which can have the following properties.
-
-* `shapeLayout` - the type of method that should be used to layout shapes. Can be of different types
-	* `string` - indicates a defined layout to use
-	* `function(environment, setup)` - function to do the shape setup
-* `clickType` - string indicating the type of click method to use
-* `fixedViewBetweenEvents` - boolean to indicate whether the view should remain fixed after it is initially drawn. Set to `true` to fix the view, `false` for it to update as things happen
-* `onShapeClick` - function to call when a shape is clicked. Passed 2 parameters - the `environment` and `shape` that was clicked.
-* `homePosition` - object which specifies the settings of the home position. If unspecified, no home area will exist
-	* `width` - the width of the home area in px
-	* `height` - the height of the home area in px
-	* `color` - the color of the home area
-	* `onEnter` - a function to call when the mouse enters the home area
-	* `onExit` - a function to call when the mouse exits the home area
