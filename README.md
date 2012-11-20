@@ -64,8 +64,10 @@ The data that is logged is stored in the `Pointerly.CURRENT_ENVIRONMENT.logger.d
 
 To initialise Pointerly, the `Pointerly.Init` function is passed a setup object which can have the following properties.
 
-* `shapeLayout` - string representing the type of method that should be used to layout shapes
-* `clickType` - the type of click method to use
+* `shapeLayout` - the type of method that should be used to layout shapes. Can be of different types
+	* `string` - indicates a defined layout to use
+	* `function(environment, setup)` - function to do the shape setup
+* `clickType` - string indicating the type of click method to use
 * `onShapeClick` - function to call when a shape is clicked. Passed 2 parameters - the `environment` and `shape` that was clicked.
 * `homePosition` - object which specifies the settings of the home position. If unspecified, no home area will exist
 	* `width` - the width of the home area in px
