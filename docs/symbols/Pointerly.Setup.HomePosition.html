@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Pointerly.Scene</title>
+		<title>JsDoc Reference - Pointerly.Setup.HomePosition</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -252,7 +252,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Pointerly.Scene
+				Class Pointerly.Setup.HomePosition
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -263,13 +263,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Scene.js.html">Scene.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Setup.js.html">Setup.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Scene.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Setup.HomePosition.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -282,9 +282,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Scene.html#constructor">Pointerly.Scene</a></b>()
+								<b><a href="../symbols/Pointerly.Setup.HomePosition.html#constructor">Pointerly.Setup.HomePosition</a></b>()
 							</div>
-							<div class="description">A scene which contains things</div>
+							<div class="description">A description of the object properties which can be used to setup a <code>Pointerly.Home</code>.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -295,7 +295,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Scene.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Setup.HomePosition.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -309,9 +309,29 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Scene.html#objects">objects</a></b>
+								<b><a href="../symbols/Pointerly.Setup.HomePosition.html#color">color</a></b>
 								</div>
-								<div class="description">The objects which exist in a scene</div>
+								<div class="description">Defines the color of the Home Position.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.HomePosition.html#height">height</a></b>
+								</div>
+								<div class="description">Defines the height of the Home Position.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.HomePosition.html#width">width</a></b>
+								</div>
+								<div class="description">Defines the width of the Home Position.</div>
 							</td>
 						</tr>
 					
@@ -326,7 +346,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Scene.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Setup.HomePosition.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -339,27 +359,18 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#addObject">addObject</a></b>(obj)
+								<div class="fixedFont"><b><a href="../symbols/Pointerly.Setup.HomePosition.html#onEnter">onEnter</a></b>()
 								</div>
-								<div class="description">If an object does not already exist within the scene, add it to the scene</div>
+								<div class="description">Defines a function to call when the mouse enters the Home Position.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#removeAllObjects">removeAllObjects</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Pointerly.Setup.HomePosition.html#onExit">onExit</a></b>()
 								</div>
-								<div class="description">Removes all objects from the scene</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#removeObject">removeObject</a></b>(obj)
-								</div>
-								<div class="description">If an object is within the scene, remove it</div>
+								<div class="description">Defines a function to call when the mouse exits the Home Position.</div>
 							</td>
 						</tr>
 					
@@ -380,11 +391,12 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Pointerly.Scene</b>()
+						<b>Pointerly.Setup.HomePosition</b>()
 				</div>
 				
 				<div class="description">
-					A scene which contains things
+					A description of the object properties which can be used to setup a <code>Pointerly.Home</code>.<br />
+	The properties can be on a regular object, this merely describes what they are.
 					
 				</div>
 				
@@ -408,15 +420,59 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name="objects"> </a>
+					<a name="color"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>[]}</span>
-					<b>objects</b>
+					<span class="light">{any valid way of defining a color, such as a <code>string</code>}</span>
+					<b>color</b>
 					
 					</div>
 					<div class="description">
-						The objects which exist in a scene
+						Defines the color of the Home Position.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="height"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>height</b>
+					
+					</div>
+					<div class="description">
+						Defines the height of the Home Position.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="width"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>width</b>
+					
+					</div>
+					<div class="description">
+						Defines the width of the Home Position.
 						
 						
 					</div>
@@ -438,51 +494,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name="addObject"> </a>
+					<a name="onEnter"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>addObject</b>(obj)
+					<span class="light">{function}</span>
+					<b>onEnter</b>()
 					
 					</div>
 					<div class="description">
-						If an object does not already exist within the scene, add it to the scene
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>obj</b>
-									
-								</dt>
-								<dd>The object to add to the scene</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="removeAllObjects"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>removeAllObjects</b>()
-					
-					</div>
-					<div class="description">
-						Removes all objects from the scene
+						Defines a function to call when the mouse enters the Home Position.
 						
 						
 					</div>
@@ -499,32 +519,21 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="removeObject"> </a>
+					<a name="onExit"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>removeObject</b>(obj)
+					<span class="light">{function}</span>
+					<b>onExit</b>()
 					
 					</div>
 					<div class="description">
-						If an object is within the scene, remove it
+						Defines a function to call when the mouse exits the Home Position.
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>obj</b>
-									
-								</dt>
-								<dd>The object to remove</dd>
-							
-							</dl>
 						
 						
 						

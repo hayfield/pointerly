@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Pointerly.Scene</title>
+		<title>JsDoc Reference - Pointerly.Setup.Environment</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -252,7 +252,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Pointerly.Scene
+				Class Pointerly.Setup.Environment
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -263,13 +263,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Scene.js.html">Scene.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Setup.js.html">Setup.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Scene.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Setup.Environment.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -282,9 +282,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Scene.html#constructor">Pointerly.Scene</a></b>()
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#constructor">Pointerly.Setup.Environment</a></b>()
 							</div>
-							<div class="description">A scene which contains things</div>
+							<div class="description">A description of the object properties which can be used to setup a <code>Pointerly.Environment</code> and are passed to <code>Pointerly.Init</code>.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -295,7 +295,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Scene.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Setup.Environment.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -309,9 +309,69 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Scene.html#objects">objects</a></b>
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#clickType">clickType</a></b>
 								</div>
-								<div class="description">The objects which exist in a scene</div>
+								<div class="description">Defines the type of click handler to use.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#displayMouseTrail">displayMouseTrail</a></b>
+								</div>
+								<div class="description">Indicates whether a mouse trail should be shown all the time, even when not replaying.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#fixedViewBetweenEvents">fixedViewBetweenEvents</a></b>
+								</div>
+								<div class="description">Indicates whether the view of the canvas should remain constant without explicit update calls.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#homePosition">homePosition</a></b>
+								</div>
+								<div class="description">Defines the setup for the Home Position.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#other">other</a></b>
+								</div>
+								<div class="description">Other properties may be defined.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#replaying">replaying</a></b>
+								</div>
+								<div class="description">Indicates whether the environment is used for replaying logged data.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.Environment.html#shapeLayout">shapeLayout</a></b>
+								</div>
+								<div class="description">Defines the method in which to layout shapes.</div>
 							</td>
 						</tr>
 					
@@ -326,7 +386,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Scene.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Setup.Environment.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -339,27 +399,18 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#addObject">addObject</a></b>(obj)
+								<div class="fixedFont"><b><a href="../symbols/Pointerly.Setup.Environment.html#onNonShapeClick">onNonShapeClick</a></b>(environment)
 								</div>
-								<div class="description">If an object does not already exist within the scene, add it to the scene</div>
+								<div class="description">Defines a function to call when a click happens, but it's not on a shape.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#removeAllObjects">removeAllObjects</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Pointerly.Setup.Environment.html#onShapeClick">onShapeClick</a></b>(environment, shape)
 								</div>
-								<div class="description">Removes all objects from the scene</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#removeObject">removeObject</a></b>(obj)
-								</div>
-								<div class="description">If an object is within the scene, remove it</div>
+								<div class="description">Defines a function to call when a shape is clicked.</div>
 							</td>
 						</tr>
 					
@@ -380,11 +431,12 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Pointerly.Scene</b>()
+						<b>Pointerly.Setup.Environment</b>()
 				</div>
 				
 				<div class="description">
-					A scene which contains things
+					A description of the object properties which can be used to setup a <code>Pointerly.Environment</code> and are passed to <code>Pointerly.Init</code>.<br />
+	The properties can be on a regular object, this merely describes what they are.
 					
 				</div>
 				
@@ -408,15 +460,155 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name="objects"> </a>
+					<a name="clickType"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>[]}</span>
-					<b>objects</b>
+					<span class="light">{string}</span>
+					<b>clickType</b>
 					
 					</div>
 					<div class="description">
-						The objects which exist in a scene
+						Defines the type of click handler to use.<br />
+		If undefined, clicking will have no effect.<br />
+		The possible values available by default are <code>mouse</code> and <code>screencenter</code>. Custom click handlers may be defined.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="displayMouseTrail"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>displayMouseTrail</b>
+					
+					</div>
+					<div class="description">
+						Indicates whether a mouse trail should be shown all the time, even when not replaying.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="fixedViewBetweenEvents"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>fixedViewBetweenEvents</b>
+					
+					</div>
+					<div class="description">
+						Indicates whether the view of the canvas should remain constant without explicit update calls.<br />
+		If set to anything that evaluates to <code>true</code>, the view will remain fixed, otherwise the view will update on a regular schedule.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="homePosition"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Pointerly.Setup.HomePosition.html">Pointerly.Setup.HomePosition</a>|object}</span>
+					<b>homePosition</b>
+					
+					</div>
+					<div class="description">
+						Defines the setup for the Home Position.<br />
+		If undefined, there will be no Home Position.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="other"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>other</b>
+					
+					</div>
+					<div class="description">
+						Other properties may be defined.<br />
+		Some of these additional properties may be required to customise how shape generators or click handlers work.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="replaying"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>replaying</b>
+					
+					</div>
+					<div class="description">
+						Indicates whether the environment is used for replaying logged data.<br />
+		If setting up a replay environment, this should be set to true. All other properties will then be ignored.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="shapeLayout"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{string|function}</span>
+					<b>shapeLayout</b>
+					
+					</div>
+					<div class="description">
+						Defines the method in which to layout shapes.<br />
+		If it's a <code>function</code>, that function will be used to layout the shapes.<br />
+		If it's a <code>string</code>, the registered method of shape generation with that name will be used. Custom methods of named shape generation may be defined.
 						
 						
 					</div>
@@ -438,15 +630,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name="addObject"> </a>
+					<a name="onNonShapeClick"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>addObject</b>(obj)
+					<span class="light">{function}</span>
+					<b>onNonShapeClick</b>(environment)
 					
 					</div>
 					<div class="description">
-						If an object does not already exist within the scene, add it to the scene
+						Defines a function to call when a click happens, but it's not on a shape.
 						
 						
 					</div>
@@ -458,10 +650,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>obj</b>
+									<span class="light fixedFont">{<a href="../symbols/Pointerly.Environment.html">Pointerly.Environment</a>}</span> <b>environment</b>
 									
 								</dt>
-								<dd>The object to add to the scene</dd>
+								<dd>The environment within which the click occured</dd>
 							
 							</dl>
 						
@@ -474,40 +666,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="removeAllObjects"> </a>
+					<a name="onShapeClick"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>removeAllObjects</b>()
+					<span class="light">{function}</span>
+					<b>onShapeClick</b>(environment, shape)
 					
 					</div>
 					<div class="description">
-						Removes all objects from the scene
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="removeObject"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>removeObject</b>(obj)
-					
-					</div>
-					<div class="description">
-						If an object is within the scene, remove it
+						Defines a function to call when a shape is clicked.
 						
 						
 					</div>
@@ -519,10 +686,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>obj</b>
+									<span class="light fixedFont">{<a href="../symbols/Pointerly.Environment.html">Pointerly.Environment</a>}</span> <b>environment</b>
 									
 								</dt>
-								<dd>The object to remove</dd>
+								<dd>The environment within which a shape was clicked</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> <b>shape</b>
+									
+								</dt>
+								<dd>The shape which was clicked on</dd>
 							
 							</dl>
 						

@@ -9,7 +9,7 @@ Pointerly.Shapes.Rectangle = function( shapeSetup ){
 
 	/**
 		Draws a Rectangle on the given context
-		@param {object} settings An object which specifies how and where the drawing should be done
+		@param {Pointerly.Setup.ShapeDrawing|object} settings An object which specifies how and where the drawing should be done
 	*/
 	this.draw = function( settings ){
 		var width = settings.width,

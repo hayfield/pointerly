@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Pointerly.Scene</title>
+		<title>JsDoc Reference - Pointerly.Setup.ShapeDrawing</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -252,7 +252,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Pointerly.Scene
+				Class Pointerly.Setup.ShapeDrawing
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -263,13 +263,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Scene.js.html">Scene.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_core_Setup.js.html">Setup.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Scene.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Setup.ShapeDrawing.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -282,9 +282,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Scene.html#constructor">Pointerly.Scene</a></b>()
+								<b><a href="../symbols/Pointerly.Setup.ShapeDrawing.html#constructor">Pointerly.Setup.ShapeDrawing</a></b>()
 							</div>
-							<div class="description">A scene which contains things</div>
+							<div class="description">A description of the object properties which are passed to the function when a shape is drawing itself.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -295,7 +295,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Scene.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Setup.ShapeDrawing.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -309,9 +309,39 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Scene.html#objects">objects</a></b>
+								<b><a href="../symbols/Pointerly.Setup.ShapeDrawing.html#canvas">canvas</a></b>
 								</div>
-								<div class="description">The objects which exist in a scene</div>
+								<div class="description">The canvas in the DOM which is being drawn onto.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.ShapeDrawing.html#ctx">ctx</a></b>
+								</div>
+								<div class="description">The canvas context which can be drawn on.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.ShapeDrawing.html#height">height</a></b>
+								</div>
+								<div class="description">Specifies the height of the canvas being drawn on.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Pointerly.Setup.ShapeDrawing.html#width">width</a></b>
+								</div>
+								<div class="description">Specifies the width of the canvas being drawn on.</div>
 							</td>
 						</tr>
 					
@@ -324,51 +354,6 @@ ul.inheritsList
 
 <!-- ============================== methods summary ======================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Scene.">
-					<caption>Method Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Method Attributes</th>
-							<th scope="col">Method Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#addObject">addObject</a></b>(obj)
-								</div>
-								<div class="description">If an object does not already exist within the scene, add it to the scene</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#removeAllObjects">removeAllObjects</a></b>()
-								</div>
-								<div class="description">Removes all objects from the scene</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Pointerly.Scene.html#removeObject">removeObject</a></b>(obj)
-								</div>
-								<div class="description">If an object is within the scene, remove it</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 <!-- ============================== events summary ======================== -->
 			
 
@@ -380,11 +365,12 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Pointerly.Scene</b>()
+						<b>Pointerly.Setup.ShapeDrawing</b>()
 				</div>
 				
 				<div class="description">
-					A scene which contains things
+					A description of the object properties which are passed to the function when a shape is drawing itself.<br />
+	The properties can be on a regular object, this merely describes what they are.
 					
 				</div>
 				
@@ -408,15 +394,81 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name="objects"> </a>
+					<a name="canvas"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>[]}</span>
-					<b>objects</b>
+					
+					<b>canvas</b>
 					
 					</div>
 					<div class="description">
-						The objects which exist in a scene
+						The canvas in the DOM which is being drawn onto.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="ctx"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{CanvasRenderingContext2D}</span>
+					<b>ctx</b>
+					
+					</div>
+					<div class="description">
+						The canvas context which can be drawn on.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="height"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>height</b>
+					
+					</div>
+					<div class="description">
+						Specifies the height of the canvas being drawn on.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="width"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>width</b>
+					
+					</div>
+					<div class="description">
+						Specifies the width of the canvas being drawn on.
 						
 						
 					</div>
@@ -433,108 +485,6 @@ ul.inheritsList
 			
 
 <!-- ============================== method details ========================= -->		
-			
-				<div class="sectionTitle">
-					Method Detail
-				</div>
-				
-					<a name="addObject"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>addObject</b>(obj)
-					
-					</div>
-					<div class="description">
-						If an object does not already exist within the scene, add it to the scene
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>obj</b>
-									
-								</dt>
-								<dd>The object to add to the scene</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="removeAllObjects"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>removeAllObjects</b>()
-					
-					</div>
-					<div class="description">
-						Removes all objects from the scene
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="removeObject"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>removeObject</b>(obj)
-					
-					</div>
-					<div class="description">
-						If an object is within the scene, remove it
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>obj</b>
-									
-								</dt>
-								<dd>The object to remove</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					
-				
 			
 			
 <!-- ============================== event details ========================= -->		
