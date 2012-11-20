@@ -1,3 +1,7 @@
+/**
+	Initialises Pointerly
+	@param {object} setup The setup configuration
+*/
 Pointerly.Init = function( setup ){
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
@@ -8,6 +12,9 @@ Pointerly.Init = function( setup ){
 	var env = new Pointerly.Environment( setup );
 };
 
+/**
+	An event that fires when the page is resized
+*/
 Pointerly.onresize = function(){
 	if( Pointerly.CURRENT_ENVIRONMENT instanceof Pointerly.Environment ){
 		var home = Pointerly.CURRENT_ENVIRONMENT.homePosition;
