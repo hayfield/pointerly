@@ -1,3 +1,6 @@
+/**
+	@namespace A namespace for storing shapes
+*/
 Pointerly.Shapes = Pointerly.Shapes || {};
 
 Pointerly.Shapes.TYPES = Pointerly.Shapes.TYPES || {};

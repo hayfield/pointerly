@@ -1,13 +1,28 @@
+/**
+	@namespace A namespace for methods of generating shape layouts
+*/
 Pointerly.ShapeGeneration = Pointerly.ShapeGeneration || {};
 
+/**
+	The methods of shape generation which have been defined
+	@private
+*/
 Pointerly.ShapeGeneration.TYPES = Pointerly.ShapeGeneration.TYPES || {};
 
+/**
+	Registers a method of generating shapes against a name
+	@param {string} type The name to give the method of generation
+	@param {function} funct The function to generate shapes using
+*/
 Pointerly.ShapeGeneration.Register = function( type, funct ){
 	if( typeof type === 'string' && typeof funct === 'function' ){
 		Pointerly.ShapeGeneration.TYPES[type.toLowerCase()] = funct;
 	}
 };
 
+/**
+	Sets up the default shape generation techniques
+*/
 Pointerly.ShapeGeneration.SetupDefaults = function(){
 	Pointerly.ShapeGeneration.Register( 'grid2d', Pointerly.ShapeGeneration.Grid2D );
 	Pointerly.ShapeGeneration.Register( '2dgrid', Pointerly.ShapeGeneration.Grid2D );
@@ -15,12 +30,23 @@ Pointerly.ShapeGeneration.SetupDefaults = function(){
 	Pointerly.ShapeGeneration.Register( 'experiment', Pointerly.ShapeGeneration.Experiment );
 };
 
+/**
+	Generates shapes in the given environment based on the given type
+	@param {string} The type of shape generation to use
+	@param {Pointerly.Environment} The environment to generate shapes within
+	@param {object} setup Any additional settings the generation techniques requires to work
+*/
 Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
 	if( Pointerly.ShapeGeneration.TYPES.hasOwnProperty( type.toLowerCase() ) ){
 		Pointerly.ShapeGeneration.TYPES[type.toLowerCase()]( environment, setup );
 	}
 };
 
+/**
+	Generates shapes in a 2D grid
+	@param {Pointerly.Environment} environment The environment in which to generate shapes
+	@param {object} setup Additional settings for creating the grid
+*/
 Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
 	var setup = setup || {},
 		shapeGenSetup = setup.shapeGenSettings || {},
