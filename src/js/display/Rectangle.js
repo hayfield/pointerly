@@ -2,7 +2,7 @@
 	A Rectangle shape
 	@constructor
 	@extends Pointerly.Shape
-	@param {object} shapeSetup The setup for the shape
+	@param {Pointerly.Setup.Shape|object} shapeSetup The setup for the shape
 */
 Pointerly.Shapes.Rectangle = function( shapeSetup ){
 	Pointerly.Shape.call( this, shapeSetup );

@@ -1,14 +1,8 @@
 /**
 	A Home Position that resides in the middle of the screen
 	@constructor
-	@param {object} homeSetup The setup for the home position.<br />
-		If <code>undefined</code>, setup is not completed.<br />
-		Should have the following properties:
-		<ul>
-			<li><code>width</code>
-			<li><code>height</code>
-			<li><code>color</code>
-		</ul>
+	@param {Pointerly.Setup.HomePosition|object} homeSetup The setup for the home position.<br />
+		If <code>undefined</code>, setup is not completed.
 */
 Pointerly.Home = function( homeSetup ){
 	var home = this;

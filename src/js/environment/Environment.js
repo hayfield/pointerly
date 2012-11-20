@@ -1,7 +1,7 @@
 /**
 	An environment within which a Pointerly experiment can be run
 	@constructor
-	@param {object} setup The settings which define how the environment works
+	@param {Pointerly.Setup.Environment|object} setup The settings which define how the environment works
 */
 Pointerly.Environment = function( setup ){
 	if( !setup.replaying ){
