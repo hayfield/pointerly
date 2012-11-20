@@ -49,7 +49,7 @@ Custom shapes must define a `this.draw(settings)` function which will display th
 * `height` - height of the shape in px
 * `ctx` - context on which to draw the shape
 
-Shapes must also define a custom 'toString()' value which indicates what the shape is.
+Shapes must also define a custom `toString()` value which indicates what the shape is.
 
 Shapes can be registered into a pool using `Pointerly.Shapes.Register(customShape)`, allowing shapes to be created from their name.
 
@@ -65,7 +65,7 @@ See `Pointerly.ClickHandler` for how this works.
 
 Custom methods of shape generation can be defined and registered in a similar way to click handlers and shapes.
 
-See `Pointerly.ShapeGenration` for how this works.
+See `Pointerly.ShapeGeneration` for how this works.
 
 ## Explaining the Data Blob
 
