@@ -143,12 +143,12 @@ Pointerly.LoggableShape = function( shape, id ){
 		The height of the shape
 		@type number
 	*/
-	this.height = height;
+	this.height = shape.height;
 	/**
 		The width of the shape
 		@type number
 	*/
-	this.width = width;
+	this.width = shape.width;
 	/**
 		The position of the shape
 		@type Pointerly.Vector2
