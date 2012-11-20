@@ -303,18 +303,37 @@ Pointerly.Logger = function( loggerSetup ){
 	logger.resetData( true );
 };
 
+/**
+	Returns the current point in time. Uses high resolution timing if available
+*/
 Pointerly.now = function(){
 	return (typeof performance === 'object' && typeof performance.webkitNow === 'function') ? performance.webkitNow() : Date.now();
 };
 
+/** @constant */
 Pointerly.NO_SHAPE_CLICKED = -2;
 
+/**
+	A position which can be logged
+	@constructor
+	@param {number} timestamp The time the position was recorded
+	@param {number} x The x position
+	@param {number} y The y position
+*/
 Pointerly.LoggedPosition = function( timestamp, x, y ){
 	this.timestamp = timestamp;
 	this.x = x;
 	this.y = y;
 };
 
+/**
+	A mouse click which can be logged
+	@constructor
+	@param {number} timestamp The time the position was recorded
+	@param {number} x The x position
+	@param {number} y The y position
+	@param {number} shapeID The ID of the shape which was clicked on
+*/
 Pointerly.LoggedMouseClick = function( timestamp, x, y, shapeID ){
 	this.timestamp = timestamp;
 	this.x = x;
@@ -322,12 +341,25 @@ Pointerly.LoggedMouseClick = function( timestamp, x, y, shapeID ){
 	this.clickedShapeID = shapeID;
 };
 
+/**
+	A size which can be logged
+	@constructor
+	@param {number} timestamp The time the position was recorded
+	@param {number} width The width of the object
+	@param {number} height The height of the object
+*/
 Pointerly.LoggedSize = function( timestamp, width, height ){
 	this.timestamp = timestamp;
 	this.width = width;
 	this.height = height;
 };
 
+/**
+	A shape which can be logged
+	@constructor
+	@param {Pointerly.Shape} shape The shape to convert into a loggable format
+	@param {number} id The ID of the shape
+*/
 Pointerly.LoggableShape = function( shape, id ){
 	this.id = id;
 	this.color = shape.color;
@@ -339,9 +371,17 @@ Pointerly.LoggableShape = function( shape, id ){
 	this.removeTime = Number.MAX_VALUE;
 };
 
+/** @constatnt */
 Pointerly.HOME_ENTER = 1;
+/** @constatnt */
 Pointerly.HOME_EXIT = 2;
 
+/**
+	An interaction with the home area which can be logged
+	@constructor
+	@param {number} timestamp The time the interaction occured
+	@param {number} interaction The type of interaction
+*/
 Pointerly.HomeAreaInteraction = function( timestamp, interaction ){
 	this.timestamp = timestamp;
 	this.enter = interaction === Pointerly.HOME_ENTER;
