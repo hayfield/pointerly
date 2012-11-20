@@ -86,7 +86,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	/**
 		Resets the data object that stores the log of what's happened
-		@param {boolean} reallySure Set to <code>true</code> to actually reset the data
+		@param {boolean} [reallySure] Set to <code>true</code> to actually reset the data
 	*/
 	this.resetData = function( reallySure ){
 		if( reallySure === true ){
