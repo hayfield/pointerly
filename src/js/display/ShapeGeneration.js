@@ -10,7 +10,7 @@ Pointerly.ShapeGeneration = Pointerly.ShapeGeneration || {};
 Pointerly.ShapeGeneration.TYPES = Pointerly.ShapeGeneration.TYPES || {};
 
 /**
-	Registers a method of generating shapes against a name
+	Registers a method of generating shapes against a name. Names are case-insensitive
 	@param {string} type The name to give the method of generation
 	@param {function} funct The function to generate shapes using
 */
@@ -32,9 +32,9 @@ Pointerly.ShapeGeneration.SetupDefaults = function(){
 
 /**
 	Generates shapes in the given environment based on the given type
-	@param {string} The type of shape generation to use
-	@param {Pointerly.Environment} The environment to generate shapes within
-	@param {object} setup Any additional settings the generation techniques requires to work
+	@param {string} type The type of shape generation to use
+	@param {Pointerly.Environment} environment The environment to generate shapes within
+	@param {object} [setup] Any additional settings the generation techniques requires to work
 */
 Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
 	if( Pointerly.ShapeGeneration.TYPES.hasOwnProperty( type.toLowerCase() ) ){
