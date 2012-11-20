@@ -1,11 +1,9 @@
 /**
 	A Logger that logs the status of a Pointerly environment
 	@constructor
-	@param {object} loggerSetup The setup for the logger
 */
-Pointerly.Logger = function( loggerSetup ){
-	var logger = this,
-		setup = loggerSetup;
+Pointerly.Logger = function(){
+	var logger = this;
 
 	/**
 		Whether the logger is currently replaying
@@ -127,18 +125,15 @@ Pointerly.Logger = function( loggerSetup ){
 			logger.data.lastCheck = logger.data.startTime;
 
 			logger.data.createdShapes = [];
+
 			logger.data.homeAreaInteractions = [];
 			logger.data.homeAreaSize = [];
 			logger.data.homeAreaPosition = [];
-			if( setup.mousePosition ){
-				logger.data.mousePosition = [];
-			}
-			if( setup.mouseClicks ){
-				logger.data.mouseClicks = [];
-			}
-			if( setup.canvasSize ){
-				logger.data.canvasSize = [];
-			}
+
+			logger.data.mousePosition = [];
+			logger.data.mouseClicks = [];
+
+			logger.data.canvasSize = [];
 		}
 	};
 
@@ -203,9 +198,8 @@ Pointerly.Logger = function( loggerSetup ){
 	*/
 	this.log = function(){
 		var timestamp = Pointerly.now();
-		if( setup.mousePosition ){
-			logger.logMouseMovement( timestamp );
-		}
+
+		logger.logMouseMovement( timestamp );
 
 		logger.data.lastCheck = timestamp;
 	};
@@ -332,9 +326,7 @@ Pointerly.Logger = function( loggerSetup ){
 		));
 	};
 
-	if( setup.mousePosition ){
-		document.addEventListener( 'mousemove', logger.trackMouseMovement );
-	}
+	document.addEventListener( 'mousemove', logger.trackMouseMovement );
 
 	logger.resetData( true );
 };

@@ -21,11 +21,7 @@ Pointerly.Environment = function( setup ){
 		The way in which data will be logged
 		@type Pointerly.Logger
 	*/
-	this.logger = new Pointerly.Logger({
-		mousePosition: true,
-		mouseClicks: true,
-		canvasSize: true
-	});
+	this.logger = new Pointerly.Logger();
 
 	/**
 		A scene which contains objects within the environment
