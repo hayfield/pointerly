@@ -22,6 +22,9 @@ Pointerly.Storage = function(){
 				break;
 			case FileError.SECURITY_ERR:
 				msg = 'SECURITY_ERR';
+				if( location.origin.indexOf('file:') === 0 ){
+					console.warn('A flag needs to be set to enable file access from files');
+				}
 				break;
 			case FileError.INVALID_MODIFICATION_ERR:
 				msg = 'INVALID_MODIFICATION_ERR';
