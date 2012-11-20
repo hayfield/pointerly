@@ -29,6 +29,23 @@ To initialise Pointerly, the `Pointerly.Init` function is passed a setup object 
 	* `onEnter` - a function to call when the mouse enters the home area
 	* `onExit` - a function to call when the mouse exits the home area
 
+## Shapes
+
+Shapes inherit from `Pointerly.Shape`.
+
+Shapes can be passed a `shapeSetup` object with the following properties.
+
+* `color` - the color of the shape
+* `position` - the position of the shape - object with the following properties
+	* `x` - the x position in px
+	* `y` - the y position in px
+
+Custom shapes must define a `this.draw(settings)` function which will display the shape on a canvas. The `settings` parameter is an object which has the following properties.
+
+* `width` - width of the shape in px
+* `height` - height of the shape in px
+* `ctx` - context on which to draw the shape
+
 ## Explaining the Data Blob
 
 The data that is logged is stored in the `Pointerly.CURRENT_ENVIRONMENT.logger.data` object, with the following properties.
