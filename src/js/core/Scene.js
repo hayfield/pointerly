@@ -5,7 +5,7 @@
 Pointerly.Scene = function(){
 	/**
 		The objects which exist in a scene
-		@type Array
+		@type Pointerly.Shape[]
 	*/
 	this.objects = [];
 };

@@ -1,3 +1,8 @@
+/**
+	An environment within which a Pointerly experiment can be run
+	@constructor
+	@param {object} setup The settings which define how the environment works
+*/
 Pointerly.Environment = function( setup ){
 	if( !setup.replaying ){
 		Pointerly.CURRENT_ENVIRONMENT = this;
@@ -6,27 +11,60 @@ Pointerly.Environment = function( setup ){
 	var environment = this;
 	this.setup = setup;
 
+	/**
+		The way in which data will be stored
+		@type Pointerly.Storage
+	*/
 	this.storage = new Pointerly.Storage();
 
+	/**
+		The way in which data will be logged
+		@type Pointerly.Logger
+	*/
 	this.logger = new Pointerly.Logger({
 		mousePosition: true,
 		mouseClicks: true,
 		canvasSize: true
 	});
 
+	/**
+		A scene which contains objects within the environment
+		@type Pointerly.Scene
+	*/
 	this.scene = new Pointerly.Scene();
 
-	this.renderer = new Pointerly.Renderer;
+	/**
+		A renderer to display what's in the environment
+		@type Pointerly.Renderer
+	*/
+	this.renderer = new Pointerly.Renderer();
 	document.body.appendChild( this.renderer.domElement );
+	/**
+		Renders the environment
+	*/
 	this.render = function(){
 		environment.renderer.render( environment.scene );
 	};
 	
+	/**
+		The Home Position
+		@type Pointerly.Home
+	*/
 	this.homePosition = new Pointerly.Home( setup.homePosition );
 	Pointerly.onresize();
 
+	/**
+		The shapes which are found within the environment
+		@type Pointerly.Shape[]
+	*/
 	this.shapes = [];
 	
+	/**
+		Adds a shape to the environemnt
+		@param {Pointerly.Shape} shape The shape to add
+		@param {number} [row] The row in which the shape is located
+		@param {number} [col] The column in which the shape is located
+	*/
 	this.addShape = function( shape, row, col ){
 		if( !(environment.shapes[row] instanceof Array) && typeof row === 'number' && typeof col === 'number' ){
 			environment.shapes[row] = [];
@@ -42,6 +80,11 @@ Pointerly.Environment = function( setup ){
 			environment.logger.logCreatedShape( shape );
 		}
 	};
+
+	/**
+		Removes a shape from the environment
+		@param {Pointerly.Shape} shape The shape to remove from the environment
+	*/
 	this.removeShape = function( shape ){
 		environment.scene.removeObject( shape );
 		if( !environment.setup.replaying ){
@@ -62,10 +105,16 @@ Pointerly.Environment = function( setup ){
 		}
 	};
 
+	/**
+		Resets the shapes that are found within the environment
+	*/
 	var resetShapes = function(){
 		environment.shapes = [];
 		environment.scene.removeAllObjects();
 	};
+	/**
+		Generates shapes layed out in the specified manner
+	*/
 	this.generateShapes = function(){
 		resetShapes();
 
@@ -79,17 +128,27 @@ Pointerly.Environment = function( setup ){
 			Pointerly.ShapeGeneration.FromString( environment.setup.shapeLayout, environment, environment.setup );
 		}
 	};
+	/**
+		Sets up shapes
+	*/
 	var setupShapes = function(){
 		environment.generateShapes();
 	};
 	setupShapes();
 
+	/**
+		Flattens the array containing the shapes within the environment to 1D
+		@returns {Pointerly.Shape[]} The shapes within the environment
+	*/
 	this.objects = function(){
 		var arr = [];
 
 		return arr.concat.apply( arr, environment.shapes );
 	};
 
+	/**
+		Sets up the click handler
+	*/
 	var setupClickHandler = function(){
 		if( typeof setup !== 'object' || typeof setup.clickType !== 'string' ){
 			return;
@@ -102,6 +161,9 @@ Pointerly.Environment = function( setup ){
 	};
 	setupClickHandler();
 	
+	/**
+		A render loop that will update what is displayed
+	*/
 	var renderLoop = function(){
 		environment.render();
 		if( !setup.fixedViewBetweenEvents && !environment.logger.replaying ){
