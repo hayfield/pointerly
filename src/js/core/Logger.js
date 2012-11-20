@@ -169,7 +169,7 @@ Pointerly.Logger = function( loggerSetup ){
 
 	this.getShapeID = function( shape ){
 		if( !(shape instanceof Pointerly.Shape) ){
-			return -2;
+			return Pointerly.NO_SHAPE_CLICKED;
 		} else {
 			return logger.shapes.indexOf( shape );
 		}
@@ -233,6 +233,8 @@ Pointerly.Logger = function( loggerSetup ){
 Pointerly.now = function(){
 	return (typeof performance === 'object' && typeof performance.webkitNow === 'function') ? performance.webkitNow() : Date.now();
 };
+
+Pointerly.NO_SHAPE_CLICKED = -2;
 
 Pointerly.LoggedPosition = function( timestamp, x, y ){
 	this.timestamp = timestamp;

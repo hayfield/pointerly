@@ -55,7 +55,7 @@ The data that is logged is stored in the `Pointerly.CURRENT_ENVIRONMENT.logger.d
 
 ### Pointerly.LoggedMouseClick
 
-* `clickedShapeID` - the ID of the shape that was clicked, or -2 if no shape was clicked
+* `clickedShapeID` - the ID of the shape that was clicked, or `Pointerly.NO_SHAPE_CLICKED` if no shape was clicked
 * `x` - the x position of the click
 * `y` - the y position of the click
 * `timestamp` - the time the click was logged
