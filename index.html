@@ -42,23 +42,42 @@ OBSERVATION.CLOSE = 4;
 var positions = [200,-200],
 	widths = [48,64],
 	combinations = [],
-	shouldGenerateShapes = true,
-	order = [];
+	shouldGenerateShapes = false,
+	order = [],
+	currentObservationType,
+	observationNumber = 1,
+	startingTest = true;
 
-for(var i = 0; i < positions.length; i++){
-	for(var j = 0; j < widths.length; j++){
-		combinations.push({
-			position: positions[i],
-			width: widths[j]
-		});
-	}
-}
+var observationOrder = [
+	OBSERVATION.NONE,
+	OBSERVATION.REMOTE,
+	OBSERVATION.FAR,
+	OBSERVATION.CLOSE
+];
 
-combinations.sort(function(){
-	return Math.random - 0.5;
-});
 console.log(location);
 var newLoc = location.origin + location.host + location.pathname + '#happy';
+
+var startNextObservation = function(){
+	console.log('yay');
+	shouldGenerateShapes = true;
+	document.removeEventListener( 'keyup', startNextObservation );
+};
+
+var generateCombinations = function(){
+	for(var i = 0; i < positions.length; i++){
+		for(var j = 0; j < widths.length; j++){
+			combinations.push({
+				position: positions[i],
+				width: widths[j]
+			});
+		}
+	}
+
+	combinations.sort(function(){
+		return Math.random - 0.5;
+	});
+};
 
 var setup = {
 	shapeLayout: function( environment ){
@@ -79,12 +98,17 @@ var setup = {
 		environment.removeShape( shape );
 		if( combinations.length === 0 ){
 			environment.logger.save();
+			startingTest = true;
 		}
 	},
 	homePosition: {
 		onEnter: function(){
 			if( combinations.length > 0 && shouldGenerateShapes ){
 				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
+			} else if( combinations.length === 0 && startingTest ){
+				generateCombinations();
+				document.addEventListener( 'keyup', startNextObservation );
+				startingTest = false;
 			}
 		}
 	}
