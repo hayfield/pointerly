@@ -34,7 +34,7 @@
 
 <script type="text/javascript">
 var positions = [200,400,600,800],
-	widths = [8,16,32,64],
+	widths = [16,32,48,64],
 	combinations = [],
 	shouldGenerateShapes = true;
 
@@ -54,14 +54,14 @@ combinations.sort(function(){
 var setup = {
 	shapeLayout: function( environment ){
 		if( shouldGenerateShapes ){
-			shouldGenerateShapes = false;
 			var element = combinations.shift(),
 				canvas = environment.renderer.domElement;
+			shouldGenerateShapes = false;
 			environment.addShape(new Pointerly.Shapes.Rectangle({
 				width: element.width,
 				height: canvas.height,
 				position: new Pointerly.Vector2( canvas.width/2-(element.position/2 * (Math.random() < 0.5 ? -1 : 1)), 0 )
-			}))
+			}));
 		}
 	},
 	clickType: 'mouse',
