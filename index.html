@@ -33,10 +33,17 @@
 <body>
 
 <script type="text/javascript">
-var positions = [200,400,600,800],
+var OBSERVATION = {},
+	OBSERVATION.NONE = 1,
+	OBSERVATION.REMOTE = 2,
+	OBSERVATION.FAR = 3,
+	OBSERVATION.CLOSE = 4;
+
+var positions = [200,400,600,800,-200,-400,-600,-800],
 	widths = [16,32,48,64],
 	combinations = [],
-	shouldGenerateShapes = true;
+	shouldGenerateShapes = true,
+	order = []
 
 for(var i = 0; i < positions.length; i++){
 	for(var j = 0; j < widths.length; j++){
@@ -50,6 +57,8 @@ for(var i = 0; i < positions.length; i++){
 combinations.sort(function(){
 	return Math.random - 0.5;
 });
+console.log(location);
+var newLoc = location.origin + location.host + location.pathname + '#	happy';
 
 var setup = {
 	shapeLayout: function( environment ){
@@ -60,7 +69,7 @@ var setup = {
 			environment.addShape(new Pointerly.Shapes.Rectangle({
 				width: element.width,
 				height: canvas.height,
-				position: new Pointerly.Vector2( canvas.width/2-(element.position/2 * (Math.random() < 0.5 ? -1 : 1)), 0 )
+				position: new Pointerly.Vector2( canvas.width/2- element.position/2, 0 )
 			}));
 		}
 	},
