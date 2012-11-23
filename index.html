@@ -58,11 +58,13 @@ var observationOrder = [
 console.log(location);
 var newLoc = location.origin + location.host + location.pathname + '#happy';
 
-var startNextObservation = function(){
-	console.log('yay');
-	shouldGenerateShapes = true;
-	document.removeEventListener( 'keyup', startNextObservation );
-	Pointerly.CURRENT_ENVIRONMENT.generateShapes();
+var startNextObservation = function( event ){
+	var I_KEY = 73;
+	if( event.keyCode === I_KEY ){
+		shouldGenerateShapes = true;
+		document.removeEventListener( 'keyup', startNextObservation );
+		Pointerly.CURRENT_ENVIRONMENT.generateShapes();
+	}
 };
 
 var generateCombinations = function(){
