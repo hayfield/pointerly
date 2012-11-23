@@ -130,7 +130,9 @@ Pointerly.Environment = function( setup ){
 	var setupShapes = function(){
 		environment.generateShapes();
 	};
-	setupShapes();
+	if( setup.autoGenerateShapes ){
+		setupShapes();
+	}
 
 	/**
 		Flattens the array containing the shapes within the environment to 1D

@@ -68,6 +68,12 @@ Pointerly.Setup.Environment = function(){
 	this.displayMouseTrail = false;
 
 	/**
+		Indicates whether shapes should be generated immediately when the environment is created.
+		@type boolean
+	*/
+	this.autoGenerateShapes = false;
+
+	/**
 		Other properties may be defined.<br />
 		Some of these additional properties may be required to customise how shape generators or click handlers work.
 	*/
