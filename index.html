@@ -107,10 +107,10 @@ var setup = {
 				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
 			} else if( combinations.length === 0 && startingTest ){
 				generateCombinations();
-				document.addEventListener( 'keyup', startNextObservation );
 				currentObservationType = observationOrder[observationNumber];
 				observationNumber++;
 				startingTest = false;
+				document.addEventListener( 'keyup', startNextObservation );
 			}
 		}
 	}
