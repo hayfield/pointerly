@@ -20,7 +20,7 @@ Pointerly.Home = function( homeSetup ){
 	var height;
 	/**
 		The color of the home area
-		@default If <code>homeSetup.color</code> is defined, uses that, otherwise <code>orange</code>
+		@default If <code>homeSetup.color</code> is defined, uses that, otherwise <code>black</code>
 	*/
 	var color;
 
@@ -56,7 +56,7 @@ Pointerly.Home = function( homeSetup ){
 
 	width = typeof homeSetup.width === 'number' ? homeSetup.width : 40;
 	height = typeof homeSetup.height === 'number' ? homeSetup.height : 40;
-	color = typeof homeSetup.color !== 'undefined' ? homeSetup.color : 'orange';
+	color = typeof homeSetup.color !== 'undefined' ? homeSetup.color : 'black';
 
 	this.domElement = document.createElement('div');
 
