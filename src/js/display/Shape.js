@@ -21,9 +21,9 @@ Pointerly.Shape = function( shapeSetup ){
 	this.height = shapeSetup.height || 200;
 	/**
 		The color of the shape
-		@default red
+		@default black
 	*/
-	this._color = 'red';
+	this._color = 'black';
 	
 	/**
 		The canvas representing the shape
