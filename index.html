@@ -40,7 +40,7 @@ OBSERVATION.FAR = 3;
 OBSERVATION.CLOSE = 4;
 
 var positions = [200,-200],
-	widths = [48,64],
+	widths = [32,64],
 	combinations = [],
 	shouldGenerateShapes = false,
 	order = [],
@@ -88,7 +88,7 @@ var setup = {
 			environment.addShape(new Pointerly.Shapes.Rectangle({
 				width: element.width,
 				height: canvas.height,
-				position: new Pointerly.Vector2( canvas.width/2- element.position/2, 0 )
+				position: new Pointerly.Vector2( canvas.width/2 - element.position/2 - element.width/2, 0 )
 			}));
 		}
 	},
