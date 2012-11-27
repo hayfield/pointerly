@@ -39,8 +39,8 @@ OBSERVATION.REMOTE = 2;
 OBSERVATION.FAR = 3;
 OBSERVATION.CLOSE = 4;
 
-var positions = [200,-200],
-	widths = [32,64],
+var positions = [600, 200,-200, -600],
+	widths = [16, 32, 48, 64],
 	combinations = [],
 	shouldGenerateShapes = false,
 	order = [],
@@ -60,7 +60,7 @@ var startNextObservation = function( event ){
 	if( event.keyCode === I_KEY ){
 		shouldGenerateShapes = true;
 		document.removeEventListener( 'keyup', startNextObservation );
-		Pointerly.CURRENT_ENVIRONMENT.generateShapes();
+		//Pointerly.CURRENT_ENVIRONMENT.generateShapes();
 	}
 };
 
@@ -79,6 +79,30 @@ var generateCombinations = function(){
 	});
 };
 
+var recText = function( shapeSetup ){
+	Pointerly.Shape.call( this, shapeSetup );
+
+	this.draw = function( settings ){
+		var width = settings.width,
+			height = settings.height,
+			ctx = settings.ctx;
+console.log('drawing');
+	
+		ctx.font = '15px Arial';
+		ctx.fillText('Recording Activated', 0, 12);
+	};
+
+	this.display( this.draw );
+};
+
+recText.prototype = new Pointerly.Shape;
+recText.prototype.constructor = recText;
+
+recText.prototype.toString = function(){
+	return 'Recording';
+};
+
+
 var setup = {
 	shapeLayout: function( environment ){
 		if( shouldGenerateShapes ){
@@ -90,6 +114,13 @@ var setup = {
 				height: canvas.height,
 				position: new Pointerly.Vector2( canvas.width/2 - element.position/2 - element.width/2, 0 )
 			}));
+			if (currentObservationType === OBSERVATION.REMOTE) {
+				environment.addShape(new recText({
+					width: 150,
+					height: 60,
+					position: new Pointerly.Vector2( 0, 10 )
+				}));
+			}
 		}
 	},
 	clickType: 'mouse',
