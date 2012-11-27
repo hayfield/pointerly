@@ -86,7 +86,6 @@ var recText = function( shapeSetup ){
 		var width = settings.width,
 			height = settings.height,
 			ctx = settings.ctx;
-console.log('drawing');
 	
 		ctx.font = '15px Arial';
 		ctx.fillText('Recording Activated', 0, 12);
@@ -142,6 +141,7 @@ var setup = {
 					generateCombinations();
 					observationNumber++;
 					startingTest = false;
+					shouldGenerateShapes = false;
 					document.addEventListener( 'keyup', startNextObservation );
 				}
 			}
