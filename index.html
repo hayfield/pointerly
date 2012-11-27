@@ -41,10 +41,10 @@ OBSERVATION.CLOSE = 4;
 OBSERVATION.PRACTICE = 5;
 OBSERVATION.DEMO = 6;
 
-var demoPositions = [200, -400],
-	demoWidths = [32, 48],
-	positions = [600, 200,-200, -600],
-	widths = [16, 32, 48, 64],
+var demoPositions = [200],
+	demoWidths = [32],
+	positions = [200,-200],
+	widths = [64],
 	combinations = [],
 	shouldGenerateShapes = false,
 	order = [],
@@ -64,16 +64,20 @@ var observationOrder = [
 var startNextObservation = function( event ){
 	var I_KEY = 73,
 		R_KEY = 82;
-		console.log(event.keyCode);
+	
 	if( event.keyCode === I_KEY ){
 		shouldGenerateShapes = true;
+		currentObservationType = observationOrder[observationNumber];
+		observationNumber++;
 		document.removeEventListener( 'keyup', startNextObservation );
 	} else if( currentObservationType === OBSERVATION.PRACTICE && event.keyCode === R_KEY ){
 		shouldGenerateShapes = true;
 		observationNumber--;
-		observationOrder.splice( 0, 0, OBSERVATION.PRACTICE );
+		currentObservationType = observationOrder[observationNumber];
+		observationNumber++;
 		document.removeEventListener( 'keyup', startNextObservation );
 	}
+	generateCombinations();
 };
 
 var generateCombinations = function(){
@@ -154,9 +158,7 @@ var setup = {
 			if( combinations.length > 0 && shouldGenerateShapes ){
 				Pointerly.CURRENT_ENVIRONMENT.generateShapes();
 			} else if( combinations.length === 0 && startingTest ){
-				currentObservationType = observationOrder[observationNumber];
-				if( typeof currentObservationType !== 'undefined' ){
-					generateCombinations();
+				if( observationNumber <= observationOrder.length ){
 					if (observationNumber > 0) {
 						Pointerly.CURRENT_ENVIRONMENT.addShape(new recText({
 							width: 250,
@@ -165,7 +167,6 @@ var setup = {
 							text: 'Round Complete. Call organiser.'
 						}));
 					}
-					observationNumber++;
 					startingTest = false;
 					shouldGenerateShapes = false;
 					document.addEventListener( 'keyup', startNextObservation );
