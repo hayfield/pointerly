@@ -84,13 +84,15 @@ var generateCombinations = function(){
 var recText = function( shapeSetup ){
 	Pointerly.Shape.call( this, shapeSetup );
 
+	var text = shapeSetup.text;
+
 	this.draw = function( settings ){
 		var width = settings.width,
 			height = settings.height,
 			ctx = settings.ctx;
 	
 		ctx.font = '15px Arial';
-		ctx.fillText(settings.text, 0, 12);
+		ctx.fillText(text, 0, 12);
 	};
 
 	this.display( this.draw );
@@ -142,6 +144,14 @@ var setup = {
 				currentObservationType = observationOrder[observationNumber];
 				if( typeof currentObservationType !== 'undefined' ){
 					generateCombinations();
+					if (observationNumber > 0) {
+						Pointerly.CURRENT_ENVIRONMENT.addShape(new recText({
+							width: 150,
+							height: 60,
+							position: new Pointerly.Vector2( 200, 200 ),
+							text: 'Situation Complete'
+						}));
+					}
 					observationNumber++;
 					startingTest = false;
 					shouldGenerateShapes = false;
