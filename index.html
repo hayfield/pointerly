@@ -41,10 +41,10 @@ OBSERVATION.CLOSE = 4;
 OBSERVATION.PRACTICE = 5;
 OBSERVATION.DEMO = 6;
 
-var demoPositions = [200],
-	demoWidths = [32],
+var demoPositions = [200, -300],
+	demoWidths = [32, 64],
 	positions = [200,-200],
-	widths = [64],
+	widths = [16, 32, 64],
 	combinations = [],
 	shouldGenerateShapes = false,
 	order = [],
@@ -77,7 +77,22 @@ var startNextObservation = function( event ){
 		observationNumber++;
 		document.removeEventListener( 'keyup', startNextObservation );
 	}
+	if( currentObservationType === OBSERVATION.PRACTICE ){
+		document.addEventListener( 'keyup', practiceStopper );
+	}
 	generateCombinations();
+};
+
+var practiceStopper = function( event ){
+	var S_KEY = 83;
+	
+	if( event.keyCode === S_KEY ){
+		if( currentObservationType === OBSERVATION.PRACTICE ){
+			combinations = [];
+			startingTest = true;
+			document.removeEventListener( 'keyup', practiceStopper );
+		}
+	}
 };
 
 var generateCombinations = function(){
