@@ -116,12 +116,13 @@ var setup = {
 				height: canvas.height,
 				position: new Pointerly.Vector2( canvas.width/2 - element.position/2 - element.width/2, 0 )
 			}));
-			if (currentObservationType === OBSERVATION.REMOTE) {
+			if (currentObservationType === OBSERVATION.REMOTE || currentObservationType === OBSERVATION.PRACTICE) {
+				var txt = currentObservationType === OBSERVATION.REMOTE ? 'Recording Activated' : 'Practice';
 				environment.addShape(new recText({
 					width: 150,
 					height: 60,
-					position: new Pointerly.Vector2( 0, 10 ),
-					text: 'Recording Activated'
+					position: new Pointerly.Vector2( 5, 5 ),
+					text: txt
 				}));
 			}
 		}
