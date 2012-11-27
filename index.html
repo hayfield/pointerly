@@ -39,8 +39,11 @@ OBSERVATION.REMOTE = 2;
 OBSERVATION.FAR = 3;
 OBSERVATION.CLOSE = 4;
 OBSERVATION.PRACTICE = 5;
+OBSERVATION.DEMO = 6;
 
-var positions = [600, 200,-200, -600],
+var demoPositions = [200, -400],
+	demoWidths = [32, 48],
+	positions = [600, 200,-200, -600],
 	widths = [16, 32, 48, 64],
 	combinations = [],
 	shouldGenerateShapes = false,
@@ -50,6 +53,7 @@ var positions = [600, 200,-200, -600],
 	startingTest = true;
 
 var observationOrder = [
+	OBSERVATION.DEMO,
 	OBSERVATION.PRACTICE,
 	OBSERVATION.NONE,
 	OBSERVATION.REMOTE,
@@ -66,11 +70,13 @@ var startNextObservation = function( event ){
 };
 
 var generateCombinations = function(){
-	for(var i = 0; i < positions.length; i++){
-		for(var j = 0; j < widths.length; j++){
+	var pos = currentObservationType === OBSERVATION.DEMO ? demoPositions : positions,
+		width = currentObservationType === OBSERVATION.DEMO ? demoWidths : widths;
+	for(var i = 0; i < pos.length; i++){
+		for(var j = 0; j < width.length; j++){
 			combinations.push({
-				position: positions[i],
-				width: widths[j]
+				position: pos[i],
+				width: width[j]
 			});
 		}
 	}
