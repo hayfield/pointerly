@@ -62,9 +62,16 @@ var observationOrder = [
 ];
 
 var startNextObservation = function( event ){
-	var I_KEY = 73;
+	var I_KEY = 73,
+		R_KEY = 82;
+		console.log(event.keyCode);
 	if( event.keyCode === I_KEY ){
 		shouldGenerateShapes = true;
+		document.removeEventListener( 'keyup', startNextObservation );
+	} else if( currentObservationType === OBSERVATION.PRACTICE && event.keyCode === R_KEY ){
+		shouldGenerateShapes = true;
+		observationNumber--;
+		observationOrder.splice( 0, 0, OBSERVATION.PRACTICE );
 		document.removeEventListener( 'keyup', startNextObservation );
 	}
 };
