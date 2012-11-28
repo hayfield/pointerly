@@ -33,6 +33,13 @@ Pointerly.Shape = function( shapeSetup ){
 	this.canvas.height = this.height;
 
 	/**
+		Indicates whether the action of clicking on a shape making ti disappear shoukd be disables
+		@type boolean
+		@default false
+	*/
+	this.disableClicking = shapeSetup.disableClicking ? true : false;
+
+	/**
 		Draws the shape to its own canvas
 		@param {function} drawing A function which will draw the shape
 	*/

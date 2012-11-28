@@ -154,7 +154,8 @@ var setup = {
 					width: 150,
 					height: 60,
 					position: new Pointerly.Vector2( 5, 5 ),
-					text: txt
+					text: txt,
+					disableClicking: true
 				}));
 			}
 		}
@@ -162,7 +163,9 @@ var setup = {
 	clickType: 'mouse',
 	onShapeClick: function( environment, shape ){
 		shouldGenerateShapes = true;
-		environment.removeShape( shape );
+		if( !shape.disableClicking ){
+			environment.removeShape( shape );
+		}
 		if( combinations.length === 0 ){
 			environment.logger.save();
 			startingTest = true;
@@ -179,7 +182,8 @@ var setup = {
 							width: 250,
 							height: 60,
 							position: new Pointerly.Vector2( 200, 200 ),
-							text: 'Round Complete. Call organiser.'
+							text: 'Round Complete. Call organiser.',
+							disableClicking: true
 						}));
 					}
 					startingTest = false;
