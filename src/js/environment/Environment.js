@@ -104,7 +104,7 @@ Pointerly.Environment = function( setup ){
 	/**
 		Resets the shapes that are found within the environment
 	*/
-	var resetShapes = function(){
+	this.resetShapes = function(){
 		environment.shapes = [];
 		environment.scene.removeAllObjects();
 	};
@@ -112,7 +112,7 @@ Pointerly.Environment = function( setup ){
 		Generates shapes layed out in the specified manner
 	*/
 	this.generateShapes = function(){
-		resetShapes();
+		environment.resetShapes();
 
 		if( typeof setup !== 'object' ){
 			return;
