@@ -70,6 +70,7 @@ var startNextObservation = function( event ){
 		shouldGenerateShapes = true;
 		currentObservationType = observationOrder[observationNumber];
 		observationNumber++;
+		Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Round Time ' + observationNumber, Pointerly.now() );
 		document.removeEventListener( 'keyup', startNextObservation );
 	} else if( currentObservationType === OBSERVATION.PRACTICE && event.keyCode === R_KEY ){
 		shouldGenerateShapes = true;
