@@ -109,9 +109,19 @@ var generateCombinations = function(){
 		}
 	}
 
-	combinations.sort(function(){
-		return Math.random - 0.5;
-	});
+	var fisherYatesShuffle = function( arr ){
+		var i = arr.length;
+		if ( i === 0 ) return arr;
+		while ( --i ){
+			var j = Math.floor(Math.random() * (i + 1));
+			var tempi = arr[i];
+			var tempj = arr[j];
+			arr[i] = tempj;
+			arr[j] = tempi;
+		}
+		return arr;
+	};
+	combinations = fisherYatesShuffle( combinations );
 };
 
 var recText = function( shapeSetup ){
@@ -139,12 +149,9 @@ recText.prototype.toString = function(){
 };
 
 Pointerly.Shapes.Register( recText );
-// participant number, type of observation
 // shuffling
 // reocording thing appears when you press i
 // practice thing doesn't clear early enough
-// physical timestamp of things
-// register shape
 
 var setup = {
 	shapeLayout: function( environment ){
