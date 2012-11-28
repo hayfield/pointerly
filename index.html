@@ -52,6 +52,7 @@ var demoPositions = [200, -300],
 	observationNumber = 0,
 	startingTest = true;
 
+var participantNumber = 1;
 var observationOrder = [
 	OBSERVATION.DEMO,
 	OBSERVATION.PRACTICE,
@@ -201,6 +202,11 @@ var setup = {
 };
 
 Pointerly.Init( setup );
+
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Participant Number', participantNumber );
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Observation Order', observationOrder );
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Time', Date.now() );
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Time String', new Date(Date.now()).toString() );
 
 </script>
 </body> 
