@@ -260,3 +260,27 @@ Pointerly.LoggerData = function(){
 	*/
 	this.canvasSize = [];
 };
+
+/**
+	A piece of arbitrary data which is to be logged
+	@constructor
+	@param {number} timestamp The time the position was recorded
+	@param {string} name The name of the data being logged
+	@param val The value that it being logged
+*/
+Pointerly.LoggedArbiraryData = function( timestamp, name, val ){
+	/**
+		The time the data was logged
+		@type number
+	*/
+	this.timestamp = timestamp;
+	/**
+		The name of the data
+		@type string
+	*/
+	this.name = name;
+	/**
+		The value
+	*/
+	this.val = val;
+};

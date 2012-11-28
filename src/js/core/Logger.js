@@ -134,6 +134,8 @@ Pointerly.Logger = function(){
 			logger.data.mouseClicks = [];
 
 			logger.data.canvasSize = [];
+
+			logger.data.generalData = [];
 		}
 	};
 
@@ -325,6 +327,19 @@ Pointerly.Logger = function(){
 			height
 		));
 	};
+
+	/**
+		Log a piece of arbitrary data, with a timestamp against it
+		@param {string} name The name of the data being logged
+		@param val The value that it being logged
+	*/
+	this.logGeneralData = function( name, val ){
+		logger.data.generalData.push(new Pointerly.LoggedArbiraryData(
+			Pointerly.now(),
+			name,
+			val
+		));
+	}
 
 	document.addEventListener( 'mousemove', logger.trackMouseMovement );
 
