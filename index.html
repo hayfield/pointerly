@@ -72,6 +72,7 @@ var startNextObservation = function( event ){
 		observationNumber++;
 		Pointerly.CURRENT_ENVIRONMENT.resetShapes();
 		Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Round Time ' + observationNumber, Pointerly.now() );
+		generateNoticeText( Pointerly.CURRENT_ENVIRONMENT );
 		document.removeEventListener( 'keyup', startNextObservation );
 	} else if( currentObservationType === OBSERVATION.PRACTICE && event.keyCode === R_KEY ){
 		shouldGenerateShapes = true;
@@ -79,6 +80,7 @@ var startNextObservation = function( event ){
 		currentObservationType = observationOrder[observationNumber];
 		observationNumber++;
 		Pointerly.CURRENT_ENVIRONMENT.resetShapes();
+		generateNoticeText( Pointerly.CURRENT_ENVIRONMENT );
 		document.removeEventListener( 'keyup', startNextObservation );
 	}
 	if( currentObservationType === OBSERVATION.PRACTICE ){
@@ -155,6 +157,17 @@ Pointerly.Shapes.Register( recText );
 // reocording thing appears when you press i
 // practice thing doesn't clear early enough
 
+var generateNoticeText = function( environment ){
+	var txt = currentObservationType === OBSERVATION.REMOTE ? 'Recording Activated' : currentObservationType === OBSERVATION.PRACTICE ? 'Practice' : '';
+	environment.addShape(new recText({
+		width: 150,
+		height: 60,
+		position: new Pointerly.Vector2( 5, 5 ),
+		text: txt,
+		disableClicking: true
+	}));
+};
+
 var setup = {
 	shapeLayout: function( environment ){
 		if( shouldGenerateShapes ){
@@ -167,14 +180,7 @@ var setup = {
 				position: new Pointerly.Vector2( canvas.width/2 - element.position/2 - element.width/2, 0 )
 			}));
 			if (currentObservationType === OBSERVATION.REMOTE || currentObservationType === OBSERVATION.PRACTICE) {
-				var txt = currentObservationType === OBSERVATION.REMOTE ? 'Recording Activated' : 'Practice';
-				environment.addShape(new recText({
-					width: 150,
-					height: 60,
-					position: new Pointerly.Vector2( 5, 5 ),
-					text: txt,
-					disableClicking: true
-				}));
+				generateNoticeText( environment );
 			}
 		}
 	},
