@@ -70,6 +70,7 @@ var startNextObservation = function( event ){
 		shouldGenerateShapes = true;
 		currentObservationType = observationOrder[observationNumber];
 		observationNumber++;
+		Pointerly.CURRENT_ENVIRONMENT.resetShapes();
 		Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Round Time ' + observationNumber, Pointerly.now() );
 		document.removeEventListener( 'keyup', startNextObservation );
 	} else if( currentObservationType === OBSERVATION.PRACTICE && event.keyCode === R_KEY ){
@@ -77,6 +78,7 @@ var startNextObservation = function( event ){
 		observationNumber--;
 		currentObservationType = observationOrder[observationNumber];
 		observationNumber++;
+		Pointerly.CURRENT_ENVIRONMENT.resetShapes();
 		document.removeEventListener( 'keyup', startNextObservation );
 	}
 	if( currentObservationType === OBSERVATION.PRACTICE ){
@@ -92,6 +94,7 @@ var practiceStopper = function( event ){
 		if( currentObservationType === OBSERVATION.PRACTICE ){
 			combinations = [];
 			startingTest = true;
+			Pointerly.CURRENT_ENVIRONMENT.resetShapes();
 			document.removeEventListener( 'keyup', practiceStopper );
 		}
 	}
