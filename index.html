@@ -117,7 +117,7 @@ var generateCombinations = function(){
 var recText = function( shapeSetup ){
 	Pointerly.Shape.call( this, shapeSetup );
 
-	var text = shapeSetup.text;
+	var text = typeof shapeSetup === 'object' ? shapeSetup.text || '' : '';
 
 	this.draw = function( settings ){
 		var width = settings.width,
@@ -137,6 +137,8 @@ recText.prototype.constructor = recText;
 recText.prototype.toString = function(){
 	return 'Recording';
 };
+
+Pointerly.Shapes.Register( recText );
 // participant number, type of observation
 // shuffling
 // reocording thing appears when you press i
