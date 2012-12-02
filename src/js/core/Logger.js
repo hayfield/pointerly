@@ -310,8 +310,8 @@ Pointerly.Logger = function(){
 	this.logHomeAreaPosition = function( x, y ){
 		logger.data.homeAreaPosition.push(new Pointerly.LoggedPosition(
 			Pointerly.now(),
-			logger.lastMousePosition.x,
-			logger.lastMousePosition.y
+			x,
+			y
 		));
 	};
 
