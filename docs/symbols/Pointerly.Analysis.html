@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Pointerly.Shapes</title>
+		<title>JsDoc Reference - Pointerly.Analysis</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -258,7 +258,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace Pointerly.Shapes
+				Namespace Pointerly.Analysis
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -266,16 +266,16 @@ ul.inheritsList
 				
 				
 			
-				A namespace for storing shapes
+				A namespace for methods of analysing data
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_display_Shapes.js.html">Shapes.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_js_data_Analysis.js.html">Analysis.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Shapes.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Pointerly.Analysis.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -288,7 +288,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Pointerly.Shapes.html#constructor">Pointerly.Shapes</a></b>
+								<b><a href="../symbols/Pointerly.Analysis.html#constructor">Pointerly.Analysis</a></b>
 							</div>
 							<div class="description"></div>
 						</td>
@@ -301,7 +301,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Shapes.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Pointerly.Analysis.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -315,9 +315,9 @@ ul.inheritsList
 							<td class="attributes">&lt;private&gt; &lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								Pointerly.Shapes.<b><a href="../symbols/Pointerly.Shapes.html#.TYPES">TYPES</a></b>
+								Pointerly.Analysis.<b><a href="../symbols/Pointerly.Analysis.html#.TYPES">TYPES</a></b>
 								</div>
-								<div class="description">The types of shape which have been defined</div>
+								<div class="description">The methods of analysis which have been defined</div>
 							</td>
 						</tr>
 					
@@ -332,7 +332,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Shapes.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Pointerly.Analysis.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -345,45 +345,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Pointerly.Shapes.<b><a href="../symbols/Pointerly.Shapes.html#.CreateFromLogger">CreateFromLogger</a></b>(construct)
+								<div class="fixedFont">Pointerly.Analysis.<b><a href="../symbols/Pointerly.Analysis.html#.JSONify">JSONify</a></b>(data)
 								</div>
-								<div class="description">Create a new shape from a format that has been logged</div>
+								<div class="description">Converts data into JSON format</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Pointerly.Shapes.<b><a href="../symbols/Pointerly.Shapes.html#.FromString">FromString</a></b>(type)
+								<div class="fixedFont">Pointerly.Analysis.<b><a href="../symbols/Pointerly.Analysis.html#.Register">Register</a></b>(type, funct)
 								</div>
-								<div class="description">Finds the shape constructor based on the given type</div>
+								<div class="description">Registers a method of analysing data against a name.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">Pointerly.Shapes.<b><a href="../symbols/Pointerly.Shapes.html#.NewFromString">NewFromString</a></b>(type, shapeSetup)
+								<div class="fixedFont">Pointerly.Analysis.<b><a href="../symbols/Pointerly.Analysis.html#.SetupDefaults">SetupDefaults</a></b>()
 								</div>
-								<div class="description">Creates a shape based on the given type</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">Pointerly.Shapes.<b><a href="../symbols/Pointerly.Shapes.html#.Register">Register</a></b>(type, funct)
-								</div>
-								<div class="description">Registers a shape against a name.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">Pointerly.Shapes.<b><a href="../symbols/Pointerly.Shapes.html#.SetupDefaults">SetupDefaults</a></b>()
-								</div>
-								<div class="description">Sets up the default shapes</div>
+								<div class="description">Sets up the default data analysis techniques</div>
 							</td>
 						</tr>
 					
@@ -404,7 +386,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Pointerly.Shapes</b>
+						<b>Pointerly.Analysis</b>
 				</div>
 				
 				<div class="description">
@@ -436,11 +418,11 @@ ul.inheritsList
 					<div class="fixedFont">&lt;private&gt; &lt;static&gt; 
 					
 					
-					<span class="light">Pointerly.Shapes.</span><b>TYPES</b>
+					<span class="light">Pointerly.Analysis.</span><b>TYPES</b>
 					
 					</div>
 					<div class="description">
-						The types of shape which have been defined
+						The methods of analysis which have been defined
 						
 						
 					</div>
@@ -462,15 +444,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".CreateFromLogger"> </a>
+					<a name=".JSONify"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span>
-					<span class="light">Pointerly.Shapes.</span><b>CreateFromLogger</b>(construct)
+					
+					<span class="light">Pointerly.Analysis.</span><b>JSONify</b>(data)
 					
 					</div>
 					<div class="description">
-						Create a new shape from a format that has been logged
+						Converts data into JSON format
 						
 						
 					</div>
@@ -482,10 +464,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Pointerly.LoggableShape.html">Pointerly.LoggableShape</a>|object}</span> <b>construct</b>
+									<span class="light fixedFont">{string|object}</span> <b>data</b>
 									
 								</dt>
-								<dd>The template to create a shape from</dd>
+								<dd>The data to convert</dd>
 							
 							</dl>
 						
@@ -496,99 +478,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> A constructed shape with the given settings</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".FromString"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span>
-					<span class="light">Pointerly.Shapes.</span><b>FromString</b>(type)
-					
-					</div>
-					<div class="description">
-						Finds the shape constructor based on the given type
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{string}</span> <b>type</b>
-									
-								</dt>
-								<dd>The type of shape</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> The constructor for shapes with the given name</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".NewFromString"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span>
-					<span class="light">Pointerly.Shapes.</span><b>NewFromString</b>(type, shapeSetup)
-					
-					</div>
-					<div class="description">
-						Creates a shape based on the given type
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{string}</span> <b>type</b>
-									
-								</dt>
-								<dd>The type of shape</dd>
-							
-								<dt>
-									<span class="light fixedFont">{object}</span> <b>shapeSetup</b>
-									
-								</dt>
-								<dd>The setup object for the shape</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> A constructed shape of the specified type, or <code>undefined</code> if the type given has not been specified</dd>
+								<dd>The data in JSON format</dd>
 							
 							</dl>
 						
@@ -601,11 +491,11 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">Pointerly.Shapes.</span><b>Register</b>(type, funct)
+					<span class="light">Pointerly.Analysis.</span><b>Register</b>(type, funct)
 					
 					</div>
 					<div class="description">
-						Registers a shape against a name. Names are case-insensitive
+						Registers a method of analysing data against a name. Names are case-insensitive
 						
 						
 					</div>
@@ -617,19 +507,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{string|<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> <b>type</b>
+									<span class="light fixedFont">{string}</span> <b>type</b>
 									
 								</dt>
-								<dd><ul>
-		<li>If a string, the name to give the method of generation
-		<li>If not, a shape with a custom <code>toString()</code> function
-	</ul></dd>
+								<dd>The name to give the method of data analysis</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Pointerly.Shape.html">Pointerly.Shape</a>}</span> <b>funct</b>
-									<i>Optional</i>
+									<span class="light fixedFont">{function}</span> <b>funct</b>
+									
 								</dt>
-								<dd>If <code>type</code> is a <code>string</code>, a shape</dd>
+								<dd>The function to analyse data with</dd>
 							
 							</dl>
 						
@@ -646,11 +533,11 @@ ul.inheritsList
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">Pointerly.Shapes.</span><b>SetupDefaults</b>()
+					<span class="light">Pointerly.Analysis.</span><b>SetupDefaults</b>()
 					
 					</div>
 					<div class="description">
-						Sets up the default shapes
+						Sets up the default data analysis techniques
 						
 						
 					</div>
