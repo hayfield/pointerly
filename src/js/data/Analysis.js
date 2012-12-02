@@ -46,11 +46,14 @@ Pointerly.Analysis.JSONify = function( data ){
 */
 Pointerly.Analysis.HomeToShape = function( data ){
 	var homeInteractionID = 0,
-		shapeID = 0;
+		shapeID = 0,
+		out = '';
 
 	data = Pointerly.Analysis.JSONify( data );
 	var numShapes = data.createdShapes.length,
 		interactions = data.homeAreaInteractions;
+
+	out += 'MovementTime,Distance,Width\n';
 
 	// go through the shapes
 	for( var shapeID = 0; shapeID < numShapes; shapeID++ ){
@@ -70,12 +73,14 @@ Pointerly.Analysis.HomeToShape = function( data ){
 				var moveTime = shape.removeTime - interactions[homeInteractionID].timestamp;
 				var dist = Math.abs( data.homeAreaPosition[0].x - shape.position.x );
 				var width = shape.width;
-				console.log(moveTime + ',' + dist + ',' + width);
+				out += moveTime + ',' + dist + ',' + width + '\n';
 			}
 
 			homeInteractionID++;
 		}
 	}
+
+	return out;
 };
 
 
