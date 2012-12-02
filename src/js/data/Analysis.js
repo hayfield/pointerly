@@ -60,17 +60,20 @@ Pointerly.Analysis.HomeToShape = function( data ){
 		if( shape.type !== 'Recording' && shape.removeTime < Number.MAX_VALUE ){
 			var createTime = shape.createTime;
 			// find the home area interaction when you left to click it
-			while( homeInteractionID < interactions.length && !interactions[homeInteractionID].exit && interactions[homeInteractionID].timestamp < createTime ){
+			while( homeInteractionID < interactions.length 
+				&& interactions[homeInteractionID].timestamp < createTime ){
 				homeInteractionID++;
 			}
 			
 			if( homeInteractionID < interactions.length ){
 				// find how long it took to move there
 				var moveTime = shape.removeTime - interactions[homeInteractionID].timestamp;
-				var dist = Math.abs( data.homeAreaPosition[0].x - shape.position.x ) - (data.homeAreaSize[0].width / 2);
+				var dist = Math.abs( data.homeAreaPosition[0].x - shape.position.x );
 				var width = shape.width;
 				console.log(moveTime + ',' + dist + ',' + width);
 			}
+
+			homeInteractionID++;
 		}
 	}
 };
