@@ -39,3 +39,11 @@ Pointerly.Analysis.JSONify = function( data ){
 		return data;
 	}
 };
+
+/**
+	A data analysis technique to find the time between the home area and clicking on shapes
+	@param {string|object} data The data to analyse
+*/
+Pointerly.Analysis.HomeToShape = function( data ){
+	data = Pointerly.Analysis.JSONify( data );
+};
