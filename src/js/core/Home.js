@@ -36,7 +36,6 @@ Pointerly.Home = function( homeSetup ){
 	this.setPosition = function( x, y ){
 		home.domElement.style.left = x + 'px';
 		home.domElement.style.top = y + 'px';
-		
 		Pointerly.CURRENT_ENVIRONMENT.logger.logHomeAreaPosition( x, y );
 	};
 
