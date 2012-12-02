@@ -192,6 +192,7 @@ var setup = {
 		}
 		if( combinations.length === 0 ){
 			environment.logger.save();
+			environment.storage.save( 'csvness', Pointerly.Analysis.HomeToShape( environment.logger.data ) );
 			startingTest = true;
 		}
 	},
