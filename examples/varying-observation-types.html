@@ -1,0 +1,232 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head> 
+    <title>Pointerly</title> 
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" type="text/css" href="../css/pointerly.css" />
+
+    <script type="text/javascript" src="../src/lib/Detector.js"></script> 
+    <script type="text/javascript" src="../src/lib/RequestAnimationFrame.js"></script>
+
+    <script type="text/javascript" src="../src/js/Pointerly.js"></script>
+
+    <script type="text/javascript" src="../src/js/core/Storage.js"></script>
+    <script type="text/javascript" src="../src/js/core/Logger.js"></script>
+    <script type="text/javascript" src="../src/js/core/Utils.js"></script>
+    <script type="text/javascript" src="../src/js/core/Scene.js"></script>
+    <script type="text/javascript" src="../src/js/core/Home.js"></script>
+    <script type="text/javascript" src="../src/js/core/Renderer.js"></script>
+    <script type="text/javascript" src="../src/js/core/Init.js"></script>
+
+    <script type="text/javascript" src="../src/js/data/Analysis.js"></script>
+
+    <script type="text/javascript" src="../src/js/display/Shape.js"></script>
+    <script type="text/javascript" src="../src/js/display/Shapes.js"></script>
+    <script type="text/javascript" src="../src/js/display/Triangle.js"></script>
+    <script type="text/javascript" src="../src/js/display/Circle.js"></script>
+    <script type="text/javascript" src="../src/js/display/Rectangle.js"></script>
+
+    <script type="text/javascript" src="../src/js/display/ShapeGeneration.js"></script>
+
+    <script type="text/javascript" src="../src/js/environment/ClickHandler.js"></script>
+    <script type="text/javascript" src="../src/js/environment/Environment.js"></script>
+    
+</head> 
+<body>
+
+<script type="text/javascript">
+var OBSERVATION = {};
+OBSERVATION.NONE = 1;
+OBSERVATION.REMOTE = 2;
+OBSERVATION.FAR = 3;
+OBSERVATION.CLOSE = 4;
+OBSERVATION.PRACTICE = 5;
+OBSERVATION.DEMO = 6;
+
+var demoPositions = [200, -300],
+    demoWidths = [32, 64],
+    positions = [600, 400, 200, -200, -400, -600],
+    widths = [16, 32, 48, 64],
+    combinations = [],
+    shouldGenerateShapes = false,
+    order = [],
+    currentObservationType,
+    observationNumber = 0,
+    startingTest = true;
+
+var participantNumber = 1;
+var observationOrder = [
+    OBSERVATION.DEMO,
+    OBSERVATION.PRACTICE,
+    OBSERVATION.NONE,
+    OBSERVATION.REMOTE,
+    OBSERVATION.FAR,
+    OBSERVATION.CLOSE
+];
+
+var startNextObservation = function( event ){
+    var I_KEY = 73,
+        R_KEY = 82;
+    
+    if( event.keyCode === I_KEY ){
+        shouldGenerateShapes = true;
+        currentObservationType = observationOrder[observationNumber];
+        observationNumber++;
+        Pointerly.CURRENT_ENVIRONMENT.resetShapes();
+        Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Round Time ' + observationNumber, Pointerly.now() );
+        generateNoticeText( Pointerly.CURRENT_ENVIRONMENT );
+        document.removeEventListener( 'keyup', startNextObservation );
+    } else if( currentObservationType === OBSERVATION.PRACTICE && event.keyCode === R_KEY ){
+        shouldGenerateShapes = true;
+        observationNumber--;
+        currentObservationType = observationOrder[observationNumber];
+        observationNumber++;
+        Pointerly.CURRENT_ENVIRONMENT.resetShapes();
+        generateNoticeText( Pointerly.CURRENT_ENVIRONMENT );
+        document.removeEventListener( 'keyup', startNextObservation );
+    }
+    if( currentObservationType === OBSERVATION.PRACTICE ){
+        document.addEventListener( 'keyup', practiceStopper );
+    }
+    generateCombinations();
+};
+
+var practiceStopper = function( event ){
+    var S_KEY = 83;
+    
+    if( event.keyCode === S_KEY ){
+        if( currentObservationType === OBSERVATION.PRACTICE ){
+            combinations = [];
+            startingTest = true;
+            Pointerly.CURRENT_ENVIRONMENT.resetShapes();
+            document.removeEventListener( 'keyup', practiceStopper );
+        }
+    }
+};
+
+var generateCombinations = function(){
+    var pos = currentObservationType === OBSERVATION.DEMO ? demoPositions : positions,
+        width = currentObservationType === OBSERVATION.DEMO ? demoWidths : widths;
+    for(var i = 0; i < pos.length; i++){
+        for(var j = 0; j < width.length; j++){
+            combinations.push({
+                position: pos[i],
+                width: width[j]
+            });
+        }
+    }
+
+    var fisherYatesShuffle = function( arr ){
+        var i = arr.length;
+        if ( i === 0 ) return arr;
+        while ( --i ){
+            var j = Math.floor(Math.random() * (i + 1));
+            var tempi = arr[i];
+            var tempj = arr[j];
+            arr[i] = tempj;
+            arr[j] = tempi;
+        }
+        return arr;
+    };
+    combinations = fisherYatesShuffle( combinations );
+};
+
+var recText = function( shapeSetup ){
+    Pointerly.Shape.call( this, shapeSetup );
+
+    var text = typeof shapeSetup === 'object' ? shapeSetup.text || '' : '';
+
+    this.draw = function( settings ){
+        var width = settings.width,
+            height = settings.height,
+            ctx = settings.ctx;
+    
+        ctx.font = '15px Arial';
+        ctx.fillText(text, 0, 12);
+    };
+
+    this.display( this.draw );
+};
+
+recText.prototype = new Pointerly.Shape;
+recText.prototype.constructor = recText;
+
+recText.prototype.toString = function(){
+    return 'Recording';
+};
+
+Pointerly.Shapes.Register( recText );
+
+var generateNoticeText = function( environment ){
+    var txt = currentObservationType === OBSERVATION.REMOTE ? 'Recording Activated' : currentObservationType === OBSERVATION.PRACTICE ? 'Practice' : '';
+    environment.addShape(new recText({
+        width: 150,
+        height: 60,
+        position: new Pointerly.Vector2( 5, 5 ),
+        text: txt,
+        disableClicking: true
+    }));
+};
+
+var setup = {
+    shapeLayout: function( environment ){
+        if( shouldGenerateShapes ){
+            var element = combinations.shift(),
+                canvas = environment.renderer.domElement;
+            shouldGenerateShapes = false;
+            environment.addShape(new Pointerly.Shapes.Rectangle({
+                width: element.width,
+                height: canvas.height,
+                position: new Pointerly.Vector2( canvas.width/2 - element.position/2 - element.width/2, 0 )
+            }));
+            if (currentObservationType === OBSERVATION.REMOTE || currentObservationType === OBSERVATION.PRACTICE) {
+                generateNoticeText( environment );
+            }
+        }
+    },
+    clickType: 'mouse',
+    onShapeClick: function( environment, shape ){
+        shouldGenerateShapes = true;
+        if( !shape.disableClicking ){
+            environment.removeShape( shape );
+        }
+        if( combinations.length === 0 ){
+            environment.logger.save();
+            environment.storage.save( 'csvness', Pointerly.Analysis.HomeToShape( environment.logger.data ) );
+            startingTest = true;
+        }
+    },
+    homePosition: {
+        onEnter: function(){
+            if( combinations.length > 0 && shouldGenerateShapes ){
+                Pointerly.CURRENT_ENVIRONMENT.generateShapes();
+            } else if( combinations.length === 0 && startingTest ){
+                if( observationNumber <= observationOrder.length ){
+                    if (observationNumber > 0) {
+                        Pointerly.CURRENT_ENVIRONMENT.addShape(new recText({
+                            width: 250,
+                            height: 60,
+                            position: new Pointerly.Vector2( 200, 200 ),
+                            text: 'Round Complete. Call organiser.',
+                            disableClicking: true
+                        }));
+                    }
+                    startingTest = false;
+                    shouldGenerateShapes = false;
+                    document.addEventListener( 'keyup', startNextObservation );
+                }
+            }
+        }
+    }
+};
+
+Pointerly.Init( setup );
+
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Participant Number', participantNumber );
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Observation Order', observationOrder );
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Time', Date.now() );
+Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Time String', new Date(Date.now()).toString() );
+
+</script>
+</body> 
+</html>
