@@ -43,6 +43,7 @@ OBSERVATION.CLOSE = 4;
 OBSERVATION.PRACTICE = 5;
 OBSERVATION.DEMO = 6;
 
+// global variables indicating the current state of the experiment
 var demoPositions = [200, -300],
     demoWidths = [32, 64],
     positions = [600, 400, 200, -200, -400, -600],
@@ -54,7 +55,9 @@ var demoPositions = [200, -300],
     observationNumber = 0,
     startingTest = true;
 
+// the current participant number
 var participantNumber = 1;
+// the order of observation for this participant
 var observationOrder = [
     OBSERVATION.DEMO,
     OBSERVATION.PRACTICE,
@@ -64,6 +67,7 @@ var observationOrder = [
     OBSERVATION.CLOSE
 ];
 
+// handle the moving on to a new round when a key is pressed
 var startNextObservation = function( event ){
     var I_KEY = 73,
         R_KEY = 82;
@@ -91,6 +95,7 @@ var startNextObservation = function( event ){
     generateCombinations();
 };
 
+// handle stopping the practice round before all the shapes have been completed
 var practiceStopper = function( event ){
     var S_KEY = 83;
     
@@ -104,6 +109,7 @@ var practiceStopper = function( event ){
     }
 };
 
+// generate a set of possible combinations from the defined widths and distances
 var generateCombinations = function(){
     var pos = currentObservationType === OBSERVATION.DEMO ? demoPositions : positions,
         width = currentObservationType === OBSERVATION.DEMO ? demoWidths : widths;
@@ -116,6 +122,7 @@ var generateCombinations = function(){
         }
     }
 
+    // shuffle them so each round is different and learning effects are reduced
     var fisherYatesShuffle = function( arr ){
         var i = arr.length;
         if ( i === 0 ) return arr;
@@ -131,6 +138,8 @@ var generateCombinations = function(){
     combinations = fisherYatesShuffle( combinations );
 };
 
+// define a custom shape for this experiment
+// because of how this is done, it doesn't display correctly when replaying
 var recText = function( shapeSetup ){
     Pointerly.Shape.call( this, shapeSetup );
 
@@ -157,6 +166,7 @@ recText.prototype.toString = function(){
 
 Pointerly.Shapes.Register( recText );
 
+// Display some infomation text about the current state of the experiment
 var generateNoticeText = function( environment ){
     var txt = currentObservationType === OBSERVATION.REMOTE ? 'Recording Activated' : currentObservationType === OBSERVATION.PRACTICE ? 'Practice' : '';
     environment.addShape(new recText({
@@ -168,6 +178,7 @@ var generateNoticeText = function( environment ){
     }));
 };
 
+// the setup for the experiment
 var setup = {
     shapeLayout: function( environment ){
         if( shouldGenerateShapes ){
@@ -220,8 +231,10 @@ var setup = {
     }
 };
 
+// initialise the experiment
 Pointerly.Init( setup );
 
+// do some general logging things to help identify the round
 Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Participant Number', participantNumber );
 Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Observation Order', observationOrder );
 Pointerly.CURRENT_ENVIRONMENT.logger.logGeneralData( 'Start Time', Date.now() );
