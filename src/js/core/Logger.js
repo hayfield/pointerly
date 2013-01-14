@@ -334,7 +334,7 @@ Pointerly.Logger = function(){
 		@param val The value that it being logged
 	*/
 	this.logGeneralData = function( name, val ){
-		logger.data.generalData.push(new Pointerly.LoggedArbiraryData(
+		logger.data.generalData.push(new Pointerly.LoggedArbitraryData(
 			Pointerly.now(),
 			name,
 			val

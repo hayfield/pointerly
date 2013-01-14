@@ -268,7 +268,7 @@ Pointerly.LoggerData = function(){
 	@param {string} name The name of the data being logged
 	@param val The value that it being logged
 */
-Pointerly.LoggedArbiraryData = function( timestamp, name, val ){
+Pointerly.LoggedArbitraryData = function( timestamp, name, val ){
 	/**
 		The time the data was logged
 		@type number
