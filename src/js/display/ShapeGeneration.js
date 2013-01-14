@@ -47,12 +47,13 @@ Pointerly.ShapeGeneration.FromString = function( type, environment, setup ){
 	@param {object} setup Additional settings for creating the grid
 */
 Pointerly.ShapeGeneration.Grid2D = function( environment, setup ){
-	var setup = setup || {},
-		shapeGenSetup = setup.shapeGenSettings || {},
+	var shapeGenSetup = setup.shapeGenSettings || {},
 		shapeWidth = shapeGenSetup.shapeWidth || 200,
 		shapeHeight = shapeGenSetup.shapeHeight || 200,
 		shapePaddingHorizontal = shapeGenSetup.shapePaddingHorizontal || 0,
 		shapePaddingVertical = shapeGenSetup.shapePaddingVertical || 0;
+
+	setup = setup || {};
 
 	for( var row = 0; row < shapeGenSetup.rowsOfShapes; row++ ){
 		for( var col = 0; col < shapeGenSetup.columnsOfShapes; col++ ){

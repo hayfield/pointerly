@@ -57,15 +57,14 @@ Pointerly.Analysis.HomeToShape = function( data ){
 	out += 'MovementTime,Distance,Width\n';
 
 	// go through the shapes
-	for( var shapeID = 0; shapeID < numShapes; shapeID++ ){
+	for( shapeID = 0; shapeID < numShapes; shapeID++ ){
 		var shape = data.createdShapes[shapeID];
 		
 		// if it's something we care about
 		if( shape.type !== 'Recording' && shape.removeTime < Number.MAX_VALUE ){
 			var createTime = shape.createTime;
 			// find the home area interaction when you left to click it
-			while( homeInteractionID < interactions.length 
-				&& interactions[homeInteractionID].timestamp < createTime ){
+			while( homeInteractionID < interactions.length && interactions[homeInteractionID].timestamp < createTime ){
 				homeInteractionID++;
 			}
 			
@@ -83,16 +82,3 @@ Pointerly.Analysis.HomeToShape = function( data ){
 
 	return out;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-

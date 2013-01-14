@@ -56,7 +56,7 @@ Pointerly.Storage = function(){
 			default:
 				msg = 'Unknown Error';
 				break;
-		};
+		}
 
 		console.log('Storage Error: ' + msg);
 	};

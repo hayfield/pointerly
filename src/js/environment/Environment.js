@@ -107,7 +107,7 @@ Pointerly.Environment = function( setup ){
 	this.resetShapes = function(){
 		environment.objects().forEach(function( shape ){
 			environment.removeShape( shape );
-		})
+		});
 		environment.shapes = [];
 		environment.scene.removeAllObjects();
 	};

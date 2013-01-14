@@ -157,7 +157,7 @@ Pointerly.Logger = function(){
 			ctx.moveTo( displayedData[idx-1].x, displayedData[idx-1].y );
 			ctx.lineTo( el.x, el.y );
 			ctx.stroke();
-		};
+		}
 
 		clickPositions.forEach(function( el ){
 			ctx.fillStyle = 'rgb( 255, 100, 0 )';
@@ -339,7 +339,7 @@ Pointerly.Logger = function(){
 			name,
 			val
 		));
-	}
+	};
 
 	document.addEventListener( 'mousemove', logger.trackMouseMovement );
 

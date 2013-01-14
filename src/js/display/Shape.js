@@ -4,8 +4,9 @@
 	@param {object} shapeSetup The setup for the shape
 */
 Pointerly.Shape = function( shapeSetup ){
-	var shape = this,
-		shapeSetup = shapeSetup || {};
+	var shape = this;
+	
+	shapeSetup = shapeSetup || {};
 
 	/**
 		The width of the shape

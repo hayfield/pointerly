@@ -61,14 +61,14 @@ Pointerly.ClickHandler.GenericShapeClickHandler = function( event, shape ){
 */
 Pointerly.ClickHandler.Mouse = function( environment ){
 	var clickHandler = function( event ){
- 		event.preventDefault();
+		event.preventDefault();
 
- 		var shape = Pointerly.ClickHandler.GetClickedShape({
+		var shape = Pointerly.ClickHandler.GetClickedShape({
 			x: event.clientX,
 			y: event.clientY
 		}, Pointerly.CURRENT_ENVIRONMENT );
 
- 		Pointerly.ClickHandler.GenericShapeClickHandler( event, shape );
+		Pointerly.ClickHandler.GenericShapeClickHandler( event, shape );
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
@@ -80,14 +80,14 @@ Pointerly.ClickHandler.Mouse = function( environment ){
 */
 Pointerly.ClickHandler.ScreenCenter = function( environment ){
 	var clickHandler = function( event ){
- 		event.preventDefault();
+		event.preventDefault();
 
 		var shape = Pointerly.ClickHandler.GetClickedShape({
 			x: window.innerWidth / 2,
 			y: window.innerHeight / 2
 		}, Pointerly.CURRENT_ENVIRONMENT );
 
-		Pointerly.ClickHandler.GenericShapeClickHandler( event, shape );	
+		Pointerly.ClickHandler.GenericShapeClickHandler( event, shape );
 	};
 
 	document.addEventListener( 'mousedown', clickHandler, false );
@@ -103,9 +103,9 @@ Pointerly.ClickHandler.GetClickedShape = function( clickPosition, environment ){
 	var objs = environment.objects();
 
 	for( var i = 0; i < objs.length; i++ ){
-		if( clickPosition.x > objs[i].position.x && clickPosition.y > objs[i].position.y 
-				&& clickPosition.x < (objs[i].position.x + objs[i].width)
-				&& clickPosition.y < (objs[i].position.y + objs[i].height) ){
+		if( clickPosition.x > objs[i].position.x && clickPosition.y > objs[i].position.y &&
+				clickPosition.x < (objs[i].position.x + objs[i].width) &&
+				clickPosition.y < (objs[i].position.y + objs[i].height) ){
 			return objs[i];
 		}
 	}
