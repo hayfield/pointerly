@@ -4,52 +4,60 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Pointerly by hayfield</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/hayfield/pointerly">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/hayfield/pointerly/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/hayfield/pointerly/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
     <div class="wrapper">
+      <header>
+        <h1>Pointerly</h1>
+        <p>A framework for testing things using pointers.</p>
 
+        <p class="view"><a href="https://github.com/hayfield/pointerly">View the Project on GitHub <small>hayfield/pointerly</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/hayfield/pointerly/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hayfield/pointerly/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hayfield/pointerly">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
       <section>
-        <div id="title">
-          <h1>Pointerly</h1>
-          <p>A framework for testing things using pointers.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/hayfield">hayfield</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
+        <h1>Pointerly</h1>
 
-        <h3>Pointerly</h3>
+<p>A framework for testing things using pointers.</p>
 
-<p>Experimenting with gh-pages.</p>
+<p>Pointerly is a framework to help with the creation of experiments which involve using pointers. It provides functionality to complete tasks including displaying shapes on the screen, handling events such as clicks, and keeping track of mouse position.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>It is able to keep track of the state of the experiment throughout, including mouse positions, mouse clicks, screen size, and shapes that are displayed on the screen. This logged data can be replayed, allowing an experiment run to be watched back at a later point. With a correctly set up browser, collected data is stored on the file system of the machine, removing any need to remember to move data around between experiment participants.</p>
+
+<h2>How to best obtain and collect data</h2>
+
+<ul>
+<li>Use a <a href="http://caniuse.com/#search=navigation%20timing">browser that includes high resolution timing</a>
+</li>
+<li>Use a <a href="http://caniuse.com/#search=filesystem">browser with FileSystem support</a> to store data</li>
+</ul><p>If running Pointerly in Chrome using the local file system (the URL starts with <code>file:</code>), <a href="http://www.chromium.org/developers/how-tos/run-chromium-with-flags">set the <code>--allow-file-access-from-files</code> flag</a> for access to the FileSystem.</p>
+
+<p>When putting the Chrome into full screen, use the keyboard shortcuts. This will ensure that events relating to hovering work correctly, rather than requiring clicks (as is the case when using View &gt; Enter Presentation Mode).</p>
+
+<p>Data stored in the FileSystem in Chrome can be found in the <code>File System</code> folder within the <a href="http://www.chromium.org/user-experience/user-data-directory">User Data Directory</a>.</p>
+
+<h2>Documentation</h2>
+
+<p>Documentation can be found within the <code>docs/</code> folder. Reading through the source code can also help clarify issues if the documentation is missing something.</p>
       </section>
-
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/hayfield">hayfield</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
