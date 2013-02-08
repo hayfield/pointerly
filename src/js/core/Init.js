@@ -3,7 +3,7 @@
 	@param {Pointerly.Setup.Environment|object} setup The setup configuration
 */
 Pointerly.Init = function( setup ){
-	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+	if( !Detector.webgl ) Detector.addGetWebGLMessage();
 
 	Pointerly.ClickHandler.SetupDefaults();
 	Pointerly.ShapeGeneration.SetupDefaults();
